@@ -1,4 +1,8 @@
 import logo from './logo.svg';
+import HelloWorld from './HelloWorld';
+import DateFunction from './DateFunction';
+import GetData from './GetData';
+
 import './App.css';
 
 function App() {
@@ -9,6 +13,12 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <HelloWorld/>
+        <DateFunction/>
+        <GetData
+        name = "Ani"
+        surname ="Sargsyan"
+        />
         <a
           className="App-link"
           href="https://reactjs.org"
