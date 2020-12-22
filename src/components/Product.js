@@ -15,7 +15,7 @@ class Product extends Component {
           
            <br/>
            <Name name = {this.props.name}/>
-           <Price price = {this.props.price}/>
+           <Price defVal = {this.props.defVal}/>
            <Description  description = {this.props.description}/>
            
            </div>

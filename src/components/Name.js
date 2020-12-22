@@ -6,7 +6,7 @@ class Name  extends Component {
     
     render(){
         return(
-            <span>Fruits type - {this.props.name}</span>
+            <div>Fruits type - {this.props.name}</div>
         )
     }
 

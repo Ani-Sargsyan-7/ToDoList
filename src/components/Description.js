@@ -4,7 +4,7 @@ class Description  extends Component {
     
     render(){
         return(
-            <span>This is a {this.props.description}</span>
+            <div>This is a {this.props.description}</div>
         )
     };
 
