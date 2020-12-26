@@ -2,7 +2,8 @@ import React from 'react';
 // import HelloWorld from './components/HelloWorld';
 // import DateFunction from './components/DateFunction';
 // import GetData from './components/GetData';
-import Product from './components/Product';
+//import Product from './components/Product';
+import ToDoList from './components/ToDoList';
 import './App.css';
 
 
@@ -16,12 +17,13 @@ function App() {
         name = "Ani"
         surname ="Sargsyan"
         />*/}
-        <Product 
+        {/*<Product 
         name="Bananas" 
-        defVal="2" 
+        defVal="4" 
         description="Fresh bananas from Ecuador" 
         />
-        
+        */}
+        <ToDoList/>
       </header>
     </div>
   );

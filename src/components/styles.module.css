@@ -1,0 +1,24 @@
+.toDo>h2{
+    color: rgb(66, 3, 54);
+    text-shadow: 4px 4px #15011a;
+}
+
+.toDo>input, button{
+    padding: 5px;
+    margin-right: 2px;
+    border:2px solid rgb(47, 2, 38);
+    border-radius: 5px;
+}
+
+.toDo>button{
+    color: rgb(66, 3, 54);
+    font: 14px  sans-serif;
+    font-weight: bold ;
+}
+
+.toDo>ol>li{
+font: 20px sans-serif;
+text-align: left;
+text-transform: capitalize;
+}
+
