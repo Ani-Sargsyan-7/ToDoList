@@ -7,10 +7,9 @@ import styles from './styles.module.css';
 
 class ToDoList extends Component{
     state ={
-        check: false,
         currentValue : '',
         tasks : [],
-        selectedTask:[]
+        selectedTasks:new Set()
     };
 
     handleChange = (e)=>{
@@ -22,12 +21,9 @@ class ToDoList extends Component{
     
     addNewTask = ()=>{  
         const currentValue = this.state.currentValue.trim(); 
-        const date = new Date('');
         const newTasks ={
             _id:idGenerator(),
-            text:currentValue,
-            date:date,
-
+            text:currentValue
         };
         const newTasksArr = [newTasks, ...this.state.tasks];
         if(!currentValue){
@@ -41,6 +37,12 @@ class ToDoList extends Component{
        
     };
 
+    handleKeyDown = (e)=>{
+        if(e.key === "Enter"){
+            this.addNewTask();
+        }
+    }
+
     removeTask = (id)=>{
             const remainingTask = this.state.tasks.filter(task=> id !== task._id);
 
@@ -49,17 +51,41 @@ class ToDoList extends Component{
             });
     };
 
-    onChecking(){
-        this.setstate({
-            check:!this.state.check,
+    chekedTasks=(id)=>{
+        const selectedTasks = new Set(this.state.selectedTasks);
+            if(selectedTasks.has(id)){
+                selectedTasks.delete(id)
+            }else{
+                selectedTasks.add(id)
+            }
+            this.setState({
+                selectedTasks,
+            });
+    };
+
+    deleteCheckedTasks = ()=>{
+        const {tasks, selectedTasks} = this.state;
+
+        const chekcedTasks = tasks.filter( task =>{
+                if(selectedTasks.has(task._id )){
+                    return false;
+                }
+                return true;
+            
         });
-        
-      }
+
+        this.setState({
+            tasks:chekcedTasks,
+            selectedTasks: new Set()
+        });
+
+    };
+
     
 
    
     render(){
-        const {currentValue, tasks} = this.state;
+        const {selectedTasks,currentValue, tasks} = this.state;
        
         const tasksList = tasks.map((task, index)=>{
              return (
@@ -76,8 +102,7 @@ class ToDoList extends Component{
                    
                         <Card.Header>
                             <Form.Check type="checkbox" 
-                            checked={this.state.check} 
-                            onChange={()=>this.onChecking()}
+                            onChange={()=>this.chekedTasks(task._id)}
                             />
                             Task {index+1}
                             </Card.Header>
@@ -85,13 +110,22 @@ class ToDoList extends Component{
                             <Card.Title>
                                 {task.text}
                             </Card.Title>
-                            <Button className='mr-2' 
+                            <Button 
+                            border="warning"
+                            className='mr-2' 
                             size="sm" variant="danger" 
                             onClick={()=>this.removeTask(task._id)}
+                            disabled={!!selectedTasks.size}
                             >
-                            Remove
+                            &#10008;
                             </Button>
-                            <Button variant="success" size="sm">Edit</Button>
+                            <Button 
+                            border="warning"
+                            variant="success" 
+                            size="sm"
+                            >
+                            &#9998;
+                            </Button>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -111,19 +145,33 @@ class ToDoList extends Component{
                         <Col xs={12} xl={6}>
                             <InputGroup>
                                 <FormControl
+                                border="warning"
                                 placeholder='Enter new task...'
                                 value={currentValue}
                                 onChange={this.handleChange}
+                                onKeyDown={this.handleKeyDown}
+                                disabled={!!selectedTasks.size}
                                 />
                                 
                                 <InputGroup.Append>
-                                    <Button  variant="outline-warning" 
+                                    <Button 
+                                    variant="outline-warning" 
                                     onClick={this.addNewTask}
+                                    disabled={!!selectedTasks.size}
                                     >
                                     Add
                                     </Button>
                                 </InputGroup.Append>
                             </InputGroup>
+                            <Button 
+                            border="warning"
+                            className='mt-4' 
+                            size="sm" variant="danger" 
+                            onClick={this.deleteCheckedTasks}
+                            disabled={!selectedTasks.size}
+                            >
+                            Delet selsected
+                            </Button>
                         </Col>
                     </Row>
                     <Row className='mt-4 justify-content-center'>
