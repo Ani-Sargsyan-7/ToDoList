@@ -1,15 +1,15 @@
+  
 *{
     margin: 0;
     padding: 0;
     list-style: none;
     outline: none;
 }
-h1{
-    color: #face0b;
-    text-shadow: 3px 2px rgba(26, 24, 27, 0.6);
-}
-
-.btn{
+.btn {
     color:#face0b;
 }
 
+h1{
+    color: #face0b;
+    text-shadow: 4px 3px rgba(0, 0, 0, 0.6);
+}
