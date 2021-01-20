@@ -65,14 +65,16 @@ class ToDoList extends Component{
                 if(selectedTasks.has(task._id )){
                     return false;
                 }
-                return true;
-            
+                else{
+                    return true;
+                }
+    
         });
 
         this.setState({
             tasks:chekcedTasks,
             selectedTasks: new Set(),
-            showConfirm: this.state.showConfirm
+            showConfirm: false
         });
 
     };
@@ -111,6 +113,7 @@ class ToDoList extends Component{
                 disabled = {!!selectedTasks.size}
                 onDelete = {this.removeTask}
                 selected={selectedTasks.has(task._id)}
+                editTask ={this.toggleNewTaskModal}
                 index={index}
                 />         
                 </Col>
