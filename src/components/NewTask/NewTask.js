@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import idGenerator from '../../helpers/idGenerator';
-import {InputGroup, Button, FormControl} from 'react-bootstrap';
+import {Button, FormControl, Modal} from 'react-bootstrap';
 import PropTypes from 'prop-types';
-//import styles from './newTask.module.css';
-
+import styles from './newTask.module.css';
 
 
 class NewTask extends Component{
@@ -14,9 +13,11 @@ class NewTask extends Component{
     };
 
     handleChange = (e)=>{
+        const {name, value} = e.target;
         this.setState({
-            taskTitle :e.target.value       
+            [name]: value
         });
+       
     };
 
     handleSubmit=()=>{
@@ -33,15 +34,10 @@ class NewTask extends Component{
             content:content
         };
 
-        this.props.onAddTask(newTasks);
+      this.props.onAddTask(newTasks);
 
-        this.setState({
-            taskTitle : '',
-            content: ''
-        });
-        
     };
-
+   
     handleKeyDown = (e)=>{
         if(e.key === "Enter"){
              this.handleSubmit();
@@ -51,30 +47,48 @@ class NewTask extends Component{
 
 
     render(){
-        const {taskTitle} = this.state;
-        const {disabled} = this.props;
+        const {onCloseModal} = this.props;
 
         return(
-                     <InputGroup>
-                                <FormControl
-                                border="warning"
-                                placeholder='Enter new task...'
-                                value={taskTitle}
-                                onChange={this.handleChange}
-                                onKeyDown={this.handleKeyDown}
-                                disabled={disabled}   
-                                />
-                                
-                                <InputGroup.Append>
-                                    <Button 
-                                    variant="outline-warning" 
-                                    onClick={this.handleSubmit}
-                                    disabled={disabled}
-                                    >
-                                    Add
-                                    </Button>
-                                </InputGroup.Append>
-                            </InputGroup>
+        
+                <Modal
+                className={styles.modal}
+                show={true}
+                onHide={onCloseModal}
+                size="md"
+                centered
+                >
+                <Modal.Header >
+                    <Modal.Title className = {styles.modalTitle}>
+                        Add new Task
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <FormControl
+                    className={styles.inp}
+                    placeholder='Enter Title...'
+                    onChange={this.handleChange}
+                    onKeyUp={this.handleKeyDown}
+                    name = 'taskTitle'  
+                    />
+                    <FormControl
+                    as='textarea'
+                    row={4}
+                    placeholder='Enter Task...'
+                    onChange={this.handleChange}
+                    name = 'content'  
+                    />    
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button 
+                    onClick={this.handleSubmit}
+                    variant='success'
+                    >
+                    Add
+                    </Button>
+                    <Button onClick={onCloseModal}>Cancel</Button>
+                </Modal.Footer>           
+             </Modal>
                               
         );
     };
@@ -83,7 +97,8 @@ class NewTask extends Component{
 
  NewTask.propTypes = {
     onAddTask: PropTypes.func.isRequired,
-    disabled: PropTypes.bool.isRequired,
+    onCloseModal: PropTypes.func.isRequired
+
 };
 
 export default NewTask;

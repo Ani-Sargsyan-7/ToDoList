@@ -1,3 +1,47 @@
 .selected{
-    border: 1px solid #f00;
+    border: 2px solid rgba(92, 55, 55, 0.664) !important;
 }
+
+.title{
+    color:rgb(61, 36, 36);
+    font: 14px sans-serif;
+}
+.text{
+    color:rgb(61, 39, 39);
+    font: 12px sans-serif;
+}
+.iconColor{
+    color:rgba(240, 234, 234, 0.65);
+}
+/* .iconColor:hover{
+    color:rgba(92, 55, 55, 0.664);
+} */
+.btnColor{
+    margin-right: 5px;
+    border:none !important;
+    outline: 0 none !important;
+    background-color: rgba(92, 55, 55, 0.664) !important;
+}
+.btnColor:hover{
+    background-color: rgba(216, 178, 178, 0.65) !important;
+}
+.btnColor:focus, .btnColor:active {
+    box-shadow: none !important;
+    outline:  0  !important;
+  }
+
+.card{
+    background-color: rgba(255, 255, 255, 0.144)!important;
+    color: rgba(61, 36, 36);
+    box-shadow: 3px 3px rgba(98, 69, 72, 0.479);
+    transition: transform .2s linear;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.check{
+    color: rgba(0, 0, 0, 0.65);
+}
+

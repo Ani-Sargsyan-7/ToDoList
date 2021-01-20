@@ -5,11 +5,35 @@
     list-style: none;
     outline: none;
 }
-.btn {
-    color:#face0b;
-}
 
 h1{
-    color: #face0b;
-    text-shadow: 4px 3px rgba(0, 0, 0, 0.6);
+    color:rgba(46, 33, 33, 0.6);
+    text-shadow: 3px 3px rgba(98, 69, 72, 0.479);
 }
+
+.btn {
+    width: 120px;
+    margin:20px 20px;
+    border:none !important;
+    outline: 0 none !important;
+    background: rgba(92, 55, 55, 0.664) !important;
+    box-shadow: 3px 3px rgba(98, 69, 72, 0.479);
+}
+.btn:hover {
+    background: rgba(155, 127, 127, 0.459)!important;
+    color: rgb(92, 55, 55) !important;
+}
+
+.btn:focus, .btn:active {
+    box-shadow: none !important;
+    outline:  0  !important;
+  }
+/* .btn:last-child{
+    background: rgba(19, 12, 12, 0.479) !important;
+}
+.btn:nth-child(3){
+    background: rgba(92, 51, 57, 0.479) !important;
+}
+.btn:nth-child(2){
+    background: rgba(170, 93, 103, 0.479) !important;
+} */
