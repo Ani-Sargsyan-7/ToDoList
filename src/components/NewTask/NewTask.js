@@ -66,7 +66,7 @@ class NewTask extends Component{
                 <Modal.Body>
                     <FormControl
                     className={styles.inp}
-                    placeholder='Enter Title...'
+                    placeholder='Add  Title...'
                     onChange={this.handleChange}
                     onKeyUp={this.handleKeyDown}
                     name = 'taskTitle'  
@@ -74,7 +74,7 @@ class NewTask extends Component{
                     <FormControl
                     as='textarea'
                     row={4}
-                    placeholder='Enter Task...'
+                    placeholder='Add Task...'
                     onChange={this.handleChange}
                     name = 'content'  
                     />    

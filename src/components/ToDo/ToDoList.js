@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Task from '../Task/Task';
 import NewTask from '../NewTask/NewTask';
-import Confirm from '../Confirm/Confirm'
+import Confirm from '../Confirm/Confirm';
+import EditTask from '../EditTask/EditTask';
 import { Container, Row, Col, Button} from 'react-bootstrap';
 import styles from './todo.module.css';
 
@@ -13,7 +14,8 @@ class ToDoList extends Component{
         tasks : [],
         selectedTasks:new Set(),
         showConfirm:false,
-        showNewTaskModal: false
+        showNewTaskModal: false,
+        editTask: null
     };
 
     addNewTask = (newTasks)=>{  
@@ -41,7 +43,7 @@ class ToDoList extends Component{
                 selectedTasks.add(id)
             }
             this.setState({
-                selectedTasks,
+                selectedTasks
             });
     };
 
@@ -91,9 +93,25 @@ class ToDoList extends Component{
         });
     };
 
+    handleEdit = (editTask)=>{
+
+        this.setState({ editTask });
+    };
+
+    handleSaveTask = (editedTask)=>{
+        const tasks = [...this.state.tasks];
+        const taskIndex = tasks.findIndex((task)=> task._id === editedTask._id);
+        tasks[taskIndex] = editedTask;
+        console.log(tasks[taskIndex]) 
+        
+        this.setState({
+            tasks,
+            editTask: null
+        });
+    };
     
     render(){
-        const {selectedTasks, tasks, showConfirm, showNewTaskModal} = this.state;
+        const {selectedTasks, tasks, showConfirm, showNewTaskModal, editTask} = this.state;
       
         const tasksList = tasks.map((task,index)=>{
             index++;
@@ -112,8 +130,8 @@ class ToDoList extends Component{
                 chekedTasks={this.chekedTasks}
                 disabled = {!!selectedTasks.size}
                 onDelete = {this.removeTask}
+                onEdit = {this.handleEdit}
                 selected={selectedTasks.has(task._id)}
-                editTask ={this.toggleNewTaskModal}
                 index={index}
                 />         
                 </Col>
@@ -146,7 +164,7 @@ class ToDoList extends Component{
                            onClick={this.toggleShowConfirm}
                            disabled={!selectedTasks.size}
                            >
-                           Delet selsected
+                           Delete selected
                            </Button>
                            </Col>
 
@@ -157,7 +175,7 @@ class ToDoList extends Component{
                            onClick={this.selectAllTasks}
                            disabled={!selectedTasks}
                            >
-                           Selsect All
+                           Select All
                            </Button>
                            </Col>
 
@@ -192,7 +210,15 @@ class ToDoList extends Component{
                     onAddTask={this.addNewTask}
                     />
                 }
-           </>
+                {
+                    editTask && 
+                    <EditTask
+                        data = {editTask}
+                        onClose = {()=> this.handleEdit(null)}
+                        onSave = {this.handleSaveTask}
+                     />
+                }
+        </>
 
        );
     };

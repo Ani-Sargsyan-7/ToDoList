@@ -16,7 +16,7 @@ class Task extends Component {
 
     render(){       
         const {card} = this.props;
-        const {disabled, onDelete,index, selected, editTask} = this.props;
+        const {disabled, onDelete,index, selected, onEdit} = this.props;
    
         return(           
             <Card className={`${styles.card} ${selected ? styles.selected : ""}`}>               
@@ -47,7 +47,7 @@ class Task extends Component {
                 <Button 
                 className={styles.btnColor}
                 size="sm"
-                onClick={editTask}
+                onClick={() => onEdit(card)}
                 >
                 <FontAwesomeIcon icon={faPencilAlt} className={styles.iconColor}/>
                 </Button>
