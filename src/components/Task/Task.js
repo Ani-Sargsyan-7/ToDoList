@@ -1,62 +1,64 @@
 import React, { Component } from 'react';
 import {Card, Button,Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import styles from './task.module.css';
 
 
-class Task extends Component {
 
-    state ={
-        selected : false
-    };
+class Task extends Component {
 
     handleChange =()=>{
         const {card, chekedTasks} = this.props;
         chekedTasks(card._id);
-        this.setState({
-            selected : !this.state.selected
-        });
     };
 
-    render(){
-        const card = this.props.card;
-        const {disabled, onDelete,index} = this.props;
-        const {selected} = this.state;
-        
-        return(
-            <Card border="warning" className={`${styles.task} ${selected ? styles.selected: ""}`}>                   
+    render(){       
+        const {card} = this.props;
+        const {disabled, onDelete,index, selected, editTask} = this.props;
+   
+        return(           
+            <Card className={`${styles.card} ${selected ? styles.selected : ""}`}>               
             <Card.Header>
-                <Form.Check 
+                <Form.Check
+                className={styles.check} 
                 type="checkbox" 
                 onChange={this.handleChange}
+                checked={selected}
                 />
                 Task {index}
                 </Card.Header>
             <Card.Body>
-                <Card.Title>
+                <Card.Title className= {styles.title}>
                     {card.taskTitle}
                 </Card.Title>
+                <Card.Text className= {styles.text}>
+                    {card.content}
+                </Card.Text>
                 <Button 
-                border="warning"
-                className='mr-2' 
-                size="sm" variant="danger" 
+                className={styles.btnColor} 
+                size="sm" 
                 onClick={()=>onDelete(card._id)}
                 disabled={disabled}
                 >
-                &#10008;
+                <FontAwesomeIcon icon={faTrash} className={styles.iconColor} />
                 </Button>
                 <Button 
-                border="warning"
-                variant="success" 
+                className={styles.btnColor}
                 size="sm"
+                onClick={editTask}
                 >
-                &#9998;
+                <FontAwesomeIcon icon={faPencilAlt} className={styles.iconColor}/>
                 </Button>
             </Card.Body>
         </Card>
+        
         );
     };
+    
 };
+
 
 Task.propTypes = {
     card : PropTypes.object.isRequired,

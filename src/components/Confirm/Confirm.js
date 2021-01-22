@@ -1,5 +1,6 @@
 import React from 'react';
 import {Modal, Button} from 'react-bootstrap';
+import styles from './confirm.module.css';
 
 
 function Confirm(props){
@@ -12,17 +13,17 @@ function Confirm(props){
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
+            <Modal.Title className={styles.modalTitle}>
             Are you sure to remove {props.count} task{props.count>1 ? "s": ""}
             </Modal.Title>
           </Modal.Header>
-          <Modal.Footer>
+          <Modal.Footer className='justify-content-center'>
             <Button  
             onClick={props.onClose}
             >
             Cancel
             </Button>
-            <Button 
+            <Button
             onClick={props.onConfirm}
             variant='danger'
             >
