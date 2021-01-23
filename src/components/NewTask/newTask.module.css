@@ -1,8 +1,53 @@
 .modal{
-    background-color: rgba(255, 255, 255, 0.144) !important;
-    
+    position: fixed;
+    background-color:#FFFF00
 }
 
 .modalTitle{
     text-align: center;
 }
+
+.input{
+    margin-bottom: 10px;
+    border:none !important;
+    outline: 0 none !important;
+    border-bottom: 1px solid #ebeef1  !important;
+    border-radius: 0px !important;
+}
+
+.input:focus, .input:active {
+    box-shadow: none !important;
+    outline:  0  !important;
+  }
+
+  .textarea{
+    margin-bottom: 10px;
+    border:none !important;
+    outline: 0 none !important;
+    border-bottom: 1px solid #e9edf0  !important;
+    border-radius: 0px !important;
+}
+
+.textarea:focus, .textarea:active {
+    box-shadow: none !important;
+    outline:  0  !important;
+  }
+
+  
+.btn {
+    width: 120px;
+    margin:20px 20px;
+    border:none !important;
+    outline: 0 none !important;
+    background: rgba(92, 55, 55, 0.664) !important;
+    box-shadow: 3px 3px rgba(98, 69, 72, 0.479);
+}
+.btnHover:hover {
+    background: rgba(155, 127, 127, 0.459)!important;
+    color: rgb(92, 55, 55) !important;
+}
+
+.btn:focus, .btn:active {
+    box-shadow: none !important;
+    outline:  0  !important;
+  }

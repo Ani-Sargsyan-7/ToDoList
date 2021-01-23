@@ -1,3 +1,26 @@
 .modalTitle{
     font: 30px bold serif;
 }
+
+.modal{
+    color:rgb(61, 36, 36);
+    font: 24px sans-serif;
+}
+
+.btn {
+    width: 120px;
+    margin:20px 20px;
+    border:none !important;
+    outline: 0 none !important;
+    background: rgba(92, 55, 55, 0.89) !important;
+    box-shadow: 3px 3px rgba(98, 69, 72, 0.561);
+}
+.btnHover:hover {
+    background: rgba(155, 127, 127, 0.459)!important;
+    color: rgb(92, 55, 55) !important;
+}
+
+.btn:focus, .btn:active {
+    box-shadow: none !important;
+    outline:  0  !important;
+  }

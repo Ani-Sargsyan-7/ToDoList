@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Task from '../Task/Task';
 import NewTask from '../NewTask/NewTask';
 import Confirm from '../Confirm/Confirm';
 import EditTask from '../EditTask/EditTask';
-import { Container, Row, Col, Button} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 import styles from './todo.module.css';
 
 
 
-class ToDoList extends Component{
+class ToDoList extends PureComponent{
     
     state ={
         tasks : [],
@@ -100,9 +100,8 @@ class ToDoList extends Component{
 
     handleSaveTask = (editedTask)=>{
         const tasks = [...this.state.tasks];
-        const taskIndex = tasks.findIndex((task)=> task._id === editedTask._id);
+        const taskIndex = tasks.findIndex(task => task._id === editedTask._id);
         tasks[taskIndex] = editedTask;
-        console.log(tasks[taskIndex]) 
         
         this.setState({
             tasks,
@@ -112,7 +111,7 @@ class ToDoList extends Component{
     
     render(){
         const {selectedTasks, tasks, showConfirm, showNewTaskModal, editTask} = this.state;
-      
+      console.log(selectedTasks.size)
         const tasksList = tasks.map((task,index)=>{
             index++;
              return (
@@ -139,7 +138,7 @@ class ToDoList extends Component{
         });
         
        return(
-       
+
            <>              
                 <Container>
                     <Row>
@@ -150,16 +149,17 @@ class ToDoList extends Component{
                     <Row className='justify-content-around'>
                         <Col> 
                            <Button 
-                           className={styles.btn}
+                           className={`${styles.btn} ${!selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
                            onClick={this.toggleNewTaskModal}
+                           disabled={!!selectedTasks.size}
                            >
                            Add new Task
                            </Button>
                            </Col>
                            <Col>
                            <Button 
-                           className={styles.btn}
+                           className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
                            onClick={this.toggleShowConfirm}
                            disabled={!selectedTasks.size}
@@ -170,10 +170,10 @@ class ToDoList extends Component{
 
                            <Col>
                            <Button                           
-                           className={styles.btn}
+                           className={`${styles.btn} ${selectedTasks.size !== tasks.length ? styles.btnHover : " "} `}
                            size="sm"  
                            onClick={this.selectAllTasks}
-                           disabled={!selectedTasks}
+                           disabled={selectedTasks.size === tasks.length}
                            >
                            Select All
                            </Button>
@@ -181,7 +181,7 @@ class ToDoList extends Component{
 
                            <Col>
                            <Button 
-                           className={styles.btn}
+                           className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
                            onClick={this.unselectAll}
                            disabled={!selectedTasks.size}

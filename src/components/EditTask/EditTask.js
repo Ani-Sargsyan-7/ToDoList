@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button, FormControl, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types'; 
+import styles from './edit.module.css'
 
 class EditTask extends Component{
   constructor(props){
@@ -59,15 +60,16 @@ class EditTask extends Component{
           <Modal.Body>
 
           <FormControl
+            className={`${styles.input} mb-3`}
             onChange={this.handleChange}
             name='taskTitle'
             value={taskTitle}
             onKeyUp={this.handleKeyDown}
-            className='mb-3'
           />
           <FormControl 
+          className={`${styles.textarea} mb-3`}
           as="textarea" 
-          rows={4} 
+          row={4} 
           name='content'
           value={content}
           onChange={this.handleChange}
@@ -76,12 +78,18 @@ class EditTask extends Component{
           </Modal.Body>
           <Modal.Footer>
             <Button 
+            className={`${styles.btn} ${styles.btnHover}`}
             onClick={this.handleSubmit}
             variant='success'
             >
             Save
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button 
+            className={`${styles.btn} ${styles.btnHover}`}
+            onClick={onClose}
+            >
+            Cancel
+            </Button>
           </Modal.Footer>
         </Modal>
         );

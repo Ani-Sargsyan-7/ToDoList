@@ -17,9 +17,9 @@ h1{
     border:none !important;
     outline: 0 none !important;
     background: rgba(92, 55, 55, 0.664) !important;
-    box-shadow: 3px 3px rgba(98, 69, 72, 0.479);
+    box-shadow: 4px 3px 3px 0 rgba(98, 69, 72, 0.479);
 }
-.btn:hover {
+.btnHover:hover {
     background: rgba(155, 127, 127, 0.459)!important;
     color: rgb(92, 55, 55) !important;
 }
