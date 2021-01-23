@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Modal, Button} from 'react-bootstrap';
 import styles from './confirm.module.css';
 
@@ -39,4 +39,4 @@ function Confirm(props){
 
 
 
-export default Confirm;
+    export default memo(Confirm);
