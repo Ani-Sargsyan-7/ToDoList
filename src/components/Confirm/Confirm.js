@@ -9,11 +9,11 @@ function Confirm(props){
         className={styles.modal}
         show={true}
         onHide={props.onClose}
-          size="md"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
         >
-          <Modal.Header closeButton>
+        <Modal.Header closeButton>
             <Modal.Title className={styles.modalTitle}>
             Are you sure to remove {props.count} task{props.count>1 ? "s": ""}
             </Modal.Title>
@@ -39,4 +39,4 @@ function Confirm(props){
 
 
 
-export default Confirm;
+    export default Confirm;

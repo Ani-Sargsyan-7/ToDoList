@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {Component } from 'react';
 import Task from '../Task/Task';
 import NewTask from '../NewTask/NewTask';
 import Confirm from '../Confirm/Confirm';
@@ -8,7 +8,7 @@ import styles from './todo.module.css';
 
 
 
-class ToDoList extends PureComponent{
+class ToDoList extends Component{
     
     state ={
         tasks : [],
@@ -140,7 +140,7 @@ class ToDoList extends PureComponent{
        return(
 
            <>              
-                <Container>
+                <Container className = {styles.container}>
                     <Row>
                         <Col className = ' mb-4'>
                             <h1 className ='text-center mt-4'>ToDo List</h1>
@@ -175,7 +175,7 @@ class ToDoList extends PureComponent{
                            onClick={this.selectAllTasks}
                            disabled={selectedTasks.size === tasks.length}
                            >
-                           Select All
+                           Select  All
                            </Button>
                            </Col>
 
@@ -186,7 +186,7 @@ class ToDoList extends PureComponent{
                            onClick={this.unselectAll}
                            disabled={!selectedTasks.size}
                            >
-                           Unselsect All
+                           Unselect  All
                            </Button>
                         </Col> 
                     </Row>

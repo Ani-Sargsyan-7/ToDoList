@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import idGenerator from '../../helpers/idGenerator';
-import {Button, FormControl, Modal, ModalDialog} from 'react-bootstrap';
+import {Button, FormControl, Modal} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import styles from './newTask.module.css';
 
-class NewTask extends Component{
+class NewTask extends PureComponent{
 
        state = {
         taskTitle : '',
@@ -49,8 +49,6 @@ class NewTask extends Component{
         const {onCloseModal} = this.props;
 
         return(
-
-            <ModalDialog>
                 <Modal  
                 show={true}
                 onHide={onCloseModal}
@@ -59,7 +57,8 @@ class NewTask extends Component{
                 centered
                 >
                 <Modal.Header closeButton>
-                    <Modal.Title className = {styles.modalTitle}>
+                    <Modal.Title 
+                    className = {styles.modalTitle}>
                         Add new Task
                     </Modal.Title>
                 </Modal.Header>
@@ -82,9 +81,9 @@ class NewTask extends Component{
                 </Modal.Body>
                 <Modal.Footer>
                     <Button 
-                    className={`${styles.btn} ${styles.btnHover}`}
+                    className={`${styles.btn} ${this.state.taskTitle !== "" ? styles.btnHover : ""}`}
                     onClick={this.handleSubmit}
-                    variant='success'
+                    disabled={this.state.taskTitle === "" ? true : false}
                     >
                     Add
                     </Button>
@@ -95,9 +94,7 @@ class NewTask extends Component{
                     Cancel
                     </Button>
                 </Modal.Footer>           
-             </Modal>
-             </ModalDialog>
-                              
+             </Modal>                  
         );
     };
 };
