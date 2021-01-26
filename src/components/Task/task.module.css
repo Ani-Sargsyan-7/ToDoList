@@ -33,7 +33,7 @@
 .card{
     background-color: rgba(255, 255, 255, 0.144)!important;
     color: rgba(61, 36, 36);
-    box-shadow: 3px 3px rgba(98, 69, 72, 0.479);
+    box-shadow:6px 4px 4px 3px rgba(98, 69, 72, 0.479);
     transition: transform .2s linear;
 }
 
@@ -42,6 +42,6 @@
 }
 
 .check{
-    color: rgba(0, 0, 0, 0.65);
+    color: rgba(61, 36, 36, 0.65);
 }
 

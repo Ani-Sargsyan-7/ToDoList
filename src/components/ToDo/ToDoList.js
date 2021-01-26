@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Task from '../Task/Task';
 import NewTask from '../NewTask/NewTask';
-import Confirm from '../Confirm/Confirm'
-import { Container, Row, Col, Button} from 'react-bootstrap';
+import Confirm from '../Confirm/Confirm';
+import EditTask from '../EditTask/EditTask';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 import styles from './todo.module.css';
 
 
 
-class ToDoList extends Component{
+class ToDoList extends PureComponent{
     
     state ={
         tasks : [],
         selectedTasks:new Set(),
         showConfirm:false,
-        showNewTaskModal: false
+        showNewTaskModal: false,
+        editTask: null
     };
 
     addNewTask = (newTasks)=>{  
@@ -41,7 +43,7 @@ class ToDoList extends Component{
                 selectedTasks.add(id)
             }
             this.setState({
-                selectedTasks,
+                selectedTasks
             });
     };
 
@@ -91,10 +93,25 @@ class ToDoList extends Component{
         });
     };
 
+    handleEdit = (editTask)=>{
+
+        this.setState({ editTask });
+    };
+
+    handleSaveTask = (editedTask)=>{
+        const tasks = [...this.state.tasks];
+        const taskIndex = tasks.findIndex(task => task._id === editedTask._id);
+        tasks[taskIndex] = editedTask;
+        
+        this.setState({
+            tasks,
+            editTask: null
+        });
+    };
     
     render(){
-        const {selectedTasks, tasks, showConfirm, showNewTaskModal} = this.state;
-      
+        const {selectedTasks, tasks, showConfirm, showNewTaskModal, editTask} = this.state;
+      console.log(selectedTasks.size)
         const tasksList = tasks.map((task,index)=>{
             index++;
              return (
@@ -112,8 +129,8 @@ class ToDoList extends Component{
                 chekedTasks={this.chekedTasks}
                 disabled = {!!selectedTasks.size}
                 onDelete = {this.removeTask}
+                onEdit = {this.handleEdit}
                 selected={selectedTasks.has(task._id)}
-                editTask ={this.toggleNewTaskModal}
                 index={index}
                 />         
                 </Col>
@@ -121,7 +138,7 @@ class ToDoList extends Component{
         });
         
        return(
-       
+
            <>              
                 <Container>
                     <Row>
@@ -132,38 +149,39 @@ class ToDoList extends Component{
                     <Row className='justify-content-around'>
                         <Col> 
                            <Button 
-                           className={styles.btn}
+                           className={`${styles.btn} ${!selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
                            onClick={this.toggleNewTaskModal}
+                           disabled={!!selectedTasks.size}
                            >
                            Add new Task
                            </Button>
                            </Col>
                            <Col>
                            <Button 
-                           className={styles.btn}
+                           className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
                            onClick={this.toggleShowConfirm}
                            disabled={!selectedTasks.size}
                            >
-                           Delet selsected
+                           Delete selected
                            </Button>
                            </Col>
 
                            <Col>
                            <Button                           
-                           className={styles.btn}
+                           className={`${styles.btn} ${selectedTasks.size !== tasks.length ? styles.btnHover : " "} `}
                            size="sm"  
                            onClick={this.selectAllTasks}
-                           disabled={!selectedTasks}
+                           disabled={selectedTasks.size === tasks.length}
                            >
-                           Selsect All
+                           Select All
                            </Button>
                            </Col>
 
                            <Col>
                            <Button 
-                           className={styles.btn}
+                           className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
                            onClick={this.unselectAll}
                            disabled={!selectedTasks.size}
@@ -192,7 +210,15 @@ class ToDoList extends Component{
                     onAddTask={this.addNewTask}
                     />
                 }
-           </>
+                {
+                    editTask && 
+                    <EditTask
+                        data = {editTask}
+                        onClose = {()=> this.handleEdit(null)}
+                        onSave = {this.handleSaveTask}
+                     />
+                }
+        </>
 
        );
     };

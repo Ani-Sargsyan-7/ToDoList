@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {Card, Button,Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 import styles from './task.module.css';
 
 
-
-class Task extends Component {
+class Task extends PureComponent {
 
     handleChange =()=>{
         const {card, chekedTasks} = this.props;
@@ -16,11 +15,12 @@ class Task extends Component {
 
     render(){       
         const {card} = this.props;
-        const {disabled, onDelete,index, selected, editTask} = this.props;
+        const {disabled, onDelete,index, selected, onEdit} = this.props;
    
         return(           
             <Card className={`${styles.card} ${selected ? styles.selected : ""}`}>               
             <Card.Header>
+            <label htmlFor="">
                 <Form.Check
                 className={styles.check} 
                 type="checkbox" 
@@ -28,6 +28,7 @@ class Task extends Component {
                 checked={selected}
                 />
                 Task {index}
+                </label>
                 </Card.Header>
             <Card.Body>
                 <Card.Title className= {styles.title}>
@@ -47,7 +48,8 @@ class Task extends Component {
                 <Button 
                 className={styles.btnColor}
                 size="sm"
-                onClick={editTask}
+                onClick={() => onEdit(card)}
+                disabled={disabled}
                 >
                 <FontAwesomeIcon icon={faPencilAlt} className={styles.iconColor}/>
                 </Button>

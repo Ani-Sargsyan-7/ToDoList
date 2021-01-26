@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import idGenerator from '../../helpers/idGenerator';
-import {Button, FormControl, Modal} from 'react-bootstrap';
+import {Button, FormControl, Modal, ModalDialog} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import styles from './newTask.module.css';
-
 
 class NewTask extends Component{
 
@@ -50,45 +49,54 @@ class NewTask extends Component{
         const {onCloseModal} = this.props;
 
         return(
-        
-                <Modal
-                className={styles.modal}
+
+            <ModalDialog>
+                <Modal  
                 show={true}
                 onHide={onCloseModal}
                 size="md"
+                aria-labelledby="contained-modal-title-vcenter"
                 centered
                 >
-                <Modal.Header >
+                <Modal.Header closeButton>
                     <Modal.Title className = {styles.modalTitle}>
                         Add new Task
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <FormControl
-                    className={styles.inp}
-                    placeholder='Enter Title...'
+                    className={styles.input}
+                    placeholder='Add  Title...'
                     onChange={this.handleChange}
                     onKeyUp={this.handleKeyDown}
                     name = 'taskTitle'  
                     />
                     <FormControl
+                    className={styles.textarea}
                     as='textarea'
                     row={4}
-                    placeholder='Enter Task...'
+                    placeholder='Add Task...'
                     onChange={this.handleChange}
                     name = 'content'  
                     />    
                 </Modal.Body>
                 <Modal.Footer>
                     <Button 
+                    className={`${styles.btn} ${styles.btnHover}`}
                     onClick={this.handleSubmit}
                     variant='success'
                     >
                     Add
                     </Button>
-                    <Button onClick={onCloseModal}>Cancel</Button>
+                    <Button 
+                    className={`${styles.btn} ${styles.btnHover}`}
+                    onClick={onCloseModal}
+                    >
+                    Cancel
+                    </Button>
                 </Modal.Footer>           
              </Modal>
+             </ModalDialog>
                               
         );
     };

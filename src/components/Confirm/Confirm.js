@@ -6,6 +6,7 @@ import styles from './confirm.module.css';
 function Confirm(props){
     return (
         <Modal
+        className={styles.modal}
         show={true}
         onHide={props.onClose}
           size="md"
@@ -19,13 +20,14 @@ function Confirm(props){
           </Modal.Header>
           <Modal.Footer className='justify-content-center'>
             <Button  
+            className={`${styles.btn} ${styles.btnHover}`}
             onClick={props.onClose}
             >
             Cancel
             </Button>
             <Button
+            className={`${styles.btn} ${styles.btnHover}`}
             onClick={props.onConfirm}
-            variant='danger'
             >
             Delet
             </Button>
