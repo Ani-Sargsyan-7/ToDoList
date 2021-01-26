@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React from 'react';
 import {Modal, Button} from 'react-bootstrap';
 import styles from './confirm.module.css';
 
@@ -9,11 +9,11 @@ function Confirm(props){
         className={styles.modal}
         show={true}
         onHide={props.onClose}
-          size="md"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
         >
-          <Modal.Header closeButton>
+        <Modal.Header closeButton>
             <Modal.Title className={styles.modalTitle}>
             Are you sure to remove {props.count} task{props.count>1 ? "s": ""}
             </Modal.Title>
@@ -39,4 +39,4 @@ function Confirm(props){
 
 
 
-    export default memo(Confirm);
+    export default Confirm;

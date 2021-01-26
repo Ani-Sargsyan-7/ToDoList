@@ -6,6 +6,9 @@
 }
 
 body{
-    height: 100vh;
-    background-image: linear-gradient(180deg, rgba(173, 98, 98, 0.185), rgba(71, 30, 30, 0.904));
+    height: auto;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #fffbfe3a;
+    background-image: linear-gradient(180deg, #f8f2f21c, #f4eafce1, #aec5c398, #7c415378);
 }

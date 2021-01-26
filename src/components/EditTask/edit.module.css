@@ -1,8 +1,12 @@
+.modalTitle{
+    font: 30px bold sans-serif;
+    color:#764258;
+}
 .input{
     margin-bottom: 10px;
     border:none !important;
     outline: 0 none !important;
-    border-bottom: 1px solid #ebeef1  !important;
+    border-bottom: 1px solid #bfa2b8d0  !important;
     border-radius: 0px !important;
 }
 
@@ -15,7 +19,7 @@
     margin-bottom: 10px;
     border:none !important;
     outline: 0 none !important;
-    border-bottom: 1px solid #e9edf0  !important;
+    border-bottom: 1px solid #bfa2b8d0  !important;
     border-radius: 0px !important;
 }
 
@@ -26,16 +30,18 @@
 
 
 .btn {
-    width: 120px;
-    margin:20px 20px;
+    width: 80px;
+    height: 36px;
+    margin:20px;
     border:none !important;
     outline: 0 none !important;
-    background: rgba(92, 55, 55, 0.664) !important;
-    box-shadow: 3px 3px rgba(98, 69, 72, 0.479);
+    background:  #7E3D4A  !important;
+    color: #E2C9C3 !important;
+    box-shadow: 4px 3px 3px 0 rgba(98, 69, 72, 0.623);
 }
 .btnHover:hover {
-    background: rgba(155, 127, 127, 0.459)!important;
-    color: rgb(92, 55, 55) !important;
+    background:#af6b7a93 !important;
+    color: #88466a !important;
 }
 
 .btn:focus, .btn:active {

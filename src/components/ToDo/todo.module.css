@@ -4,11 +4,13 @@
     padding: 0;
     list-style: none;
     outline: none;
+    user-select: none;
 }
 
 h1{
-    color:rgba(46, 33, 33, 0.6);
-    text-shadow: 3px 3px rgba(98, 69, 72, 0.479);
+    font-size: 60px !important;
+    color: #b36c79c9 ;
+    text-shadow: -5px -5px 2px  #44253546;
 }
 
 .btn {
@@ -16,12 +18,14 @@ h1{
     margin:20px 20px;
     border:none !important;
     outline: 0 none !important;
-    background: rgba(92, 55, 55, 0.664) !important;
+    background: #7E3D4A !important;
+    color: #E2C9C3 !important;
+    font: 1em  bolder sans-serif;
     box-shadow: 4px 3px 3px 0 rgba(98, 69, 72, 0.479);
 }
 .btnHover:hover {
-    background: rgba(155, 127, 127, 0.459)!important;
-    color: rgb(92, 55, 55) !important;
+    background: #af6b7a7a !important;
+    color: #88466a !important;
 }
 
 .btn:focus, .btn:active {

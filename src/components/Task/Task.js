@@ -38,7 +38,7 @@ class Task extends PureComponent {
                     {card.content}
                 </Card.Text>
                 <Button 
-                className={styles.btnColor} 
+                className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`} 
                 size="sm" 
                 onClick={()=>onDelete(card._id)}
                 disabled={disabled}
@@ -46,7 +46,7 @@ class Task extends PureComponent {
                 <FontAwesomeIcon icon={faTrash} className={styles.iconColor} />
                 </Button>
                 <Button 
-                className={styles.btnColor}
+                className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`}
                 size="sm"
                 onClick={() => onEdit(card)}
                 disabled={disabled}

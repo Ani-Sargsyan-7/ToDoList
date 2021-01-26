@@ -53,7 +53,9 @@ class EditTask extends PureComponent{
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
+            <Modal.Title 
+            className={styles.modalTitle}
+            id="contained-modal-title-vcenter">
               Edit Task
             </Modal.Title>
           </Modal.Header>
@@ -67,7 +69,7 @@ class EditTask extends PureComponent{
             onKeyUp={this.handleKeyDown}
           />
           <FormControl 
-          className={`${styles.textarea} mb-3`}
+          className={`${styles.textarea}`}
           as="textarea" 
           row={4} 
           name='content'
@@ -80,7 +82,6 @@ class EditTask extends PureComponent{
             <Button 
             className={`${styles.btn} ${styles.btnHover}`}
             onClick={this.handleSubmit}
-            variant='success'
             >
             Save
             </Button>
