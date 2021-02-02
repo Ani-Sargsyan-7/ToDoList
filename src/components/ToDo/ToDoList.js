@@ -18,21 +18,99 @@ class ToDoList extends Component{
         editTask: null
     };
 
-    addNewTask = (newTasks)=>{  
-        const newTasksArr = [newTasks, ...this.state.tasks];
-       
-        this.setState({
-            tasks:newTasksArr,
-            showNewTaskModal:this.state.showNewTaskModal
-        });
+    componentDidMount(){
+        fetch('http://localhost:3001/task', {
+            method: 'GET',
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+            .then(async (response) => {
+                const res = await response.json();
+
+                if(response.status >=400 && response.status < 600){
+                    if(res.error){
+                        throw res.error;
+                    }
+                    else {
+                        throw new Error('Something went wrong!');
+                    }
+                }
+
+                this.setState({
+                    tasks: res
+                });
+
+            })
+            .catch((error)=>{
+                console.log('catch error', error);
+            });
+
     };
+
+    addNewTask = (newTask) => {
+
+        fetch('http://localhost:3001/task', {
+            method: 'POST',
+            body: JSON.stringify(newTask),
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+            .then(async (response) => {
+                const res = await response.json();
+                if(response.status >=400 && response.status < 600){
+                    if(res.error){
+                        throw res.error;
+                    }
+                    else {
+                        throw new Error('Something went wrong!');
+                    }
+                }
+                
+                const tasks = [res,...this.state.tasks];
+
+                this.setState({
+                    tasks,
+                    showNewTaskModal: false
+                });
+
+            })
+            .catch((error)=>{
+                console.log('catch error', error);
+            });
+
+
+    };
+
  
-    removeTask = (id)=>{
-            const remainingTask = this.state.tasks.filter(task=> id !== task._id);
+    removeTask = (taskId)=>{
+        fetch(`http://localhost:3001/task/${taskId}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+            .then(async (response) => {
+                const res = await response.json();
+
+                if(response.status >=400 && response.status < 600){
+                    if(res.error){
+                        throw res.error;
+                    }
+                    else {
+                        throw new Error('Something went wrong!');
+                    }
+                }
+            const remainingTask = this.state.tasks.filter(task=> taskId !== task._id);
 
             this.setState({
                 tasks:remainingTask
             });
+        })
+        .catch((error)=>{
+            console.log('catch error', error);
+        });
     };
 
     chekedTasks=(id)=>{
@@ -47,12 +125,40 @@ class ToDoList extends Component{
             });
     };
 
-    selectAllTasks=()=>{
-        const taskId = this.state.tasks.map(task => task._id);
-        this.setState({
-            selectedTasks:new Set(taskId)
-        });
-    };
+    // selectAllTasks=()=>{
+    //     fetch(`http://localhost:3001/task/${id}`, {
+    //         method: 'PATCH',
+    //         // body : ,
+    //         headers: {
+    //             "Content-Type": 'application/json'
+    //         }
+    //     })
+    //         .then(async (response) => {
+    //             const res = await response.json();
+
+    //             if(response.status >=400 && response.status < 600){
+    //                 if(res.error){
+    //                     throw res.error;
+    //                 }
+    //                 else {
+    //                     throw new Error('Something went wrong!');
+    //                 }
+    //             }
+    //         const remainingTask = this.state.tasks.filter(task=> id !== task._id);
+
+    //         this.setState({
+    //             tasks:remainingTask
+    //         });
+    //     })
+    //     .catch((error)=>{
+    //         console.log('catch error', error);
+    //     });
+    // };
+        // const taskId = this.state.tasks.map(task => task._id);
+        // this.setState({
+        //     selectedTasks:new Set(taskId)
+        // });
+    //};
 
     unselectAll=()=>{
         this.setState({
@@ -99,6 +205,24 @@ class ToDoList extends Component{
     };
 
     handleSaveTask = (editedTask)=>{
+        fetch(`http://localhost:3001/task/${editedTask._id}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(editedTask)
+        })
+            .then(async (response) => {
+                const res = await response.json();
+
+                if(response.status >=400 && response.status < 600){
+                    if(res.error){
+                        throw res.error;
+                    }
+                    else {
+                        throw new Error('Something went wrong!');
+                    }
+                }
         const tasks = [...this.state.tasks];
         const taskIndex = tasks.findIndex(task => task._id === editedTask._id);
         tasks[taskIndex] = editedTask;
@@ -107,11 +231,12 @@ class ToDoList extends Component{
             tasks,
             editTask: null
         });
-    };
-    
+            });
+        
+};
+
     render(){
         const {selectedTasks, tasks, showConfirm, showNewTaskModal, editTask} = this.state;
-      console.log(selectedTasks.size)
         const tasksList = tasks.map((task,index)=>{
             index++;
              return (

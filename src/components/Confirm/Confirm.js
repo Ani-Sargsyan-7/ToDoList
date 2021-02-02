@@ -29,7 +29,7 @@ function Confirm(props){
             className={`${styles.btn} ${styles.btnHover}`}
             onClick={props.onConfirm}
             >
-            Delet
+            Delete
             </Button>
           </Modal.Footer>
         </Modal>

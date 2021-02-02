@@ -32,10 +32,10 @@ class Task extends PureComponent {
                 </Card.Header>
             <Card.Body>
                 <Card.Title className= {styles.title}>
-                    {card.taskTitle}
+                    {card.title}
                 </Card.Title>
                 <Card.Text className= {styles.text}>
-                    {card.content}
+                 {card.description}
                 </Card.Text>
                 <Button 
                 className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`} 

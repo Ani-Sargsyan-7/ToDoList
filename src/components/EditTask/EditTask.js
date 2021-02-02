@@ -26,23 +26,23 @@ class EditTask extends PureComponent{
     };
 
     handleSubmit = ()=>{
-        const taskTitle = this.state.taskTitle.trim();
-        const content = this.state.content.trim();
+        const title = this.state.title.trim();
+        const description = this.state.description.trim();
 
-        if (!taskTitle) {
+        if (!title) {
             return;
         }
 
         this.props.onSave({
           _id: this.state._id,
-          taskTitle,
-          content
+          title,
+          description
         });
     };
 
     render(){
         const {onClose} = this.props;
-        const {taskTitle, content} = this.state;
+        const {title, description} = this.state;
 
         return(
             <Modal
@@ -64,16 +64,16 @@ class EditTask extends PureComponent{
           <FormControl
             className={`${styles.input} mb-3`}
             onChange={this.handleChange}
-            name='taskTitle'
-            value={taskTitle}
+            name='title'
+            value={title}
             onKeyUp={this.handleKeyDown}
           />
           <FormControl 
           className={`${styles.textarea}`}
           as="textarea" 
           row={4} 
-          name='content'
-          value={content}
+          name='description'
+          value={description}
           onChange={this.handleChange}
           />
 
