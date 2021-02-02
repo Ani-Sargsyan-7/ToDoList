@@ -1,4 +1,6 @@
-
+.modal .modal-content{
+    background-clip:rgba(0,0,0,.7) !important;
+}
 .modalTitle{
     font: 30px bold sans-serif;
     color:#764258;

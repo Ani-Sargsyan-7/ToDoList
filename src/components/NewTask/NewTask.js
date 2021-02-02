@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react';
-import idGenerator from '../../helpers/idGenerator';
 import {Button, FormControl, Modal} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import styles from './newTask.module.css';
@@ -7,8 +6,8 @@ import styles from './newTask.module.css';
 class NewTask extends PureComponent{
 
        state = {
-        taskTitle : '',
-        content: ''
+        title : '',
+        description: ''
     };
 
     handleChange = (e)=>{
@@ -16,24 +15,20 @@ class NewTask extends PureComponent{
         this.setState({
             [name]: value,
         });
-       
     };
 
     handleSubmit=()=>{
-        const taskTitle = this.state.taskTitle.trim(); 
-        const content = this.state.content.trim(); 
-        
-        if(!taskTitle){
+        const title = this.state.title.trim(); 
+        const description = this.state.description.trim(); 
+        if(!title){
             return;
         };
 
-        const newTasks ={
-            _id:idGenerator(),
-            taskTitle :taskTitle,
-            content:content
+        const newTask ={ 
+            title :title,
+            description:description
         };
-
-      this.props.onAddTask(newTasks);
+      this.props.onAddTask(newTask);
         this.props.onCloseModal();
     };
    
@@ -68,7 +63,7 @@ class NewTask extends PureComponent{
                     placeholder='Add  Title...'
                     onChange={this.handleChange}
                     onKeyUp={this.handleKeyDown}
-                    name = 'taskTitle'  
+                    name = 'title'  
                     />
                     <FormControl
                     className={styles.textarea}
@@ -76,14 +71,14 @@ class NewTask extends PureComponent{
                     row={4}
                     placeholder='Add Task...'
                     onChange={this.handleChange}
-                    name = 'content'  
+                    name = 'description'  
                     />    
                 </Modal.Body>
                 <Modal.Footer>
                     <Button 
                     className={`${styles.btn} ${this.state.taskTitle !== "" ? styles.btnHover : ""}`}
                     onClick={this.handleSubmit}
-                    disabled={this.state.taskTitle === "" ? true : false}
+                    disabled={this.state.title === "" ? true : false}
                     >
                     Add
                     </Button>
