@@ -40,7 +40,6 @@ class ToDoList extends Component{
                 this.setState({
                     tasks: res
                 });
-
             })
             .catch((error)=>{
                 console.log('catch error', error);
@@ -125,40 +124,12 @@ class ToDoList extends Component{
             });
     };
 
-    // selectAllTasks=()=>{
-    //     fetch(`http://localhost:3001/task/${id}`, {
-    //         method: 'PATCH',
-    //         // body : ,
-    //         headers: {
-    //             "Content-Type": 'application/json'
-    //         }
-    //     })
-    //         .then(async (response) => {
-    //             const res = await response.json();
-
-    //             if(response.status >=400 && response.status < 600){
-    //                 if(res.error){
-    //                     throw res.error;
-    //                 }
-    //                 else {
-    //                     throw new Error('Something went wrong!');
-    //                 }
-    //             }
-    //         const remainingTask = this.state.tasks.filter(task=> id !== task._id);
-
-    //         this.setState({
-    //             tasks:remainingTask
-    //         });
-    //     })
-    //     .catch((error)=>{
-    //         console.log('catch error', error);
-    //     });
-    // };
-        // const taskId = this.state.tasks.map(task => task._id);
-        // this.setState({
-        //     selectedTasks:new Set(taskId)
-        // });
-    //};
+    selectAllTasks=()=>{
+        const taskId = this.state.tasks.map(task => task._id);
+        this.setState({
+            selectedTasks:new Set(taskId)
+        });
+    };
 
     unselectAll=()=>{
         this.setState({
@@ -169,6 +140,28 @@ class ToDoList extends Component{
     deleteCheckedTasks = ()=>{
         const {tasks, selectedTasks} = this.state;
 
+        const body = {
+            tasks: [...selectedTasks]
+        };
+        fetch(`http://localhost:3001/task`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(async (response) => {
+                const res = await response.json();
+
+                if(response.status >=400 && response.status < 600){
+                    if(res.error){
+                        throw res.error;
+                    }
+                    else {
+                        throw new Error('Something went wrong!');
+                    }
+                }
+
         const chekcedTasks = tasks.filter( task =>{
                 if(selectedTasks.has(task._id )){
                     return false;
@@ -176,7 +169,6 @@ class ToDoList extends Component{
                 else{
                     return true;
                 }
-    
         });
 
         this.setState({
@@ -185,7 +177,11 @@ class ToDoList extends Component{
             showConfirm: false
         });
 
-    };
+    })
+    .catch((error)=>{
+        console.log('catch error', error);
+    });
+};
 
     toggleNewTaskModal=()=>{
         this.setState({
