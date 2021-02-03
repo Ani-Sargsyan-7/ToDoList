@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react';
 import {Card, Button,Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import {formatDate} from '../../helpers/util';
 import PropTypes from 'prop-types';
+
 import styles from './task.module.css';
 
 
@@ -37,6 +39,9 @@ class Task extends PureComponent {
                 <Card.Text className= {styles.text}>
                  {card.description}
                 </Card.Text>
+                <Card.Text className= {styles.text}>
+                 {formatDate(card.date)}
+                </Card.Text>
                 <Button 
                 className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`} 
                 size="sm" 
@@ -63,6 +68,7 @@ class Task extends PureComponent {
 
 
 Task.propTypes = {
+    data: PropTypes.object.isRequired,
     card : PropTypes.object.isRequired,
     chekedTasks: PropTypes.func.isRequired,
     disabled: PropTypes.bool.isRequired,

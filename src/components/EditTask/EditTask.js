@@ -1,13 +1,18 @@
 import React, {PureComponent} from 'react';
 import { Button, FormControl, Modal } from 'react-bootstrap';
+import {formatDate} from '../../helpers/util';
+import DatePicker from "react-datepicker";
 import PropTypes from 'prop-types'; 
-import styles from './edit.module.css'
+
+import styles from './edit.module.css';
 
 class EditTask extends PureComponent{
   constructor(props){
     super(props);
+    const {date} = props.data;
     this.state = {
-        ...props.data
+        ...props.data,
+        date: date ? new Date(date) : new Date()
     };
   }
 
@@ -36,8 +41,15 @@ class EditTask extends PureComponent{
         this.props.onSave({
           _id: this.state._id,
           title,
-          description
+          description,
+          date: formatDate(this.state.date.toISOString())
         });
+    };
+
+    handleChangeDate=(value)=>{
+      this.setState({
+        date: value || new Date()
+      });
     };
 
     render(){
@@ -78,6 +90,11 @@ class EditTask extends PureComponent{
           />
 
           </Modal.Body>
+          <DatePicker 
+          minDate = {new Date()}
+          selected={this.state.date}
+          onChange={this.handleChangeDate}
+          />
           <Modal.Footer>
             <Button 
             className={`${styles.btn} ${styles.btnHover}`}
