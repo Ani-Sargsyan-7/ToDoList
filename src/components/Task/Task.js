@@ -1,11 +1,16 @@
 import React, { PureComponent } from 'react';
-import {Card, Button,Form } from 'react-bootstrap';
+import {
+    Card, 
+    Button,
+    Form 
+} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import {formatDate} from '../../helpers/util';
 import PropTypes from 'prop-types';
 
 import styles from './task.module.css';
+import {Link} from 'react-router-dom';
 
 
 class Task extends PureComponent {
@@ -21,8 +26,7 @@ class Task extends PureComponent {
    
         return(           
             <Card className={`${styles.card} ${selected ? styles.selected : ""}`}>               
-            <Card.Header>
-            <label htmlFor="">
+            <Card.Header className = {styles.header}>
                 <Form.Check
                 className={styles.check} 
                 type="checkbox" 
@@ -30,12 +34,13 @@ class Task extends PureComponent {
                 checked={selected}
                 />
                 Task {index}
-                </label>
                 </Card.Header>
             <Card.Body>
-                <Card.Title className= {styles.title}>
-                    {card.title}
-                </Card.Title>
+                <Link   to = '/task' className = {styles.link}>
+                    <Card.Title className= {styles.title}>
+                        {card.title}
+                    </Card.Title>
+                </Link>     
                 <Card.Text className= {styles.text}>
                  {card.description}
                 </Card.Text>

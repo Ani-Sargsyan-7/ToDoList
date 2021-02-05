@@ -243,7 +243,7 @@ class ToDoList extends Component{
                     md={6}
                     lg={4}
                     xl={2}
-                    className='mb-4 justify-content-center'
+                    className='ml-2 mb-4 justify-content-center'
                 >
                 <Task
                 card={task}
@@ -262,11 +262,6 @@ class ToDoList extends Component{
 
            <>              
                 <Container className = {styles.container}>
-                    <Row>
-                        <Col className = ' mb-4'>
-                            <h1 className ='text-center mt-4'>ToDo List</h1>
-                        </Col>
-                    </Row>
                     <Row className='justify-content-around'>
                         <Col> 
                            <Button 

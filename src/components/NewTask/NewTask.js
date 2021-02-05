@@ -1,5 +1,9 @@
 import React, {PureComponent} from 'react';
-import {Button, FormControl, Modal} from 'react-bootstrap';
+import {
+    Button, 
+    FormControl, 
+    Modal
+} from 'react-bootstrap';
 import {formatDate} from '../../helpers/util';
 import PropTypes from 'prop-types';
 import DatePicker from "react-datepicker";
@@ -85,6 +89,7 @@ class NewTask extends PureComponent{
                     name = 'description'  
                     /> 
                     <DatePicker
+                    className = {styles.datepicker}
                     minDate = {new Date()}
                     selected={this.state.date}
                     onChange={this.handleChangeDate}
