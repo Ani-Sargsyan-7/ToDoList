@@ -16,7 +16,7 @@
   }
 
   .textarea{
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     border:none !important;
     outline: 0 none !important;
     border-bottom: 1px solid #bfa2b8d0  !important;
@@ -39,6 +39,7 @@
     color: #E2C9C3 !important;
     box-shadow: 4px 3px 3px 0 rgba(98, 69, 72, 0.623);
 }
+
 .btnHover:hover {
     background:#af6b7a93 !important;
     color: #88466a !important;
@@ -47,4 +48,14 @@
 .btn:focus, .btn:active {
     box-shadow: none !important;
     outline:  0  !important;
+  }
+
+  .datepicker{
+    border: 1px solid rgba(61, 36, 36, 0.253) ;
+    width: 100px;
+    color: #88466a;
+    user-select: none;
+    margin-left: 20px;
+    margin-bottom: 14px;
+    padding-left: 8px;
   }
