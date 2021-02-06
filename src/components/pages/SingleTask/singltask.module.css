@@ -1,0 +1,50 @@
+.task{
+        background-color: rgba(255, 255, 255, 0.144)!important;
+        color: rgba(61, 36, 36);
+        box-shadow:6px 4px 4px 3px rgba(98, 69, 72, 0.479);
+        transition: transform .2s linear;
+        user-select: none;
+}
+
+
+.title{
+    font: 25px sans-serif;
+    width: 100%;
+    font-weight: 600;
+    color: #3a2427c9 !important;
+}
+
+.text{
+    color:#764258;
+    font: 16px sans-serif;
+    width: 100%;
+    text-align: center;
+}
+
+
+.iconColor{
+    color:#CBB9B5;
+}
+
+.btnColor{
+    margin-right: 5px;
+    border:none !important;
+    outline: 0 none !important;
+    background-color:#764258 !important;
+}
+.btnColorHover:hover{
+    background-color: #af6b7ad0 !important;
+}
+.btnColor:focus, .btnColor:active {
+    box-shadow: none !important;
+    outline:  0  !important;
+  }
+
+  .loading{
+    font-family: sans-serif;
+    font-size: 25px;
+    width: 100%;
+    font-weight: 600;
+    color: #462c30c9 !important;
+    text-shadow: -2 -2px 2px  #643b5046;
+  }
