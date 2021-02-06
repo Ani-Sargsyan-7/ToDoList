@@ -12,12 +12,11 @@ export default function NavMenu(){
     return(
 
         <Navbar className = {styles.navbar}>
-            <Navbar.Brand href="/" className = {styles.logo}>ToDo List</Navbar.Brand>
+            <Navbar.Brand to ="/" className = {styles.logo}>ToDo List</Navbar.Brand>
             <Nav className="mr-auto">
                 <NavLink
                 className = {styles.menu}
                 to ='/'
-                activeClassName={styles.active}
                 exact
                 >
                 Home
@@ -25,7 +24,6 @@ export default function NavMenu(){
                 <NavLink 
                 className = {styles.menu}
                 to ='/about'
-                activeClassName={styles.active}
                 exact
                 >
                 About us
@@ -33,7 +31,6 @@ export default function NavMenu(){
                 <NavLink 
                 className = {styles.menu}
                 to ='/contact'
-                activeClassName={styles.active}
                 exact
                 >
                 Contact us

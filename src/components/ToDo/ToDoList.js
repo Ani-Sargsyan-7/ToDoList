@@ -241,9 +241,9 @@ class ToDoList extends Component{
                     xs={9}
                     sm={8}
                     md={6}
-                    lg={4}
-                    xl={2}
-                    className='ml-2 mb-4 justify-content-center'
+                    lg={5}
+                    xl={3}
+                    className='ml-1 mb-4 justify-content-center'
                 >
                 <Task
                 card={task}
@@ -306,7 +306,7 @@ class ToDoList extends Component{
                            </Button>
                         </Col> 
                     </Row>
-                    <Row className = 'mt-5'>
+                    <Row className='ml-1 mb-4 mt-5 justify-content-center'>
                     {tasksList}
                     </Row>                  
                 </Container>

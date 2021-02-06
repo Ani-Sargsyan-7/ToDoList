@@ -7,6 +7,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import {formatDate} from '../../helpers/util';
+import {descripTruncate, titleTruncate} from '../../helpers/util';
 import PropTypes from 'prop-types';
 
 import styles from './task.module.css';
@@ -36,13 +37,13 @@ class Task extends PureComponent {
                 Task {index}
                 </Card.Header>
             <Card.Body>
-                <Link   to = '/task' className = {styles.link}>
+                <Link  to={`/task/${card._id}`} className = {styles.link}>
                     <Card.Title className= {styles.title}>
-                        {card.title}
+                        {titleTruncate(card.title)}
                     </Card.Title>
                 </Link>     
                 <Card.Text className= {styles.text}>
-                 {card.description}
+                 {descripTruncate(card.description)}
                 </Card.Text>
                 <Card.Text className= {styles.text}>
                  {formatDate(card.date)}
@@ -73,7 +74,6 @@ class Task extends PureComponent {
 
 
 Task.propTypes = {
-    data: PropTypes.object.isRequired,
     card : PropTypes.object.isRequired,
     chekedTasks: PropTypes.func.isRequired,
     disabled: PropTypes.bool.isRequired,
