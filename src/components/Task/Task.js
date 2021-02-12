@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import {formatDate} from '../../helpers/util';
-import {descripTruncate, titleTruncate} from '../../helpers/util';
+import {descripTruncate} from '../../helpers/util';
 import PropTypes from 'prop-types';
 
 import styles from './task.module.css';
@@ -39,11 +39,11 @@ class Task extends PureComponent {
             <Card.Body>
                 <Link  to={`/task/${card._id}`} className = {styles.link}>
                     <Card.Title className= {styles.title}>
-                        {titleTruncate(card.title)}
+                        {descripTruncate(card.title, 26)}
                     </Card.Title>
                 </Link>     
                 <Card.Text className= {styles.text}>
-                 {descripTruncate(card.description)}
+                 {descripTruncate(card.description, 50)}
                 </Card.Text>
                 <Card.Text className= {styles.text}>
                  {formatDate(card.date)}

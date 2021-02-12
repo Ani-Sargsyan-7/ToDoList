@@ -117,10 +117,10 @@ export default class SingleTask extends Component{
     render(){
         const {task, openEditModal} = this.state;
         return(
-            <>
-            <Container>
+            <div className = {styles.wrap}>
+            <Container className = {styles.container}>
                 <Row className ='justify-content-center'>
-                    <Col xs={6}>
+                    <Col xs={10}>
                     { task ?
                     <Card className={`${styles.task} `}>               
                         <Card.Body className ='justify-content-center'>
@@ -163,7 +163,7 @@ export default class SingleTask extends Component{
                  />
             }
 
-            </>
+            </div>
             
         );
     };

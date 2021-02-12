@@ -4,18 +4,18 @@ export function formatDate(dateStr=""){
 }
 
 
-export function descripTruncate(str = ""){
-    if(str.length < 50){
-return str;
+export function descripTruncate(str = "", maxLength){
+    if(str.length > maxLength){
+
+return `${str.slice(0, maxLength)} ...`;
+}
+return str
 }
 
-return `${str.slice(0, 50)} ...`;
-}
+// export function titleTruncate(str = ""){
+//     if(str.length < 30){
+// return str;
+// }
 
-export function titleTruncate(str = ""){
-    if(str.length < 30){
-return str;
-}
-
-return `${str.slice(0, 30)} ...`;
-}
+// return `${str.slice(0, 30)} ...`;
+// }

@@ -15,8 +15,10 @@
 }
 
 .text{
+    width: 100%;
+    height: 40px;
     color:#764258;
-    font: 12px sans-serif;
+    font: 14px sans-serif;
 }
 
 .iconColor{
@@ -38,6 +40,7 @@
   }
 
 .card{
+    height: 100%;
     padding: 0 !important;
     background-color: rgba(255, 255, 255, 0.144)!important;
     color: rgba(61, 36, 36);

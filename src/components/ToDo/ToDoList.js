@@ -262,8 +262,8 @@ class ToDoList extends Component{
 
            <>              
                 <Container className = {styles.container}>
-                    <Row className='justify-content-around'>
-                        <Col> 
+                    <Row className='justify-content-beetwen'>
+                        <Col className = {styles.buttons}> 
                            <Button 
                            className={`${styles.btn} ${!selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
@@ -273,7 +273,7 @@ class ToDoList extends Component{
                            Add new Task
                            </Button>
                            </Col>
-                           <Col>
+                           <Col  className = {styles.buttons}>
                            <Button 
                            className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
@@ -284,7 +284,7 @@ class ToDoList extends Component{
                            </Button>
                            </Col>
 
-                           <Col>
+                           <Col  className = {styles.buttons}>
                            <Button                           
                            className={`${styles.btn} ${selectedTasks.size !== tasks.length ? styles.btnHover : " "} `}
                            size="sm"  
@@ -295,7 +295,7 @@ class ToDoList extends Component{
                            </Button>
                            </Col>
 
-                           <Col>
+                           <Col  className = {styles.buttons}>
                            <Button 
                            className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  

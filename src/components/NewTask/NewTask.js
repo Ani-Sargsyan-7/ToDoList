@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component, createRef} from 'react';
 import {
     Button, 
     FormControl, 
@@ -11,13 +11,21 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from './newTask.module.css';
 
-class NewTask extends PureComponent{
-
-       state = {
+class NewTask extends Component{
+    constructor(props){
+        super(props);
+       this.state = {
         title : '',
         description: '',
         date: new Date()
+       };
+       this.titleRef= createRef();
     };
+
+    componentDidMount(){
+        this.titleRef.current.focus();
+    };
+
 
     handleChange = (e)=>{
         const {name, value} = e.target;
@@ -68,7 +76,8 @@ class NewTask extends PureComponent{
                 >
                 <Modal.Header closeButton>
                     <Modal.Title 
-                    className = {styles.modalTitle}>
+                    className = {styles.modalTitle}
+                    >
                         Add new Task
                     </Modal.Title>
                 </Modal.Header>
@@ -79,6 +88,7 @@ class NewTask extends PureComponent{
                     onChange={this.handleChange}
                     onKeyUp={this.handleKeyDown}
                     name = 'title'  
+                    ref = {this.titleRef}
                     />
                     <FormControl
                     className={styles.textarea}

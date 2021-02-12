@@ -25,6 +25,7 @@ function App() {
       <NavMenu/>
         <Switch>
           <Route
+          activeClassName = 'menu'
           path = '/'
           component = {ToDoList}
           exact

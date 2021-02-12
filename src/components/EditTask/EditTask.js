@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import { 
   Button, 
   FormControl, 
@@ -18,9 +18,14 @@ class EditTask extends PureComponent{
         ...props.data,
         date: date ? new Date(date) : new Date()
     };
-  }
+    this.titleRef= createRef();
+  };
 
-    handleChange = (event) => {
+  componentDidMount(){
+    this.titleRef.current.focus();
+  };
+
+  handleChange = (event) => {
         const {name, value} = event.target;
 
         this.setState({
@@ -31,7 +36,7 @@ class EditTask extends PureComponent{
     handleKeyDown = (event) => {
         if (event.key === "Enter") {
             this.handleSubmit();
-        }
+        };
     };
 
     handleSubmit = ()=>{
@@ -40,7 +45,7 @@ class EditTask extends PureComponent{
 
         if (!title) {
             return;
-        }
+        };
 
         this.props.onSave({
           _id: this.state._id,
@@ -83,6 +88,7 @@ class EditTask extends PureComponent{
             name='title'
             value={title}
             onKeyUp={this.handleKeyDown}
+            ref = {this.titleRef}
           />
           <FormControl 
           className={`${styles.textarea}`}

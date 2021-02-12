@@ -13,9 +13,13 @@ h1{
     text-shadow: -5px -5px 2px  #44253546;
 }
 
+.buttons{
+    margin-top: 80px;
+}
+
 .btn {
     width: 120px;
-    margin:20px 20px;
+    margin:70px 20px;
     border:none !important;
     outline: 0 none !important;
     background: #7E3D4A !important;
