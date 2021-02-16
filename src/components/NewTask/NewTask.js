@@ -78,7 +78,7 @@ class NewTask extends Component{
                     <Modal.Title 
                     className = {styles.modalTitle}
                     >
-                        Add new Task
+                    What is the Plan for Today?
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
