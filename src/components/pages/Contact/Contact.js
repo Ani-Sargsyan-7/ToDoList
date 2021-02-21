@@ -29,14 +29,16 @@ const requiredErrMessage = 'Fiel is required';
                 [name]: requiredErrMessage
             });
           }
-        //   if (!/^[a-z]+[a-z]/ig.test(value)){
-        //     setErrors({
-        //         ...errors,
-        //         name : 'Enter a valid name'
-        //     });
-            
-        //   };
 
+          if(name === 'name' && value){
+            if (!/^(([A-Za-z]+[-']?)*([A-Za-z]+)?\s)+([A-Za-z]+[-']?)*([A-Za-z]+)?$/){
+                setErrors({
+                    ...errors,
+                    name : 'Enter a valid name'
+                });
+                
+              };
+        };
           if(name === 'email' && value){
             const emailReg = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
             if(!emailReg.test(value)){
@@ -44,7 +46,7 @@ const requiredErrMessage = 'Fiel is required';
                   ...errors,
                   email: 'Invalid email'
               }); 
-            }
+            };
         }
         else {
             setErrors({
