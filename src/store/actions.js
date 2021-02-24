@@ -1,55 +1,80 @@
 import request from '../helpers/request';
+import * as actionType from './actionType';
 
 
   export function getTasks(){
     return (dispatch)=>{
+        dispatch({type:actionType.PENDING}); 
+
         request('http://localhost:3001/task')
         .then((tasks)=>{
-        dispatch({type: 'GET_TASKS', tasks: tasks});
+        dispatch({type: actionType.GET_TASKS, tasks: tasks});
         });
-    }
-};
-
-export function  removeTask(taskId){
-    return (dispatch)=>{
-        dispatch({type: 'REMOVE_TASK'});
-        request(`http://localhost:3001/task/${taskId}`,'DELETE')
-        .then(()=>{
-            dispatch({type: 'REMOVE_TASK',  taskId});
-            });
     }
 };
 
 export function addTask(newTask){
     return (dispatch)=>{
-        dispatch({type: 'ADD_NEW_TASK'});
+        dispatch({type: actionType.PENDING});
+
         request('http://localhost:3001/task','POST', newTask)
         .then((task)=>{
-            dispatch({type: 'ADD_NEW_TASK',  task});
+            dispatch({type: actionType.ADD_TASK,  task});
+            });
+    }
+};
+
+
+export function  removeTask(taskId){
+    return (dispatch)=>{
+        dispatch({type:actionType.PENDING}); 
+
+        request(`http://localhost:3001/task/${taskId}`,'DELETE')
+        .then(()=>{
+            dispatch({type: actionType.DELETE_TASK,  taskId});
             });
     }
 };
 
 export function deleteCheckedTasks(ids){
         return (dispatch)=>{
+            dispatch({type: actionType.PENDING});
+            
             request(`http://localhost:3001/task`, 'PATCH',{
                 tasks :[...ids]
             })
             .then(()=>{
-                dispatch({type:'DELETE_TASKS', ids});
+                dispatch({type:actionType.DELETE_CHECKED_TASKS, ids});
             });
         }
 
 };
 
-export function saveTask(editTask){
+export function editTask(card){
     return (dispatch)=>{
-        request(`http://localhost:3001/task/${editTask._id}`, 'PUT', editTask,{
+        dispatch({type: actionType.PENDING});
+        
+        request(`http://localhost:3001/task/${card._id}`, 'PUT', card,{
         
         })
-        .then((editTask)=>{
+        .then((editedTask)=>{
             
-            dispatch({type:'EDIT_TASK', editTask});
+            dispatch({type:actionType.EDIT_TASK, editedTask});
+        });
+    }
+};
+
+
+export function saveTask(card){
+    return (dispatch)=>{
+        dispatch({type: actionType.PENDING});
+        
+        request(`http://localhost:3001/task/${card._id}`, 'PUT', card,{
+        
+        })
+        .then((editedTask)=>{
+            
+            dispatch({type:actionType.SAVE_TASK, editedTask});
         });
     }
 }

@@ -17,12 +17,12 @@ import {Link} from 'react-router-dom';
 class Task extends PureComponent {
 
     handleChange =()=>{
-        const {card, chekedTasks} = this.props;
-        chekedTasks(card._id);
+        const {data, chekedTasks} = this.props;
+        chekedTasks(data._id);
     };
 
     render(){       
-        const {card} = this.props;
+        const {data} = this.props;
         const {disabled, onDelete,index, selected, onEdit} = this.props;
    
         return(           
@@ -37,21 +37,21 @@ class Task extends PureComponent {
                 Task {index}
                 </Card.Header>
             <Card.Body>
-                <Link  to={`/task/${card._id}`} className = {styles.link}>
+                <Link  to={`/task/${data._id}`} className = {styles.link}>
                     <Card.Title className= {styles.title}>
-                        {descripTruncate(card.title, 26)}
+                        {descripTruncate(data.title, 26)}
                     </Card.Title>
                 </Link>     
                 <Card.Text className= {styles.text}>
-                 {descripTruncate(card.description, 50)}
+                 {descripTruncate(data.description, 50)}
                 </Card.Text>
                 <Card.Text className= {styles.text}>
-                 {formatDate(card.date)}
+                 {formatDate(data.date)}
                 </Card.Text>
                 <Button 
                 className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`} 
                 size="sm" 
-                onClick={()=>onDelete(card._id)}
+                onClick={()=>onDelete(data._id)}
                 disabled={disabled}
                 >
                 <FontAwesomeIcon icon={faTrash} className={styles.iconColor} />
@@ -59,7 +59,7 @@ class Task extends PureComponent {
                 <Button 
                 className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`}
                 size="sm"
-                onClick={() => onEdit(card)}
+                onClick={() => onEdit(data)}
                 disabled={disabled}
                 >
                 <FontAwesomeIcon icon={faPencilAlt} className={styles.iconColor}/>
@@ -74,7 +74,7 @@ class Task extends PureComponent {
 
 
 Task.propTypes = {
-    card : PropTypes.object.isRequired,
+    data : PropTypes.object.isRequired,
     chekedTasks: PropTypes.func.isRequired,
     disabled: PropTypes.bool.isRequired,
     onDelete:PropTypes.func.isRequired,

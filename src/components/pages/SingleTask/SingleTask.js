@@ -4,12 +4,14 @@ import {Card, Button,Container,Row,Col} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import {formatDate} from '../../../helpers/util';
+import {connect} from 'react-redux';
+import {saveTask} from '../../../store/actions'
 
 import styles from './singltask.module.css';
 
 
 
-export default class SingleTask extends Component{
+ class SingleTask extends Component{
 
     state = {
         task : null,
@@ -47,6 +49,15 @@ export default class SingleTask extends Component{
 
     };
 
+    ComponentUpdate(prevProps){
+        if (!prevProps.savingTask && this.props.savingTask){
+            this.setState({
+                openEditModal : false
+            });
+            return;
+        }
+    }
+
     onDelete  = ()=>{
         const taskId = this.state.task._id;
         fetch(`http://localhost:3001/task/${taskId}`, {
@@ -74,45 +85,46 @@ export default class SingleTask extends Component{
             });
     };
 
-    saveTask  = (editedTask)=>{
-        fetch(`http://localhost:3001/task/${editedTask._id}`, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify(editedTask)
-        })
-            .then(async (response) => {
-                const taskResponse = await response.json();
+    saveTask  = (card)=>{
 
-                if(response.status >=400 && response.status < 600){
-                    if(taskResponse.error){
-                        throw taskResponse.error;
-                    }
-                    else {
-                        throw new Error('Something went wrong!');
-                    }
-                }
+        this.props.saveTask(card)
+        // fetch(`http://localhost:3001/task/${editedTask._id}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         "Content-Type": 'application/json'
+        //     },
+        //     body: JSON.stringify(editedTask)
+        // })
+        //     .then(async (response) => {
+        //         const taskResponse = await response.json();
+
+        //         if(response.status >=400 && response.status < 600){
+        //             if(taskResponse.error){
+        //                 throw taskResponse.error;
+        //             }
+        //             else {
+        //                 throw new Error('Something went wrong!');
+        //             }
+        //         }
                 
-        this.setState({
-            task: taskResponse,
-            openEditModal: false
-        });
+        // this.setState({
+        //     task: taskResponse,
+        //     openEditModal: false
+        // });
               
-            })
-            .catch((error)=>{
-                console.log('catch error', error);
-            });
-
-
-
+        //     })
+        //     .catch((error)=>{
+        //         console.log('catch error', error);
+        //     });
     };
+
 
     toggleEditModal = ()=>{
         this.setState({
             openEditModal: !this.state.openEditModal
         });
     };
+
 
     render(){
         const {task, openEditModal} = this.state;
@@ -169,3 +181,9 @@ export default class SingleTask extends Component{
     };
     
 };
+
+const mapDispatchToProps = {
+        saveTask
+  };
+  
+  export default connect(null, mapDispatchToProps)(SingleTask);

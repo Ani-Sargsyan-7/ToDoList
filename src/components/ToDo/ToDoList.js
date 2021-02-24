@@ -5,7 +5,7 @@ import Confirm from '../Confirm/Confirm';
 import EditTask from '../EditTask/EditTask';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
-import {getTasks, addTask, removeTask, deleteCheckedTasks, saveTask} from '../../store/actions'
+import {getTasks, removeTask, deleteCheckedTasks } from '../../store/actions'
 
 import styles from './todo.module.css';
 
@@ -14,7 +14,6 @@ import styles from './todo.module.css';
 class ToDoList extends Component{
     
     state ={
-        //tasks : [],
         selectedTasks:new Set(),
         showConfirm:false,
         showNewTaskModal: false,
@@ -40,6 +39,14 @@ class ToDoList extends Component{
             });
             return;
         };
+
+        if (!prevProps.editingTask && this.props.editingTask){
+            this.setState({
+                editTask: null
+            });
+            return;
+        };
+
     };
  
 
@@ -69,7 +76,7 @@ class ToDoList extends Component{
     };
 
     deleteTasks = ()=>{
-        const { selectedTasks } = this.state;
+        const {selectedTasks} = this.state;
     this.props.deleteCheckedTasks(selectedTasks);
     };
 
@@ -89,11 +96,11 @@ class ToDoList extends Component{
 
     handleEdit = (editTask)=>{
 
-        this.setState({ editTask });
+        this.setState({editTask});
     };
 
-    handleSaveTask = (editTask)=>{
-        this.props.saveTask(editTask);
+    handleSaveTask = (editedTask)=>{
+        this.props.editTask(editedTask);
            
 };
 
@@ -101,7 +108,7 @@ class ToDoList extends Component{
         const {selectedTasks, showConfirm, showNewTaskModal, editTask} = this.state;
         const {tasks} = this.props;
         const tasksList = tasks.map((task,index)=>{
-            index++;
+
              return (
                 <Col
                     key={task._id}
@@ -113,13 +120,13 @@ class ToDoList extends Component{
                     className='ml-1 mb-4 justify-content-center'
                 >
                 <Task
-                card={task}
+                data={task}
                 chekedTasks={this.chekedTasks}
                 disabled = {!!selectedTasks.size}
                 onDelete = {this.props.removeTask}
                 onEdit = {this.handleEdit}
                 selected={selectedTasks.has(task._id)}
-                index={index}
+                index={index + 1}
                 />         
                 </Col>
              );
@@ -190,7 +197,6 @@ class ToDoList extends Component{
                     showNewTaskModal &&
                     <NewTask
                     onCloseModal = {this.toggleNewTaskModal}
-                    onAddTask={this.props.addTask}
                     />
                 }
                 {
@@ -198,7 +204,6 @@ class ToDoList extends Component{
                     <EditTask
                         data = {editTask}
                         onClose = {()=> this.handleEdit(null)}
-                        onSave = {this.handleSaveTask}
                      />
                 }
         </>
@@ -213,18 +218,15 @@ const mapStateToProps = (state)=>{
     return {
         tasks: state.tasks,
         addingTask :state.addingTask,
-        deletingTask :state.deletingTask
+        deletingTask :state.deletingTask,
+        editingTask :state.editingTask
     };
 };
 
 const mapDispatchToProps = {
     getTasks,
-    addTask,
     removeTask,
-    deleteCheckedTasks,
-    saveTask
-
-   
+    deleteCheckedTasks,   
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoList);

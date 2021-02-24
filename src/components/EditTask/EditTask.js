@@ -7,6 +7,8 @@ import {
 import {formatDate} from '../../helpers/util';
 import DatePicker from "react-datepicker";
 import PropTypes from 'prop-types'; 
+import {editTask} from '../../store/actions';
+import {connect} from 'react-redux';
 
 import styles from './edit.module.css';
 
@@ -47,7 +49,7 @@ class EditTask extends PureComponent{
             return;
         };
 
-        this.props.onSave({
+        this.props.editTask({
           _id: this.state._id,
           title,
           description,
@@ -126,9 +128,12 @@ class EditTask extends PureComponent{
 }
 
 EditTask.propTypes = {
-    data: PropTypes.object.isRequired,
+    // card : PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired
 };
 
-export default EditTask;
+const mapDispatchToProps = {
+  editTask
+};
+
+export default connect(null, mapDispatchToProps)(EditTask);

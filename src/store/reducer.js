@@ -1,50 +1,49 @@
+import * as actionType from './actionType';
+
+
 const initState = {
+    tasks: [],
     deletingTask:false,
     addingTask: false,
-    tasks:[]
+    editingTask: false,
+    savingTask: false,
 }
 
 export default function reducer(state= initState, action){
   
 switch (action.type) {
-  case "INCREMENT":
-    
-    return{
-      ...state,
-      count:state.count + 1
-    };
-  case "DECREMENT" :
-    
-    return{
-      ...state,
-      count:state.count - 1
-    };
-    case 'GET_TASKS':
+
+  case actionType.PENDING:
+        return {
+          ...state,
+          deletingTask:false,
+          addingTask: false,
+          editingTask: false,
+          savingTask: false,
+        };
+
+    case actionType.GET_TASKS:
         return {
           ...state,
           tasks: action.tasks,
-          showNewTaskModal: action.showNewTaskModal,
         };
-    case 'ADD_NEW_TASK':
+
+    case actionType.ADD_TASK:
         return {
           ...state,
           tasks:[...state.tasks, action.task],
           addingTask:true
 
         };
-        case 'ADDING_TASK':
-          return {
-            ...state,
-            addingTask: false
-          };
-           
-        case 'REMOVE_TASK':
+
+        case actionType.DELETE_TASK:
           return{
             ...state,
             tasks:state.tasks.filter((task) => action.taskId !== task._id)
           };
-        case 'DELETE_TASKS':{
-          const tasks = state.tasks.filter((task) => {
+
+        case actionType.DELETE_CHECKED_TASKS: {
+          const newTasks = state.tasks.filter((task) => {
             if (action.ids.has(task._id)) {
                 return false;
             }
@@ -52,25 +51,31 @@ switch (action.type) {
         });
           return{
             ...state,
-            tasks,
+            tasks:newTasks,
             deletingTask: true 
           }
         };
-        case 'DELETING_TASK':
-          return {
-            ...state,
-            deletingTask: false
-          };
-        case 'EDIT_TASK':{
-          const taskIndex = state.tasks.findIndex(task => task._id === action.editTask._id);
-          state.tasks[taskIndex] = action.editTask;
+
+        case actionType.EDIT_TASK: {
+          const tasks = [...state.tasks]  
+          const taskIndex = tasks.findIndex(task => task._id === action.editedTask._id);
+          tasks[taskIndex] = action.editedTask;
           
           return{
-              tasks:taskIndex,
-              editTask: null
+              ...state,
+              tasks,
+              editingTask: true,
           }
         
+        };
+
+        case actionType.SAVE_TASK:
+          return{
+            ...state,
+            tasks:[...state.tasks],
+            savingTask: true,
         }
+
   default:
     return state;
 };

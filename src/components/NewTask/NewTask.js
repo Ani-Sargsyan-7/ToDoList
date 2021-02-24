@@ -49,7 +49,7 @@ class NewTask extends Component{
             date:formatDate(this.state.date.toISOString())
         };
       this.props.addTask(newTask);
-        this.props.onCloseModal();
+        // this.props.onCloseModal();
     };
    
     handleKeyDown = (e)=>{
