@@ -27,6 +27,7 @@ h1{
     font: 1em  bolder sans-serif;
     box-shadow: 4px 3px 3px 0 rgba(98, 69, 72, 0.479);
 }
+
 .btnHover:hover {
     background: #af6b7a7a !important;
     color: #88466a !important;

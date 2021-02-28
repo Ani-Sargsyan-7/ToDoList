@@ -99,16 +99,45 @@ class ToDoList extends Component{
         this.setState({editTask});
     };
 
-    handleSaveTask = (editedTask)=>{
-        this.props.editTask(editedTask);
-           
-};
+    handleSaveTask = (editedTask) => {
+        fetch(`http://localhost:3001/task/${editedTask._id}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(editedTask)
+        })
+            .then(async (response) => {
+                const res = await response.json();
+
+                if (response.status >= 400 && response.status < 600) {
+                    if (res.error) {
+                        throw res.error;
+                    }
+                    else {
+                        throw new Error('Something went wrong!');
+                    }
+                }
+
+                const tasks = [...this.state.tasks];
+                const foundIndex = tasks.findIndex((task) => task._id === editedTask._id);
+                tasks[foundIndex] = editedTask;
+
+                this.setState({
+                    tasks,
+                    editTask: null
+                });
+
+            })
+            .catch((error) => {
+                console.log('catch error', error);
+            });
+    };
 
     render(){
         const {selectedTasks, showConfirm, showNewTaskModal, editTask} = this.state;
         const {tasks} = this.props;
         const tasksList = tasks.map((task,index)=>{
-
              return (
                 <Col
                     key={task._id}
@@ -130,6 +159,7 @@ class ToDoList extends Component{
                 />         
                 </Col>
              );
+            
         });
 
        return(

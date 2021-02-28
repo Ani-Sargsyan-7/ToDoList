@@ -12,20 +12,26 @@ import {connect} from 'react-redux';
 
 import styles from './edit.module.css';
 
+
 class EditTask extends PureComponent{
+ 
   constructor(props){
     super(props);
+    
     const {date} = props.data;
+    
     this.state = {
         ...props.data,
         date: date ? new Date(date) : new Date()
     };
+    
     this.titleRef= createRef();
   };
 
   componentDidMount(){
     this.titleRef.current.focus();
   };
+
 
   handleChange = (event) => {
         const {name, value} = event.target;
@@ -49,12 +55,13 @@ class EditTask extends PureComponent{
             return;
         };
 
-        this.props.editTask({
+         const editedTask = {
           _id: this.state._id,
           title,
           description,
           date: formatDate(this.state.date.toISOString())
-        });
+        };
+        this.props.editTask(editedTask, this.props.form);
     };
 
     handleChangeDate=(value)=>{
@@ -128,7 +135,7 @@ class EditTask extends PureComponent{
 }
 
 EditTask.propTypes = {
-    // card : PropTypes.object.isRequired,
+    data : PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
 };
 
