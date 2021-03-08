@@ -1,9 +1,5 @@
 import React, {Component, createRef} from 'react';
-import {
-    Button, 
-    FormControl, 
-    Modal
-} from 'react-bootstrap';
+import {Button, FormControl, Modal} from 'react-bootstrap';
 import {formatDate} from '../../helpers/util';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
@@ -49,9 +45,9 @@ class NewTask extends Component{
             date:formatDate(this.state.date.toISOString())
         };
       this.props.addTask(newTask);
-        // this.props.onCloseModal();
     };
    
+
     handleKeyDown = (e)=>{
         if(e.key === "Enter"){
              this.handleSubmit();
@@ -59,12 +55,14 @@ class NewTask extends Component{
         
     };
 
+
     handleChangeDate=(value)=>{
         this.setState({
           date: value || new Date()
         });
       };
 
+      
     render(){
         const {onCloseModal} = this.props;
 

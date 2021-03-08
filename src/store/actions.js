@@ -3,13 +3,15 @@ import * as actionType from './actionType';
 import {history} from '../helpers/history'
 
 
-export function getTasks() {
+
+export function getTasks(params = {}) {
+    const query = Object.entries(params).map(([key, value]) => `${key}=${value}`).join('&')
     return (dispatch) => {
         dispatch({
             type: actionType.PENDING
         });
 
-        request('http://localhost:3001/task')
+        request(`http://localhost:3001/task?${query}`)
             .then((tasks) => {
                 dispatch({
                     type: actionType.GET_TASKS,
@@ -135,6 +137,9 @@ export function editTask(data, from) {
                     editedTask,
                     from
                 });
+                if (from === 'single') {
+                    history.push('/');
+                }
             })
             .catch((err) => {
                 dispatch({

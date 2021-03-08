@@ -3,6 +3,9 @@ import {Form, Button, Col, Container, Row} from 'react-bootstrap';
 
 import styles from './contact.module.css';
 
+
+
+
 const requiredErrMessage = 'Fiel is required';
 
  function Contact(){
@@ -18,8 +21,7 @@ const requiredErrMessage = 'Fiel is required';
         email: null,
         message: null
     });
-
-
+    
     function onChangeInputValue(e){
         const  {name, value } = e.target;
 
@@ -31,6 +33,7 @@ const requiredErrMessage = 'Fiel is required';
           }
 
           if(name === 'name' && value){
+              
             if (!/^(([A-Za-z]+[-']?)*([A-Za-z]+)?\s)+([A-Za-z]+[-']?)*([A-Za-z]+)?$/){
                 setErrors({
                     ...errors,

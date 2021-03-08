@@ -28,6 +28,8 @@ class EditTask extends PureComponent{
     this.titleRef= createRef();
   };
 
+
+
   componentDidMount(){
     this.titleRef.current.focus();
   };
@@ -61,7 +63,7 @@ class EditTask extends PureComponent{
           description,
           date: formatDate(this.state.date.toISOString())
         };
-        this.props.editTask(editedTask, this.props.form);
+        this.props.editTask(editedTask,  this.props.from)
     };
 
     handleChangeDate=(value)=>{

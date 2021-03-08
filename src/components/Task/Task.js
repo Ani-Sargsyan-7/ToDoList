@@ -1,13 +1,9 @@
 import React, { PureComponent } from 'react';
-import {
-    Card, 
-    Button,
-    Form 
-} from 'react-bootstrap';
+import {Card, Button,Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import {formatDate} from '../../helpers/util';
-import {descripTruncate} from '../../helpers/util';
+import {textTruncate} from '../../helpers/util';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 
@@ -17,7 +13,7 @@ import styles from './task.module.css';
 
 class Task extends PureComponent {
 
-    handleChange =()=>{
+    handleChange = ()=>{
         const {data, chekedTasks} = this.props;
         chekedTasks(data._id);
     };
@@ -41,17 +37,17 @@ class Task extends PureComponent {
             <Card.Body>
             <Link to={`/task/${task._id}`} className = {styles.link}>
                     <Card.Title className= {styles.title}>
-                        {descripTruncate(task.title, 26)}
+                        {textTruncate(task.title, 26)}
                     </Card.Title>  
             </Link>
                 <Card.Text className= {styles.text}>
-                 {descripTruncate(task.description, 50)}
+                 {textTruncate(task.description, 50)}
                 </Card.Text>
                 <Card.Text className= {styles.text}>
                  {formatDate(task.date)}
                 </Card.Text>
                 <Button 
-                className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`} 
+                className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`} 
                 size="sm" 
                 onClick={()=>onDelete(task._id)}
                 disabled={disabled}
@@ -59,7 +55,7 @@ class Task extends PureComponent {
                 <FontAwesomeIcon icon={faTrash} className={styles.iconColor} />
                 </Button>
                 <Button 
-                className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`}
+                className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`}
                 size="sm"
                 onClick={() => onEdit(task)}
                 disabled={disabled}

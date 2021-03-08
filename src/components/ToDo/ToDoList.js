@@ -3,7 +3,7 @@ import Task from '../Task/Task';
 import NewTask from '../NewTask/NewTask';
 import Confirm from '../Confirm/Confirm';
 import EditTask from '../EditTask/EditTask';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import {Container, Row, Col, Button,} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {getTasks, removeTask, deleteCheckedTasks } from '../../store/actions'
 
@@ -22,6 +22,7 @@ class ToDoList extends Component{
 
     componentDidMount(){
         this.props.getTasks();
+
     };
 
     componentDidUpdate(prevProps){
@@ -42,11 +43,10 @@ class ToDoList extends Component{
 
         if (!prevProps.editingTask && this.props.editingTask){
             this.setState({
-                editTask: null
+                editTask:null
             });
             return;
         };
-
     };
  
 
@@ -99,40 +99,7 @@ class ToDoList extends Component{
         this.setState({editTask});
     };
 
-    handleSaveTask = (editedTask) => {
-        fetch(`http://localhost:3001/task/${editedTask._id}`, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify(editedTask)
-        })
-            .then(async (response) => {
-                const res = await response.json();
-
-                if (response.status >= 400 && response.status < 600) {
-                    if (res.error) {
-                        throw res.error;
-                    }
-                    else {
-                        throw new Error('Something went wrong!');
-                    }
-                }
-
-                const tasks = [...this.state.tasks];
-                const foundIndex = tasks.findIndex((task) => task._id === editedTask._id);
-                tasks[foundIndex] = editedTask;
-
-                this.setState({
-                    tasks,
-                    editTask: null
-                });
-
-            })
-            .catch((error) => {
-                console.log('catch error', error);
-            });
-    };
+    
 
     render(){
         const {selectedTasks, showConfirm, showNewTaskModal, editTask} = this.state;
@@ -212,7 +179,8 @@ class ToDoList extends Component{
                     </Row>
                     <Row className='ml-1 mb-4 mt-5 justify-content-center'>
                     {tasksList}
-                    </Row>                  
+                    </Row>   
+                        <a className = {styles.linkToTop} href= "/#"> To Top </a>           
                 </Container>
                 
                 {showConfirm && 

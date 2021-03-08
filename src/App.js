@@ -27,7 +27,7 @@ function App({loading,successMessage, errorMessage}){
       if(successMessage){
         toast(successMessage, {
           position: "bottom-left",
-          autoClose: 2000,
+          autoClose: 1500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -54,7 +54,6 @@ function App({loading,successMessage, errorMessage}){
       <NavMenu/>
         <Switch>
           <Route
-          activeClassName = 'menu'
           path = '/'
           component = {ToDoList}
           exact

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {} from 'react';
+import {withRouter} from 'react-router';
+import SearchTasks from '../Search/SearchTasks'
 import {Navbar, Nav} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
 
@@ -7,23 +9,23 @@ import styles from './navbar.module.css'
 
 
 
-export default function NavMenu(){
-
+ function NavMenu(props){
+    
     return(
 
         <Navbar className = {styles.navbar}>
             <Navbar.Brand  className = {styles.logo}>ToDo List</Navbar.Brand>
             <Nav className="mr-auto">
                 <NavLink
-                //activeClassName = {styles.menu}
-                className = {styles.menu}
+                activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}
+                className = {`${styles.menu} ${styles.home}`}
                 to ='/'
                 exact
                 >
                 Home
                 </NavLink>
                 <NavLink 
-                //activeClassName = {styles.menu}
+                activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}
                 className = {styles.menu}
                 to ='/about'
                 exact
@@ -31,7 +33,7 @@ export default function NavMenu(){
                 About us
                 </NavLink>
                 <NavLink 
-                //activeClassName = {styles.menu}
+                activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}
                 className = {styles.menu}
                 to ='/contact'
                 exact
@@ -39,6 +41,10 @@ export default function NavMenu(){
                 Contact us
                 </NavLink>
             </Nav>
+            {props.location.pathname === '/'? <SearchTasks/> : null}
+              
         </Navbar>
     );
 };
+
+export default withRouter(NavMenu)

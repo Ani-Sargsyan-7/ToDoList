@@ -11,7 +11,9 @@ const initState = {
   loading: false,
   successMessage: null,
   errorMessage: null
-}
+};
+
+
 
 export default function reducer(state = initState, action) {
 
@@ -48,7 +50,7 @@ export default function reducer(state = initState, action) {
           ...state,
           task: action.task,
           loading: false,
-      }
+      };
 
 
       case actionType.ADD_TASK:

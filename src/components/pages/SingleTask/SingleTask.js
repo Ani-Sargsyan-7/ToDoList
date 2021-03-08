@@ -52,9 +52,12 @@ import styles from './singltask.module.css';
 
         return(
             <div className = {styles.wrap}>
-            <Container className = {styles.container}>
+            <Container className = {styles.container}>  
                 <Row className ='justify-content-center'>
                     <Col xs={10}>
+                    <h5 className={styles.header}>
+                        Task Summary
+                    </h5>
                     { task ?
                     <Card className={`${styles.task} `}>               
                         <Card.Body className ='justify-content-center'>
