@@ -13,16 +13,20 @@ h1{
     text-shadow: -5px -5px 2px  #44253546;
 }
 
+.buttons{
+    margin:180px 0 60px 80px;
+}
+
 .btn {
     width: 120px;
-    margin:20px 20px;
     border:none !important;
     outline: 0 none !important;
     background: #7E3D4A !important;
     color: #E2C9C3 !important;
     font: 1em  bolder sans-serif;
-    box-shadow: 4px 3px 3px 0 rgba(98, 69, 72, 0.479);
+    box-shadow: 4px 3px 4px 0 rgba(68, 54, 55, 0.657);
 }
+
 .btnHover:hover {
     background: #af6b7a7a !important;
     color: #88466a !important;
@@ -32,12 +36,31 @@ h1{
     box-shadow: none !important;
     outline:  0  !important;
   }
-/* .btn:last-child{
-    background: rgba(19, 12, 12, 0.479) !important;
+
+
+.linkToTop{
+    color: #965f6b;
+    position: fixed;
+    z-index: 1000;
+    top: 90%;
+    left:86%;
+    font: 30px serif;
+    font-style: italic;
+    font-weight: 700;
+    text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px rgb(62, 161, 161),
+    0 0 80px rgb(33, 114, 114),
+    0 0 90px rgb(41, 107, 107),
+    0 0 100px rgba(0, 255, 255, 0.555),
+    0 0 150px #0ff;
+    
+   
 }
-.btn:nth-child(3){
-    background: rgba(92, 51, 57, 0.479) !important;
+
+.linkToTop:hover{
+    text-decoration: none;
+    color: rgba(68, 54, 55, 0.657)
 }
-.btn:nth-child(2){
-    background: rgba(170, 93, 103, 0.479) !important;
-} */

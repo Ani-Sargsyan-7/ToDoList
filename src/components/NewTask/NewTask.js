@@ -1,23 +1,29 @@
-import React, {PureComponent} from 'react';
-import {
-    Button, 
-    FormControl, 
-    Modal
-} from 'react-bootstrap';
+import React, {Component, createRef} from 'react';
+import {Button, FormControl, Modal} from 'react-bootstrap';
 import {formatDate} from '../../helpers/util';
 import PropTypes from 'prop-types';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
+import {connect} from 'react-redux';
+import {addTask} from '../../store/actions'
 
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 import styles from './newTask.module.css';
 
-class NewTask extends PureComponent{
-
-       state = {
+class NewTask extends Component{
+    constructor(props){
+        super(props);
+       this.state = {
         title : '',
         description: '',
         date: new Date()
+       };
+       this.titleRef= createRef();
     };
+
+    componentDidMount(){
+        this.titleRef.current.focus();
+    };
+
 
     handleChange = (e)=>{
         const {name, value} = e.target;
@@ -38,10 +44,10 @@ class NewTask extends PureComponent{
             description,
             date:formatDate(this.state.date.toISOString())
         };
-      this.props.onAddTask(newTask);
-        this.props.onCloseModal();
+      this.props.addTask(newTask);
     };
    
+
     handleKeyDown = (e)=>{
         if(e.key === "Enter"){
              this.handleSubmit();
@@ -49,12 +55,14 @@ class NewTask extends PureComponent{
         
     };
 
+
     handleChangeDate=(value)=>{
         this.setState({
           date: value || new Date()
         });
       };
 
+      
     render(){
         const {onCloseModal} = this.props;
 
@@ -68,8 +76,9 @@ class NewTask extends PureComponent{
                 >
                 <Modal.Header closeButton>
                     <Modal.Title 
-                    className = {styles.modalTitle}>
-                        Add new Task
+                    className = {styles.modalTitle}
+                    >
+                    What is the Plan for Today?
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -79,6 +88,7 @@ class NewTask extends PureComponent{
                     onChange={this.handleChange}
                     onKeyUp={this.handleKeyDown}
                     name = 'title'  
+                    ref = {this.titleRef}
                     />
                     <FormControl
                     className={styles.textarea}
@@ -117,9 +127,13 @@ class NewTask extends PureComponent{
 
 
  NewTask.propTypes = {
-    onAddTask: PropTypes.func.isRequired,
+    
     onCloseModal: PropTypes.func.isRequired
 
 };
 
-export default NewTask;
+const mapDispatchToProps = {
+    addTask
+  };
+  
+  export default connect(null, mapDispatchToProps)(NewTask);

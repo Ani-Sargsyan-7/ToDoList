@@ -15,15 +15,16 @@
 }
 
 .text{
+    height: 50px;
     color:#764258;
-    font: 12px sans-serif;
+    font: 14px sans-serif;
 }
 
 .iconColor{
     color:#CBB9B5;
 }
 
-.btnColor{
+.btn{
     margin-right: 5px;
     border:none !important;
     outline: 0 none !important;
@@ -32,12 +33,14 @@
 .btnColorHover:hover{
     background-color: #af6b7ad0 !important;
 }
-.btnColor:focus, .btnColor:active {
+.btn:focus, .btn:active {
     box-shadow: none !important;
     outline:  0  !important;
   }
 
 .card{
+    height: 100%;
+    background-attachment: fixed;
     padding: 0 !important;
     background-color: rgba(255, 255, 255, 0.144)!important;
     color: rgba(61, 36, 36);

@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import { 
   Button, 
   FormControl, 
@@ -7,20 +7,35 @@ import {
 import {formatDate} from '../../helpers/util';
 import DatePicker from "react-datepicker";
 import PropTypes from 'prop-types'; 
+import {editTask} from '../../store/actions';
+import {connect} from 'react-redux';
 
 import styles from './edit.module.css';
 
+
 class EditTask extends PureComponent{
+ 
   constructor(props){
     super(props);
+    
     const {date} = props.data;
+    
     this.state = {
         ...props.data,
         date: date ? new Date(date) : new Date()
     };
-  }
+    
+    this.titleRef= createRef();
+  };
 
-    handleChange = (event) => {
+
+
+  componentDidMount(){
+    this.titleRef.current.focus();
+  };
+
+
+  handleChange = (event) => {
         const {name, value} = event.target;
 
         this.setState({
@@ -31,7 +46,7 @@ class EditTask extends PureComponent{
     handleKeyDown = (event) => {
         if (event.key === "Enter") {
             this.handleSubmit();
-        }
+        };
     };
 
     handleSubmit = ()=>{
@@ -40,14 +55,15 @@ class EditTask extends PureComponent{
 
         if (!title) {
             return;
-        }
+        };
 
-        this.props.onSave({
+         const editedTask = {
           _id: this.state._id,
           title,
           description,
           date: formatDate(this.state.date.toISOString())
-        });
+        };
+        this.props.editTask(editedTask,  this.props.from)
     };
 
     handleChangeDate=(value)=>{
@@ -83,6 +99,7 @@ class EditTask extends PureComponent{
             name='title'
             value={title}
             onKeyUp={this.handleKeyDown}
+            ref = {this.titleRef}
           />
           <FormControl 
           className={`${styles.textarea}`}
@@ -120,9 +137,12 @@ class EditTask extends PureComponent{
 }
 
 EditTask.propTypes = {
-    data: PropTypes.object.isRequired,
+    data : PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired
 };
 
-export default EditTask;
+const mapDispatchToProps = {
+  editTask
+};
+
+export default connect(null, mapDispatchToProps)(EditTask);

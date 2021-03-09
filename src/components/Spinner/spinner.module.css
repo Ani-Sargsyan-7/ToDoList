@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255, 0.7);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 9999;
+}
+
+.spinner{  
+    border: inset 10px #bb888ffd !important;
+    width: 160px !important;
+    height: 160px !important;
+}

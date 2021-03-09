@@ -1,0 +1,48 @@
+  .inputGroup{
+      margin-right: 40px;
+  }
+.dropDownBtn {
+    border: 1px solid #af6b7a7a !important;
+    border-radius: 3px;
+    outline: 0 none !important;
+    background:  #a97d899f !important;
+    color: #3f2329bb !important;
+}
+.dropDownBtn:hover {
+    background:#dda1ae7a !important;
+    color: #88466a !important;
+}
+
+.dropDownBtn:active {
+    box-shadow: none !important;
+    outline:  0 none !important;
+  }
+
+.datepicker{
+    display: flex;
+    align-items:center ;
+    border: 1px solid rgba(61, 36, 36, 0.192) ;
+    width: 120px;
+    color: #8f5a77;
+    user-select: none;
+    margin-bottom: 10px;
+    padding: 6px;
+  }
+
+  .datepickerDropdown{ 
+      display: flex;
+      color: #af6b7ac0;
+      width: 300px;
+      justify-content: center;
+  }
+
+  .textDropdown{
+      width: 160px;
+
+
+  }
+
+  .searchInput{
+    outline: none !important;
+    
+  }

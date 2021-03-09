@@ -1,30 +1,28 @@
 import React, { PureComponent } from 'react';
-import {
-    Card, 
-    Button,
-    Form 
-} from 'react-bootstrap';
+import {Card, Button,Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import {formatDate} from '../../helpers/util';
-import {descripTruncate, titleTruncate} from '../../helpers/util';
+import {textTruncate} from '../../helpers/util';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'
 
 import styles from './task.module.css';
-import {Link} from 'react-router-dom';
+
 
 
 class Task extends PureComponent {
 
-    handleChange =()=>{
-        const {card, chekedTasks} = this.props;
-        chekedTasks(card._id);
+    handleChange = ()=>{
+        const {data, chekedTasks} = this.props;
+        chekedTasks(data._id);
     };
-
-    render(){       
-        const {card} = this.props;
-        const {disabled, onDelete,index, selected, onEdit} = this.props;
-   
+    
+    render(){     
+  
+        const task = this.props.data;
+        const {disabled, onDelete,index, selected,onEdit } = this.props;
+        
         return(           
             <Card className={`${styles.card} ${selected ? styles.selected : ""}`}>               
             <Card.Header className = {styles.header}>
@@ -37,29 +35,29 @@ class Task extends PureComponent {
                 Task {index}
                 </Card.Header>
             <Card.Body>
-                <Link  to={`/task/${card._id}`} className = {styles.link}>
+            <Link to={`/task/${task._id}`} className = {styles.link}>
                     <Card.Title className= {styles.title}>
-                        {titleTruncate(card.title)}
-                    </Card.Title>
-                </Link>     
+                        {textTruncate(task.title, 26)}
+                    </Card.Title>  
+            </Link>
                 <Card.Text className= {styles.text}>
-                 {descripTruncate(card.description)}
+                 {textTruncate(task.description, 50)}
                 </Card.Text>
                 <Card.Text className= {styles.text}>
-                 {formatDate(card.date)}
+                 {formatDate(task.date)}
                 </Card.Text>
                 <Button 
-                className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`} 
+                className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`} 
                 size="sm" 
-                onClick={()=>onDelete(card._id)}
+                onClick={()=>onDelete(task._id)}
                 disabled={disabled}
                 >
                 <FontAwesomeIcon icon={faTrash} className={styles.iconColor} />
                 </Button>
                 <Button 
-                className={`${styles.btnColor} ${!selected ? styles.btnColorHover : ""}`}
+                className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`}
                 size="sm"
-                onClick={() => onEdit(card)}
+                onClick={() => onEdit(task)}
                 disabled={disabled}
                 >
                 <FontAwesomeIcon icon={faPencilAlt} className={styles.iconColor}/>
@@ -74,7 +72,7 @@ class Task extends PureComponent {
 
 
 Task.propTypes = {
-    card : PropTypes.object.isRequired,
+    data : PropTypes.object.isRequired,
     chekedTasks: PropTypes.func.isRequired,
     disabled: PropTypes.bool.isRequired,
     onDelete:PropTypes.func.isRequired,
