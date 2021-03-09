@@ -2,7 +2,7 @@ import request from '../helpers/request';
 import * as actionType from './actionType';
 import {history} from '../helpers/history'
 
-
+const apiHost = process.env.REACT_APP_API_HOST;
 
 export function getTasks(params = {}) {
     const query = Object.entries(params).map(([key, value]) => `${key}=${value}`).join('&')
@@ -11,7 +11,7 @@ export function getTasks(params = {}) {
             type: actionType.PENDING
         });
 
-        request(`http://localhost:3001/task?${query}`)
+        request(`${apiHost}/task?${query}`)
             .then((tasks) => {
                 dispatch({
                     type: actionType.GET_TASKS,
@@ -33,7 +33,7 @@ export function getOneTask(taskId) {
             type: actionType.PENDING
         });
 
-        request(`http://localhost:3001/task/${taskId}`)
+        request(`${apiHost}/task/${taskId}`)
             .then((task) => {
 
                 dispatch({
@@ -56,7 +56,7 @@ export function addTask(newTask) {
             type: actionType.PENDING
         });
 
-        request('http://localhost:3001/task', 'POST', newTask)
+        request(`${apiHost}/task`, 'POST', newTask)
             .then((task) => {
                 dispatch({
                     type: actionType.ADD_TASK,
@@ -79,7 +79,7 @@ export function removeTask(taskId, from) {
             type: actionType.PENDING
         });
 
-        request(`http://localhost:3001/task/${taskId}`, 'DELETE')
+        request(`${apiHost}/task/${taskId}`, 'DELETE')
             .then(() => {
                 dispatch({
                     type: actionType.DELETE_TASK,
@@ -105,7 +105,7 @@ export function deleteCheckedTasks(ids) {
             type: actionType.PENDING
         });
 
-        request(`http://localhost:3001/task`, 'PATCH', {
+        request(`${apiHost}/task`, 'PATCH', {
                 tasks: [...ids]
             })
             .then(() => {
@@ -129,7 +129,7 @@ export function editTask(data, from) {
             type: actionType.PENDING
         });
 
-        request(`http://localhost:3001/task/${data._id}`, 'PUT', data)
+        request(`${apiHost}/task/${data._id}`, 'PUT', data)
             .then((editedTask) => {
 
                 dispatch({
