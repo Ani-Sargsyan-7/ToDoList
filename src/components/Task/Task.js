@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react';
 import {Card, Button,Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencilAlt, faCheckDouble, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import {formatDate} from '../../helpers/util';
 import {textTruncate} from '../../helpers/util';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
+import {editTask} from '../../store/actions'
 
 import styles from './task.module.css';
+import { connect } from 'react-redux';
 
 
 
@@ -21,7 +23,7 @@ class Task extends PureComponent {
     render(){     
   
         const task = this.props.data;
-        const {disabled, onDelete,index, selected,onEdit } = this.props;
+        const {disabled, onDelete,index, selected,onEdit, editTask } = this.props;
         
         return(           
             <Card className={`${styles.card} ${selected ? styles.selected : ""}`}>               
@@ -40,12 +42,20 @@ class Task extends PureComponent {
                         {textTruncate(task.title, 26)}
                     </Card.Title>  
             </Link>
+               
                 <Card.Text className= {styles.text}>
                  {textTruncate(task.description, 50)}
                 </Card.Text>
-                <Card.Text className= {styles.text}>
-                 {formatDate(task.date)}
+
+                <Card.Text className= {styles.statusDate}>
+                    Status: {task.status}
                 </Card.Text>
+
+                <Card.Text className= {styles.statusDate}>
+                   <span> Created: {formatDate(task.created_at)}</span>
+                   <span> Date for doing:{formatDate(task.date)}</span>
+                </Card.Text>
+
                 <Button 
                 className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`} 
                 size="sm" 
@@ -54,6 +64,7 @@ class Task extends PureComponent {
                 >
                 <FontAwesomeIcon icon={faTrash} className={styles.iconColor} />
                 </Button>
+
                 <Button 
                 className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`}
                 size="sm"
@@ -62,6 +73,30 @@ class Task extends PureComponent {
                 >
                 <FontAwesomeIcon icon={faPencilAlt} className={styles.iconColor}/>
                 </Button>
+                {task.status === 'active' ?
+                <Button 
+                className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`}
+                disabled={disabled}
+                size="sm"
+                onClick={() => editTask({
+                    status : 'done',
+                    _id: task._id
+                })}
+                >
+                <FontAwesomeIcon icon={faCheckDouble} className={styles.iconColor}/>                
+                </Button>:
+                <Button 
+                className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`}
+                disabled={disabled}
+                size="sm"
+                onClick={() => editTask({
+                    status : 'active',
+                    _id: task._id
+                })}
+                >
+                <FontAwesomeIcon icon={faRedoAlt} className={styles.iconColor}/>
+                </Button>
+            }
             </Card.Body>
         </Card>
         
@@ -79,5 +114,8 @@ Task.propTypes = {
     index:PropTypes.number.isRequired
 };
 
+const mapDispatchToProps = {
+    editTask
+}
 
-export default Task;
+export default connect(null, mapDispatchToProps)(Task);

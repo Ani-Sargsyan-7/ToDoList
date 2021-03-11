@@ -107,6 +107,16 @@ export default function reducer(state = initState, action) {
         };
 
       }
+      
+      if(action.status){
+        if(action.status === 'done'){
+          return  {successMessage :' The Task Completed!'}
+        }
+        else{
+          return  {successMessage :' The Task is Active Now!'}
+        }
+      }
+
       const tasks = [...state.tasks]
       const taskIndex = tasks.findIndex(task => task._id === action.editedTask._id);
       tasks[taskIndex] = action.editedTask;
