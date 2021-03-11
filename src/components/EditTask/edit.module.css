@@ -1,5 +1,5 @@
 .modalTitle{
-    font: 30px bold sans-serif;
+    font: 30px bold;
     color:#764258;
 }
 .input{
@@ -16,7 +16,6 @@
   }
 
   .textarea{
-    /* margin-bottom: 10px; */
     border:none !important;
     outline: 0 none !important;
     border-bottom: 1px solid #bfa2b8d0  !important;

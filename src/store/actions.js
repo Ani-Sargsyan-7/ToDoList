@@ -123,7 +123,7 @@ export function deleteCheckedTasks(ids) {
     }
 };
 
-export function editTask(data, from) {
+export function editTask(data, from,) {
     return (dispatch) => {
         dispatch({
             type: actionType.PENDING
@@ -138,8 +138,27 @@ export function editTask(data, from) {
                     from
                 });
                 if (from === 'single') {
-                    history.push('/');
+                    
                 }
+            })
+            .catch((err) => {
+                dispatch({
+                    type: actionType.ERROR,
+                    error: err.message
+                });
+            });
+    }
+};
+
+export function sendMessage(inputValues){
+    return (dispatch) => {
+
+        request(`${apiHost}/form`, 'POST', inputValues)
+            .then(() => {
+                dispatch({
+                    type: actionType.SEND_MESSAGE,
+                    
+                });
             })
             .catch((err) => {
                 dispatch({

@@ -17,7 +17,7 @@ import styles from './search.module.css'
 const statusOptions = [
   {
     label:'Unset',
-    value:'unset'
+    value:''
   },
   {
     label:'Active',
@@ -30,6 +30,10 @@ const statusOptions = [
 ];
 
 const sortOptions = [
+  {
+    label:'ALL',
+    value:'all'
+  },
   {
     label:'Z-A',
     value:'z-a'
@@ -126,7 +130,6 @@ function SearchTasks(props){
      
     }
     props.getTasks(params);
-    reset();
   };
 
   function handleKeyDown (e){
@@ -186,12 +189,12 @@ function SearchTasks(props){
           <DropdownButton
           className = {styles.dropDownBtn}
           size='sm'
-          as = {InputGroup.Append}
           variant=""
           title={status.value ? status.label : "Status"} 
         >
         {statusOptions.map((opt,index) => (
           <Dropdown.Item
+          
           key = {index}
           active = {status.value === opt.value}
           onClick = {()=>setStatus(opt)}
@@ -205,7 +208,7 @@ function SearchTasks(props){
           size='sm'
           as={InputGroup.Append}
           variant=""
-          title={sort.value ? textTruncate(sort.label, 6) : "Sort"}
+          title={sort.value ? textTruncate(sort.label, 3) : "Sort"}
           >
         {sortOptions.map((opt,index) => (
           <Dropdown.Item
@@ -217,14 +220,14 @@ function SearchTasks(props){
           </Dropdown.Item>))}
           </DropdownButton> 
           <Button  
-          className = {styles.dropDownBtn}
+          className = {styles.btn}
           onClick = {handleSubmit}>
           Search
           </Button>
           <Button  
-          className = {styles.dropDownBtn}
+          className = {styles.btn}
           onClick = {returnAllTasks}>
-          All Tasks
+          All 
           </Button>
           </InputGroup.Append>
         </InputGroup>

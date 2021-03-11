@@ -24,14 +24,14 @@ import styles from './singltask.module.css';
     };
 
     componentDidUpdate(prevProps){
-        if (!prevProps.editingOneTask && this.props.editingOneTask){
+        if (!prevProps.editingTask && this.props.editingTask){
             this.setState({
                 openEditModal : false
             });
 
         };
     
-    }
+    };
 
     onDelete  = ()=>{
         const taskId = this.props.match.params.taskId;

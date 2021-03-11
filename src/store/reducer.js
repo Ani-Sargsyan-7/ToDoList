@@ -7,7 +7,6 @@ const initState = {
   deletingTask: false,
   addingTask: false,
   editingTask: false,
-  editingOneTask: false,
   loading: false,
   successMessage: null,
   errorMessage: null
@@ -28,7 +27,6 @@ export default function reducer(state = initState, action) {
           deletingTask: false,
           addingTask: false,
           editingTask: false,
-          editingOneTask: false,
       };
 
     case actionType.ERROR:
@@ -103,7 +101,7 @@ export default function reducer(state = initState, action) {
         return {
           ...state,
           task: action.editedTask,
-          editingOneTask: true,
+          editingTask: true,
           loading: false,
           successMessage: 'Task edited successfully!!!'
         };
@@ -122,6 +120,11 @@ export default function reducer(state = initState, action) {
       }
 
     };
+    case actionType.SEND_MESSAGE:
+      return{
+        loading: false,
+      
+      }
 
   default:
     return state;

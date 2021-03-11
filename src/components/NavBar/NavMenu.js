@@ -14,7 +14,13 @@ import styles from './navbar.module.css'
     return(
 
         <Navbar className = {styles.navbar}>
-            <Navbar.Brand  className = {styles.logo}>ToDo List</Navbar.Brand>
+            <Navbar.Brand >
+            <NavLink to = '/' 
+            className = {styles.logo}
+            >
+            ToDo List
+            </NavLink>
+            </Navbar.Brand>
             <Nav className="mr-auto">
                 <NavLink
                 activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}

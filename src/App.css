@@ -3,6 +3,7 @@
     padding: 0;
     list-style: none;
     outline: none;
+    font-family: serif;
 }
 
 body{
@@ -11,6 +12,7 @@ body{
     background-size: cover;
     background-color: #fffbfe3a;
     background-image: linear-gradient(180deg, #f8f2f21c, #f4eafce1, #aec5c398, #7c415378);
+   
 }
 .menu{
     font-size: 20px;

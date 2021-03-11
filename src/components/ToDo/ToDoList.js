@@ -26,6 +26,7 @@ class ToDoList extends Component{
     };
 
     componentDidUpdate(prevProps){
+
         if(!prevProps.addingTask && this.props.addingTask){
             this.setState({
                 showNewTaskModal: false
@@ -42,11 +43,12 @@ class ToDoList extends Component{
         };
 
         if (!prevProps.editingTask && this.props.editingTask){
-            this.setState({
-                editTask:null
-            });
-            return;
-        };
+                    
+                this.setState({
+                    editTask:null
+                });
+                    return;
+                };
     };
  
 
@@ -77,7 +79,7 @@ class ToDoList extends Component{
 
     deleteTasks = ()=>{
         const {selectedTasks} = this.state;
-    this.props.deleteCheckedTasks(selectedTasks);
+        this.props.deleteCheckedTasks(selectedTasks);
     };
 
 
@@ -115,21 +117,21 @@ class ToDoList extends Component{
                     xl={3}
                     className='ml-1 mb-4 justify-content-center'
                 >
-                <Task
-                data={task}
-                chekedTasks={this.chekedTasks}
-                disabled = {!!selectedTasks.size}
-                onDelete = {this.props.removeTask}
-                onEdit = {this.handleEdit}
-                selected={selectedTasks.has(task._id)}
-                index={index + 1}
-                />         
+                    <Task
+                    data={task}
+                    chekedTasks={this.chekedTasks}
+                    disabled = {!!selectedTasks.size}
+                    onDelete = {this.props.removeTask}
+                    onEdit = {this.handleEdit}
+                    selected={selectedTasks.has(task._id)}
+                    index={index + 1}
+                    />         
                 </Col>
-             );
+            );
             
         });
 
-       return(
+        return(
 
            <>              
                 <Container className = {styles.container}>
@@ -204,9 +206,9 @@ class ToDoList extends Component{
                         onClose = {()=> this.handleEdit(null)}
                      />
                 }
-        </>
+            </>
 
-       );
+        );
        
     };
     
