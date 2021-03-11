@@ -1,8 +1,8 @@
 .form{
     margin-top: 40px;
-    border: 1px solid #70323cc9;
+    border: 1px solid #70323c78;
     border-radius: 6px;
-    box-shadow: 8px 6px 6px rgba(98, 69, 72, 0.479);
+    box-shadow: 10px 18px 18px 0px rgba(98, 69, 72, 0.479);
     padding: 20px 50px;
     margin-bottom: 80px;
 }
@@ -21,7 +21,8 @@
 }
 
 .label{
-    color: #70323cc9;
+    color: #2e1a1dc9;
+    font: 20px bold;
 }
 
 .btn {
@@ -52,6 +53,8 @@
 }
 
 .input{
+    border: 1px solid #5f384e6b !important;
+    background-color: inherit !important;
     outline: none !important;
     overflow: hidden !important ;
 }

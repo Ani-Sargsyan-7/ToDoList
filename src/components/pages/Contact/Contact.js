@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import {Form, Button, Col, Container, Row} from 'react-bootstrap';
+import {sendMessage} from '../../../store/actions'
+import {connect} from 'react-redux'
 
 import styles from './contact.module.css';
 
 
 
+const requiredErrMessage = 'Field is required';
 
-const requiredErrMessage = 'Fiel is required';
-
- function Contact(){
+ function Contact(props){
     
     const [inputValues, setInputValues] = useState({
         name:'',
@@ -23,14 +24,14 @@ const requiredErrMessage = 'Fiel is required';
     });
     
     function onChangeInputValue(e){
-        const  {name, value } = e.target;
+        const  {name, value} = e.target;
 
         if(!value){
             setErrors({
                 ...errors,
                 [name]: requiredErrMessage
             });
-          }
+          };
 
           if(name === 'name' && value){
               
@@ -70,45 +71,26 @@ const requiredErrMessage = 'Fiel is required';
 
         if(valuesExist && !errorsExist){
 
-            fetch('http://localhost:3001/form', {
-                method: 'POST',
-                body: JSON.stringify(inputValues),
-                headers: {
-                    "Content-Type": 'application/json'
-                }
-            })
-            .then(async (response) => {
-                const res = await response.json();
+            props.sendMessage()
+    //             setInputValues({
+    //                 name:'',
+    //                 email:'',
+    //                 message:''
+    //             });
+    //     })
+    //     .catch((error)=>{
+    //         console.log('catch error', error);
+    //     });
 
-                if(response.status >=400 && response.status < 600){
-                
-                    if(res.error){
-                        throw res.error;
-                    }
-                    else {
-                        throw new Error('Something went wrong!');
-                    }
-                }
-
-                setInputValues({
-                    name:'',
-                    email:'',
-                    message:''
-                });
-        })
-        .catch((error)=>{
-            console.log('catch error', error);
-        });
-
-    return;
-        }
-        if(!valuesExist && !errorsExist){
-            setErrors({
-                name: requiredErrMessage,
-                email: requiredErrMessage,
-                message: requiredErrMessage
-            });
-        }
+    // return;
+    //     }
+    //     if(!valuesExist && !errorsExist){
+    //         setErrors({
+    //             name: requiredErrMessage,
+    //             email: requiredErrMessage,
+    //             message: requiredErrMessage
+    //         });
+       }
     };
 
 
@@ -180,4 +162,8 @@ const requiredErrMessage = 'Fiel is required';
     );
 };
 
-export default Contact;
+const mapDispatchToProps = {
+    sendMessage,
+}
+
+export default connect(null, mapDispatchToProps)(Contact);

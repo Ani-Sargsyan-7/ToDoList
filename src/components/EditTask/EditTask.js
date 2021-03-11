@@ -1,23 +1,19 @@
-import React, {PureComponent, createRef} from 'react';
-import { 
-  Button, 
-  FormControl, 
-  Modal 
-} from 'react-bootstrap';
+import React, {Component, createRef} from 'react';
+import { Button, FormControl, Modal } from 'react-bootstrap';
 import {formatDate} from '../../helpers/util';
 import DatePicker from "react-datepicker";
 import PropTypes from 'prop-types'; 
 import {editTask} from '../../store/actions';
 import {connect} from 'react-redux';
 
+import "react-datepicker/dist/react-datepicker.css";
 import styles from './edit.module.css';
 
 
-class EditTask extends PureComponent{
+class EditTask extends Component{
  
   constructor(props){
     super(props);
-    
     const {date} = props.data;
     
     this.state = {
@@ -27,7 +23,6 @@ class EditTask extends PureComponent{
     
     this.titleRef= createRef();
   };
-
 
 
   componentDidMount(){
@@ -63,7 +58,12 @@ class EditTask extends PureComponent{
           description,
           date: formatDate(this.state.date.toISOString())
         };
-        this.props.editTask(editedTask,  this.props.from)
+        this.props.editTask(editedTask,  this.props.from);
+       
+        if(this.props.from){
+
+        this.props.onClose();
+       };
     };
 
     handleChangeDate=(value)=>{

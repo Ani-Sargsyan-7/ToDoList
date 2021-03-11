@@ -1,22 +1,44 @@
   .inputGroup{
       margin-right: 40px;
   }
-.dropDownBtn {
+.dropDownBtn{
+    padding: 0;
     border: 1px solid #af6b7a7a !important;
     border-radius: 3px;
     outline: 0 none !important;
-    background:  #a97d899f !important;
-    color: #3f2329bb !important;
+    background:  #a97d8977 !important;
+    color: #ffffffbb !important;
 }
+
+
 .dropDownBtn:hover {
     background:#dda1ae7a !important;
     color: #88466a !important;
 }
 
-.dropDownBtn:active {
+.dropDownBtn:active, .dropDownBtn:hover{
     box-shadow: none !important;
-    outline:  0 none !important;
+    outline:  none !important;
   }
+
+  .btn{
+    padding: 0;
+    border: 1px solid #af6b7a7a !important;
+    border-radius: 3px;
+    outline: 0 none !important;
+    background:  #a97d8977 !important;
+    color: #ffffffbb !important;
+}
+
+.btn:hover {
+  background:#dda1ae7a !important;
+  color: #88466a !important;
+}
+
+.btn:active,.btn:hover{
+  box-shadow: none !important;
+  outline:  0 none !important;
+}
 
 .datepicker{
     display: flex;
@@ -43,6 +65,7 @@
   }
 
   .searchInput{
+    border: 1px solid #c0909bed !important;
     outline: none !important;
-    
+    background-color: inherit !important;
   }
