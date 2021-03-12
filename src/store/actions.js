@@ -136,7 +136,7 @@ export function editTask(data, from,) {
                     type: actionType.EDIT_TASK,
                     editedTask,
                     from,
-                    status:data.status
+                    status: data.status
                 });
             })
             .catch((err) => {
