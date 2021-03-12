@@ -57,7 +57,7 @@ export default function reducer(state = initState, action) {
             tasks: [action.task, ...state.tasks],
             addingTask: true,
             loading: false,
-            successMessage: 'Task created successfully!!!'
+            successMessage: 'Task created successfully!'
 
         };
 
@@ -67,7 +67,7 @@ export default function reducer(state = initState, action) {
             ...state,
             task: null,
             loading: false,
-            successMessage: 'Task deleted successfully!!!',
+            successMessage: 'Task deleted successfully!',
           };
 
         }
@@ -75,7 +75,7 @@ export default function reducer(state = initState, action) {
           ...state,
           loading: false,
           tasks: state.tasks.filter(task => action.taskId !== task._id),
-          successMessage: 'Task deleted successfully!!!'
+          successMessage: 'Task deleted successfully!'
         };
       }
 
@@ -91,11 +91,13 @@ export default function reducer(state = initState, action) {
           loading: false,
           tasks: newTasks,
           deletingTask: true,
-          successMessage: 'Tasks deleted successfully!!!'
+          successMessage: 'Tasks deleted successfully!'
         }
       };
 
     case actionType.EDIT_TASK: {
+
+      let successMessage = 'Task edited successfully!';
 
       if (action.from === 'single') {
         return {
@@ -103,19 +105,23 @@ export default function reducer(state = initState, action) {
           task: action.editedTask,
           editingTask: true,
           loading: false,
-          successMessage: 'Task edited successfully!!!'
+          successMessage
         };
 
-      }
+      };
       
       if(action.status){
         if(action.status === 'done'){
-          return  {successMessage :' The Task Completed!'}
+         
+            successMessage = ' The Task Completed!'
+      
         }
         else{
-          return  {successMessage :' The Task is Active Now!'}
+        
+            successMessage = ' The Task is Active Now!'
+  
         }
-      }
+      };
 
       const tasks = [...state.tasks]
       const taskIndex = tasks.findIndex(task => task._id === action.editedTask._id);
@@ -126,7 +132,7 @@ export default function reducer(state = initState, action) {
         tasks,
         loading: false,
         editingTask: true,
-        successMessage: 'Task edited successfully!!!'
+        successMessage
       }
 
     };
