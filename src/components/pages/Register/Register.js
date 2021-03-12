@@ -43,10 +43,10 @@ function Register(){
                         </Form.Group>
                         <Form.Group as={Row} controlId="formHorizontalPassword">
                         <Form.Label column sm={2}>
-                            Repeat the password
+                            Confirm password
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="password" placeholder="........" />
+                            <Form.Control type="text" placeholder="........" />
                         </Col>
                         </Form.Group>
                     

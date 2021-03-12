@@ -76,12 +76,12 @@ function App({loading,successMessage, errorMessage}){
           exact
           />
           <Route
-          path = '/register'
+          path = '/user'
           component = {Register}
           exact
           />
           <Route
-          path = '/login'
+          path = '/sign-in'
           component = {Login}
           exact
           />
