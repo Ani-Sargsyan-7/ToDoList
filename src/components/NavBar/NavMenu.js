@@ -46,6 +46,22 @@ import styles from './navbar.module.css'
                 >
                 Contact us
                 </NavLink>
+                <NavLink 
+                activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}
+                className = {styles.menu}
+                to ='/register'
+                exact
+                >
+                Register
+                </NavLink>
+                <NavLink 
+                activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}
+                className = {styles.menu}
+                to ='/login'
+                exact
+                >
+                Log In
+                </NavLink>
             </Nav>
             {props.location.pathname === '/'? <SearchTasks/> : null}
               

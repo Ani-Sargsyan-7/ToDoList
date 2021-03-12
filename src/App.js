@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import ToDoList from './components/./ToDo/ToDoList';
 import About from './components/pages/About/About';
 import Contact from './components/pages/Contact/Contact';
+import Login from './components/pages/Login/Login'
+import Register from './components/pages/Register/Register'
 import NotFound from './components/pages/NotFound/NotFound';
 import SingleTask from './components/pages/SingleTask/SingleTask';
 import NavMenu from './components/NavBar/NavMenu';
@@ -71,6 +73,16 @@ function App({loading,successMessage, errorMessage}){
           <Route
           path = '/contact'
           component = {Contact}
+          exact
+          />
+          <Route
+          path = '/register'
+          component = {Register}
+          exact
+          />
+          <Route
+          path = '/login'
+          component = {Login}
           exact
           />
           <Route
