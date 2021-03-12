@@ -135,11 +135,9 @@ export function editTask(data, from,) {
                 dispatch({
                     type: actionType.EDIT_TASK,
                     editedTask,
-                    from
+                    from,
+                    status: data.status
                 });
-                if (from === 'single') {
-                    
-                }
             })
             .catch((err) => {
                 dispatch({

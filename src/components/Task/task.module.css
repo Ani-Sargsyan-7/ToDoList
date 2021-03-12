@@ -8,6 +8,7 @@
     width: 100%;
     font-weight: 600;
     color: #361116c9 !important;
+    height:  40px;
 }
 
 .header{
@@ -15,9 +16,13 @@
 }
 
 .text{
-    height: 50px;
+    height: 40px;
     color:#764258;
-    font: 14px sans-serif;
+    font: 14px serif;
+}
+.statusDate{
+    color:#7e5e6c;
+    font: 14px serif;
 }
 
 .iconColor{
