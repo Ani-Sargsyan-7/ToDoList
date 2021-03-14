@@ -23,6 +23,7 @@
 .statusDate{
     color:#7e5e6c;
     font: 14px serif;
+    text-transform: capitalize;
 }
 
 .iconColor{

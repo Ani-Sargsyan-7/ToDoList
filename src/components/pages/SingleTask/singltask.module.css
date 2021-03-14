@@ -21,11 +21,10 @@
 
 
 .task{
-        margin-top: 70px;
-        color: rgba(61, 36, 36, 0.966);
-        box-shadow:6px 4px 4px 3px rgba(98, 69, 72, 0.479);
-        transition: transform .2s linear;
-        user-select: none;
+    margin-top: 70px;
+    color: rgba(61, 36, 36, 0.966);
+    box-shadow:6px 4px 4px 3px rgba(98, 69, 72, 0.479);
+    transition: transform .2s linear;
 }
 
 
@@ -70,3 +69,9 @@
     color: #462c30c9 !important;
     text-shadow: -2 -2px 2px  #643b5046;
   }
+
+  .statusDate{
+    color:#7e5e6c;
+    font: 14px serif;
+    text-transform: capitalize;
+}

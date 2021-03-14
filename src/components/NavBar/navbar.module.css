@@ -10,10 +10,10 @@
 }
 
 .logo{
-    font: 50px  bolder !important;
+    font: 40px  bolder !important;
     color: #70323cc9 !important;
     text-shadow: -4px -4px 2px  #44253546;
-    margin-right: 40px !important;
+    margin-right: 30px !important;
     margin-left: 40px;
     text-decoration: none !important;
 }
@@ -23,7 +23,7 @@
     text-decoration: none !important;
     color: #70323cc9 !important;
     text-shadow: -2 -2px 2px  #44253546;
-    margin-right: 30px;
+    margin-right: 20px;
     transition: transform .2s linear;
     position: relative;
     line-height: 1;
