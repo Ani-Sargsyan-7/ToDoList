@@ -105,6 +105,8 @@ export default function reducer(state = initState, action) {
           task: action.editedTask,
           editingTask: true,
           loading: false,
+          successMessage:action.status ? 
+          ((action.status === 'done') ? 'The Task Completed!' : ' The Task is Active Now!'): 
           successMessage
         };
 
@@ -112,14 +114,10 @@ export default function reducer(state = initState, action) {
       
       if(action.status){
         if(action.status === 'done'){
-         
-            successMessage = ' The Task Completed!'
-      
+              successMessage = ' The Task Completed!'
         }
         else{
-        
-            successMessage = ' The Task is Active Now!'
-  
+            successMessage = ' The Task is Active Now!'          
         }
       };
 

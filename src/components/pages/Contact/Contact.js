@@ -7,7 +7,7 @@ import styles from './contact.module.css';
 
 
 
-const requiredErrMessage = 'Field is required';
+const requiredErrMessage = 'Field is required!';
 
  function Contact(props){
     
@@ -35,7 +35,7 @@ const requiredErrMessage = 'Field is required';
 
           if(name === 'name' && value){
               
-            if (!/^(([A-Za-z]+[-']?)*([A-Za-z]+)?\s)+([A-Za-z]+[-']?)*([A-Za-z]+)?$/){
+            if (!/^[a-zA-Z]+[a-zA-Z]+$/){
                 setErrors({
                     ...errors,
                     name : 'Enter a valid name'
@@ -97,14 +97,14 @@ const requiredErrMessage = 'Field is required';
     return(
      <Container>
      <Row className='justify-content-center'>
-     <Col xs={8}>
+     <Col xs={6}>
      <h2 className={styles.title}>
      Contact Us
      </h2>
+     <Form className={styles.form}>
      <h3 className={styles.text}>
      Please fill this form in a decent manner
      </h3>
-     <Form className={styles.form}>
         <Form.Group  className={styles.inp}>
             <Form.Label  className={styles.label}>Email </Form.Label>
             <Form.Control 

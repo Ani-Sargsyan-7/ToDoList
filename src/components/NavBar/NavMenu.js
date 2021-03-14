@@ -49,15 +49,15 @@ import styles from './navbar.module.css'
                 <NavLink 
                 activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}
                 className = {styles.menu}
-                to ='/register'
+                to ='/user'
                 exact
                 >
-                Register
+                Sign Up
                 </NavLink>
                 <NavLink 
                 activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}
                 className = {styles.menu}
-                to ='/login'
+                to ='/sign-in'
                 exact
                 >
                 Log In

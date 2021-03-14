@@ -53,6 +53,7 @@ class Task extends PureComponent {
 
                 <Card.Text className= {styles.statusDate}>
                    <span> Created: {formatDate(task.created_at)}</span>
+                   <br/>
                    <span> Date for doing:{formatDate(task.date)}</span>
                 </Card.Text>
 
@@ -76,7 +77,6 @@ class Task extends PureComponent {
                 {task.status === 'active' ?
                 <Button 
                 className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`}
-                disabled={disabled}
                 size="sm"
                 onClick={() => editTask({
                     status : 'done',
@@ -87,7 +87,6 @@ class Task extends PureComponent {
                 </Button>:
                 <Button 
                 className={`${styles.btn} ${!selected ? styles.btnColorHover : ""}`}
-                disabled={disabled}
                 size="sm"
                 onClick={() => editTask({
                     status : 'active',
