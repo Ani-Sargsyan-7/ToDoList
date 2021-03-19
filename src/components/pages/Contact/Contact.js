@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Form, Button, Col, Container, Row} from 'react-bootstrap';
-import {sendMessage} from '../../../store/actions'
+// import {sendMessage} from '../../../store/actions';
 import {connect} from 'react-redux'
 
 import styles from './contact.module.css';
@@ -66,31 +66,31 @@ const requiredErrMessage = 'Field is required!';
     };
 
     function handleSubmit(){
-        const errorsExist = !Object.values(errors).every(el => el === null);
-        const valuesExist = !Object.values(inputValues).some(el => el === '');
+        // const errorsExist = !Object.values(errors).every(el => el === null);
+        // const valuesExist = !Object.values(inputValues).some(el => el === '');
 
-        if(valuesExist && !errorsExist){
+    //     if(valuesExist && !errorsExist){
 
-            props.sendMessage()
-    //             setInputValues({
-    //                 name:'',
-    //                 email:'',
-    //                 message:''
-    //             });
-    //     })
-    //     .catch((error)=>{
-    //         console.log('catch error', error);
-    //     });
+    //         props.sendMessage()
+    // //             setInputValues({
+    // //                 name:'',
+    // //                 email:'',
+    // //                 message:''
+    // //             });
+    // //     })
+    // //     .catch((error)=>{
+    // //         console.log('catch error', error);
+    // //     });
 
-    // return;
-    //     }
-    //     if(!valuesExist && !errorsExist){
-    //         setErrors({
-    //             name: requiredErrMessage,
-    //             email: requiredErrMessage,
-    //             message: requiredErrMessage
-    //         });
-       }
+    // // return;
+    // //     }
+    // //     if(valuesExist && !errorsExist){
+    // //         setErrors({
+    // //             name: requiredErrMessage,
+    // //             email: requiredErrMessage,
+    // //             message: requiredErrMessage
+    // //         });
+    //    }
     };
 
 
@@ -163,7 +163,7 @@ const requiredErrMessage = 'Field is required!';
 };
 
 const mapDispatchToProps = {
-    sendMessage,
+    // sendMessage,
 }
 
 export default connect(null, mapDispatchToProps)(Contact);

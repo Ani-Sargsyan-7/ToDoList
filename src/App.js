@@ -7,10 +7,11 @@ import Register from './components/pages/Register/Register';
 import NotFound from './components/pages/NotFound/NotFound';
 import SingleTask from './components/pages/SingleTask/SingleTask';
 import NavMenu from './components/NavBar/NavMenu';
+import AuthRoute from './components/AuthRoute/AuthRoute';
 import {
+  Route,
   Router,
   Switch,
-  Route,
   Redirect,
 } from "react-router-dom";
 import Spinner from './components/Spinner/Spinner';
@@ -55,12 +56,14 @@ function App({loading,successMessage, errorMessage}){
       <Router history = {history}>
       <NavMenu/>
         <Switch>
-          <Route
+          <AuthRoute
+          type = 'private'
           path = '/'
           component = {ToDoList}
           exact
           />
-          <Route
+          <AuthRoute
+          type = 'private'
           path = '/home'
           component = {ToDoList}
           exact
@@ -70,22 +73,25 @@ function App({loading,successMessage, errorMessage}){
           component = {About}
           exact
           />
-          <Route
-          path = '/contact'
+         <Route 
+          path='/contact'
           component = {Contact}
           exact
-          />
-          <Route
-          path = '/user'
+         />
+          <AuthRoute
+          type = 'public'
+          path = '/register'
           component = {Register}
           exact
           />
-          <Route
-          path = '/sign-in'
+          <AuthRoute
+          type = 'public'
+          path = '/login'
           component = {Login}
           exact
           />
-          <Route
+          <AuthRoute
+          type = 'private'
           path='/task/:taskId'
           component = {SingleTask}
           exact

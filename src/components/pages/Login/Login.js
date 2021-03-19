@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import {Container,Row,Col,Button,Form} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-
+import {login} from '../../../store/actions';
+import {connect} from 'react-redux';
+ 
 import styles from './login.module.css';
 
 
-function LogIn(){
+function LogIn(props){
 
   const [inputValue, setInputValue] = useState(
 
@@ -57,21 +59,38 @@ const onChangeInputValue = e =>{
       if(!passValid.test(value) && value){
           setErrors({
               ...errors,
-              password: 'Password needs to 8 characters or more and at least one numeric!'
+              password: 'Wrong password!'
           })
       }break;
       default:setErrors({
           ...errors,
           [name] : null
-      })
-  }
-  setInputValue({
-      ...inputValue,
-      [name]: value
-  });
+      });
+  };
+  
+};
+
+const handleSubmit = ()=>{
+  const errorsExist = !Object.values(errors).every(el => el === null);
+  const valuesExist = !Object.values(inputValue).every(el => el === '');
+  const requiredMessage = 'Field is required!'
 
   
-}
+  if(!valuesExist || errorsExist){
+      setErrors({
+         
+          email: requiredMessage,
+          password: requiredMessage,
+
+      });
+      return
+  }
+ 
+
+    props.login(inputValue);
+
+  
+};
     return(
         <Container>
             <Row className='justify-content-center'>
@@ -122,10 +141,15 @@ const onChangeInputValue = e =>{
                 </Form.Group>
 
                 <Form.Group className={styles.btn_link}>
-                    <Button className={styles.btn}>Log In</Button>
+                    <Button 
+                    className={styles.btn}
+                    onClick = {handleSubmit}
+                    >
+                    Log In
+                    </Button>
                     <Link
                         className={styles.link}
-                        to='/sign-in'
+                        to='/register'
                         >
                         You do not have Sign Up yet? Sign Up here!
                     </Link>
@@ -137,5 +161,9 @@ const onChangeInputValue = e =>{
     )
 };
 
+const mapDispatchToProps={
+  login
+};
 
-export default LogIn;
+
+export default connect(null, mapDispatchToProps)(LogIn);

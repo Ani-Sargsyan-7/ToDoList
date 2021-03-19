@@ -1,40 +1,42 @@
 import React, {useState} from 'react';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import {register} from '../../../store/actions';
+import {connect} from 'react-redux';
 
 import styles from './register.module.css';
 
 
 
-function Register(){
+function Register(props){
 
     const [inputValue, setInputValue] = useState(
 
         {
-            firstName:'',
-            lastName:'',
+            name:'',
+            surname:'',
             email:'',
             password1:'',
-            password2:''
+            confirmPassword:'',
         }
     );
     const [errors, setErrors] = useState(
 
         {
-            firstName:null,
-            lastName:null,
+            name:null,
+            surname:null,
             email:null,
-            password1:null,
-            password2: null
+            password:null,
+            confirmPassword: null
         }
     );
     
     const onChangeInputValue = e =>{
         const {name, value} = e.target;
-
+        
         setInputValue({
             ...inputValue,
-            [name] : value
+            [name]: value
         });
 
         if(!value.trim()){
@@ -48,23 +50,23 @@ function Register(){
                 [name] : null
             })
         };
-
+        const  nameValid = /^[a-zA-Z]$/;
+        
         switch(name){
-            
-            case 'firstName':
-            if(!/^[a-zA-Z]/.test(value) & value){
+            case 'name':
+            if(!nameValid.test(value) & value){
                 setErrors({
                     ...errors,
-                    firstName:'Entered invalid Name!'
+                    name:'Entered invalid Name!'
                 })
             }
             break;
 
-            case 'lastName':
-            if(!/^[a-zA-Z]/.test(value) & value){
+            case 'surname':
+            if(!nameValid.test(value) & value){
                 setErrors({
                     ...errors,
-                    lastName:'Entered invalid Last Name!'
+                    surname:'Entered invalid Last Name!'
                 })
             }
             break;
@@ -79,21 +81,21 @@ function Register(){
             }
             break;
 
-            case 'password1':
+            case 'password':
               const passValid = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; 
             if(!passValid.test(value) && value){
                 setErrors({
                     ...errors,
-                    password1: 'Password needs to 8 characters or more and at least one numeric!'
+                    password: 'Password needs to 8 characters or more and at least one numeric!'
                 })
             }      
             break;
 
-            case 'password2':
-            if(value !== inputValue.password1 && value){
+            case 'confirmPassword':
+            if(value !== inputValue.password && value){
                 setErrors({
                     ...errors,
-                    password2: "Passwords do not match!"
+                    confirmPassword: "Passwords do not match!"
                 })
             }
             break;
@@ -103,13 +105,25 @@ function Register(){
                 [name] : null
             })
         }
-        setInputValue({
-            ...inputValue,
-            [name]: value
-        });
-
         
+    };
+
+const handleSubmit = ()=>{
+    const errorsExist = !Object.values(errors).every(el => el === null);
+    const valuesExist = !Object.values(inputValue).every(el => el === '');
+    const requiredMessage = 'Field is required!'
+  
+    
+    if(!valuesExist || errorsExist){
+        setErrors({
+            email: requiredMessage,
+            password: requiredMessage,
+        });
+        return;
     }
+    
+        props.register(inputValue);
+}
   
     return(
         <Container>
@@ -130,13 +144,14 @@ function Register(){
                             className = {styles.input} 
                             type="text" 
                             placeholder="Name"
-                            value = {inputValue.firstName}
+                            autoFocus
+                            value = {inputValue.name}
                             onChange = {onChangeInputValue}
-                            name = "firstName"
+                            name = "name"
                              />
                         {errors &&  
                              <Form.Text className="text-danger">
-                                {errors.firstName}
+                                {errors.name}
                             </Form.Text>
                         }
                         </Form.Group>
@@ -148,13 +163,13 @@ function Register(){
                             className = {styles.input} 
                             type="text" 
                             placeholder="Last Name" 
-                            value = {inputValue.lastName}
+                            value = {inputValue.surname}
                             onChange = {onChangeInputValue}
-                            name = "lastName"
+                            name = "surname"
                             />
                             {errors &&  
                                 <Form.Text className="text-danger">
-                                   {errors.lastName}
+                                   {errors.surname}
                                </Form.Text>
                            }
                         </Form.Group>
@@ -184,13 +199,13 @@ function Register(){
                             className = {styles.input}
                             type="password" 
                             placeholder="........" 
-                            value = {inputValue.password1}
+                            value = {inputValue.password}
                             onChange = {onChangeInputValue}
-                            name = "password1"
+                            name = "password"
                             />
                             {errors &&  
                                 <Form.Text className="text-danger">
-                                   {errors.password1}
+                                   {errors.password}
                                </Form.Text>
                            }
                         </Form.Group>
@@ -202,21 +217,26 @@ function Register(){
                             className = {styles.input} 
                             type="password" 
                             placeholder="........"
-                            name = "password2"
-                            value = {inputValue.password2}
+                            name = "confirmPassword"
+                            value = {inputValue.confirmPassword}
                             onChange = {onChangeInputValue}
                              />
                              {errors &&  
                                 <Form.Text className="text-danger">
-                                   {errors.password2}
+                                   {errors.confirmPassword}
                                </Form.Text>
                            }
                         </Form.Group>                    
                         <Form.Group className ={styles.btn_link}>
-                            <Button className={styles.btn}>Register</Button>
+                            <Button 
+                            className={styles.btn}
+                            onClick = {handleSubmit}
+                            >
+                            Register
+                            </Button>
                             <Link
                             className={styles.link}
-                            to='/sign-in'
+                            to='/login'
                             >
                             You already Sign Up? Login here!
                             </Link>
@@ -228,4 +248,9 @@ function Register(){
     );
 };
 
-export default Register;
+const mapDispatchToProps = {
+        register
+}
+
+
+export default connect(null, mapDispatchToProps)(Register);

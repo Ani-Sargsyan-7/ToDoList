@@ -1,6 +1,7 @@
 import request from '../helpers/request';
 import * as actionType from './actionType';
-import {history} from '../helpers/history'
+import {history} from '../helpers/history';
+import {saveToken} from '../helpers/auth';
 
 const apiHost = process.env.REACT_APP_API_HOST;
 
@@ -148,15 +149,37 @@ export function editTask(data, from,) {
     }
 };
 
-export function sendMessage(inputValues){
-    return (dispatch) => {
+// export function sendMessage(inputValues){
+//     return (dispatch) => {
 
-        request(`${apiHost}/form`, 'POST', inputValues)
+//         request(`${apiHost}/form`, 'POST', inputValues)
+//             .then(() => {
+//                 dispatch({
+//                     type: actionType.SEND_MESSAGE,
+                    
+//                 });
+//             })
+//             .catch((err) => {
+//                 dispatch({
+//                     type: actionType.ERROR,
+//                     error: err.message
+//                 });
+//             });
+//     }
+// };
+
+export function register(data) {
+    return (dispatch) => {
+        dispatch({
+            type: actionType.PENDING
+        });
+
+        request(`${apiHost}/user`, 'POST', data)
             .then(() => {
                 dispatch({
-                    type: actionType.SEND_MESSAGE,
-                    
+                    type: actionType.REGISTER,
                 });
+                history.push('/login');
             })
             .catch((err) => {
                 dispatch({
@@ -166,5 +189,27 @@ export function sendMessage(inputValues){
             });
     }
 };
+export function login(data) {
+    return (dispatch) => {
+        dispatch({
+            type: actionType.PENDING
+        });
 
+        request(`${apiHost}/user/sign-in`, 'POST', data)
+            .then((res) => {
+                saveToken(res);
+    
+                dispatch({
+                    type: actionType.LOGIN,
+                });
+                history.push('/');
+            })
+            .catch((err) => {
+                dispatch({
+                    type: actionType.ERROR,
+                    error: err.message
+                });
+            });
+    }
+};
 
