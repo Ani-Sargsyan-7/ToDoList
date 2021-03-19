@@ -1,0 +1,22 @@
+.div{
+    position:absolute;
+    top: 40%;
+    left: 30%;
+}
+
+p{
+    color: #965f6b;
+    font: 80px serif;
+    font-style: italic;
+    font-weight: 700;
+    text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px rgb(134, 187, 187),
+    0 0 80px rgb(106, 184, 184),
+    0 0 90px rgb(80, 138, 138),
+    0 0 100px rgba(97, 172, 172, 0.555),
+    0 0 150px rgb(101, 156, 156);
+}
+

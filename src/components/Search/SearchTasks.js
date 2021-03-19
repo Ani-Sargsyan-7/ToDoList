@@ -7,7 +7,6 @@ Button, Dropdown,
 DropdownButton, 
 } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import {formatDate} from '../../helpers/util'
 import {getTasks} from '../../store/actions'
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -124,7 +123,7 @@ function SearchTasks(props){
 
     for(let key in dates){
       if(dates[key]){
-        const date  = formatDate(dates[key].toISOString());
+        const date  = dates[key].toLocalDateString();
         params[key] = date;
       }
      

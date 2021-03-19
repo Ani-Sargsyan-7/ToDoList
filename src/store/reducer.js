@@ -1,4 +1,5 @@
 import * as actionType from './actionType';
+import {checkLoginStatus} from '../helpers/auth';
 
 
 const initState = {
@@ -9,7 +10,8 @@ const initState = {
   editingTask: false,
   loading: false,
   successMessage: null,
-  errorMessage: null
+  errorMessage: null,
+  isAuth: checkLoginStatus()
 };
 
 
@@ -27,30 +29,28 @@ export default function reducer(state = initState, action) {
           deletingTask: false,
           addingTask: false,
           editingTask: false,
-      };
+      }
 
     case actionType.ERROR:
       return {
           ...state,
           loading: false,
           errorMessage: action.error
-      };
+      }
 
     case actionType.GET_TASKS:
       return {
           ...state,
           tasks: action.tasks,
           loading: false,
-      };
+      }
 
     case actionType.GET_ONE_TASK:
       return {
           ...state,
           task: action.task,
           loading: false,
-      };
-
-
+      }
       case actionType.ADD_TASK:
         return {
             ...state,
@@ -59,7 +59,7 @@ export default function reducer(state = initState, action) {
             loading: false,
             successMessage: 'Task created successfully!'
 
-        };
+        }
 
       case actionType.DELETE_TASK:{
         if(action.from === 'single'){
@@ -93,7 +93,7 @@ export default function reducer(state = initState, action) {
           deletingTask: true,
           successMessage: 'Tasks deleted successfully!'
         }
-      };
+      }
 
     case actionType.EDIT_TASK: {
 
@@ -131,14 +131,28 @@ export default function reducer(state = initState, action) {
         loading: false,
         editingTask: true,
         successMessage
-      }
+      };
 
-    };
+    }
     case actionType.SEND_MESSAGE:
       return{
         loading: false,
       
       }
+      case actionType.REGISTER:
+        return {
+            ...state,
+            loading: false,
+            successMessage: 'You registered successfully!'
+
+        }
+      case actionType.LOGIN:
+        return {
+            ...state,
+            loading: false,
+            isAuth: true
+
+        };
 
   default:
     return state;
