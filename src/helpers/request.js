@@ -5,7 +5,7 @@ export default function request(url, method = 'GET', body) {
     const params = {
         method: method,
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": 'application/json',
             "Authorization": `Bearer ${token}`
         }
     };

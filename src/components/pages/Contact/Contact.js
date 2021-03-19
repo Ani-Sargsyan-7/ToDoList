@@ -66,8 +66,8 @@ const requiredErrMessage = 'Field is required!';
     };
 
     function handleSubmit(){
-        const errorsExist = !Object.values(errors).every(el => el === null);
-        const valuesExist = !Object.values(inputValues).some(el => el === '');
+        // const errorsExist = !Object.values(errors).every(el => el === null);
+        // const valuesExist = !Object.values(inputValues).some(el => el === '');
 
     //     if(valuesExist && !errorsExist){
 
