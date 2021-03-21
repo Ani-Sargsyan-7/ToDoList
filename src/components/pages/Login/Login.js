@@ -29,6 +29,7 @@ const onChangeInputValue = e =>{
   const {name, value} = e.target;
 
   setInputValue({
+    ...inputValue,
       [name] : value
   });
 
@@ -47,7 +48,7 @@ const onChangeInputValue = e =>{
   switch(name){
       case 'email':
           const emailValid = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if(!emailValid.test(value) && value.trim()){
+      if(!emailValid.test(value)){
           setErrors({
               ...errors,
               email:'Entered invalid email address!'
@@ -70,27 +71,21 @@ const onChangeInputValue = e =>{
   
 };
 
+
 const handleSubmit = ()=>{
   const errorsExist = !Object.values(errors).every(el => el === null);
   const valuesExist = !Object.values(inputValue).every(el => el === '');
-  const requiredMessage = 'Field is required!'
-
   
-  if(!valuesExist || errorsExist){
-      setErrors({
-         
-          email: requiredMessage,
-          password: requiredMessage,
+  if(!valuesExist || !errorsExist){
+    props.login(inputValue);
 
-      });
-      return
+     
   }
  
 
-    props.login(inputValue);
 
-  
 };
+
     return(
         <Container>
             <Row className='justify-content-center'>

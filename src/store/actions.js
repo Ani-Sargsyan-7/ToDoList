@@ -1,4 +1,5 @@
 import request from '../helpers/request';
+import {requestWithouthToken} from '../helpers/request';
 import * as actionType from './actionType';
 import {history} from '../helpers/history';
 import {saveToken} from '../helpers/auth';
@@ -14,6 +15,7 @@ export function getTasks(params = {}) {
 
         request(`${apiHost}/task?${query}`)
             .then((tasks) => {
+                if(!tasks)  return;
                 dispatch({
                     type: actionType.GET_TASKS,
                     tasks: tasks
@@ -36,7 +38,7 @@ export function getOneTask(taskId) {
 
         request(`${apiHost}/task/${taskId}`)
             .then((task) => {
-
+                if(!task)  return;
                 dispatch({
                     type: actionType.GET_ONE_TASK,
                     task
@@ -59,6 +61,7 @@ export function addTask(newTask) {
 
         request(`${apiHost}/task`, 'POST', newTask)
             .then((task) => {
+                if(!task)  return;
                 dispatch({
                     type: actionType.ADD_TASK,
                     task
@@ -81,7 +84,8 @@ export function removeTask(taskId, from) {
         });
 
         request(`${apiHost}/task/${taskId}`, 'DELETE')
-            .then(() => {
+            .then((res) => {
+                if(!res)  return;
                 dispatch({
                     type: actionType.DELETE_TASK,
                     taskId, 
@@ -109,7 +113,8 @@ export function deleteCheckedTasks(ids) {
         request(`${apiHost}/task`, 'PATCH', {
                 tasks: [...ids]
             })
-            .then(() => {
+            .then((res) => {
+                if(!res)  return;
                 dispatch({
                     type: actionType.DELETE_CHECKED_TASKS,
                     ids
@@ -132,7 +137,7 @@ export function editTask(data, from,) {
 
         request(`${apiHost}/task/${data._id}`, 'PUT', data)
             .then((editedTask) => {
-
+                if(!editedTask)  return;
                 dispatch({
                     type: actionType.EDIT_TASK,
                     editedTask,
@@ -152,7 +157,7 @@ export function editTask(data, from,) {
 // export function sendMessage(inputValues){
 //     return (dispatch) => {
 
-//         request(`${apiHost}/form`, 'POST', inputValues)
+//         requestWithouthToken(`${apiHost}/form`, 'POST', inputValues)
 //             .then(() => {
 //                 dispatch({
 //                     type: actionType.SEND_MESSAGE,
@@ -174,7 +179,7 @@ export function register(data) {
             type: actionType.PENDING
         });
 
-        request(`${apiHost}/user`, 'POST', data)
+        requestWithouthToken(`${apiHost}/user`, 'POST', data)
             .then(() => {
                 dispatch({
                     type: actionType.REGISTER,
@@ -195,7 +200,7 @@ export function login(data) {
             type: actionType.PENDING
         });
 
-        request(`${apiHost}/user/sign-in`, 'POST', data)
+        requestWithouthToken(`${apiHost}/user/sign-in`, 'POST', data)
             .then((res) => {
                 saveToken(res);
     

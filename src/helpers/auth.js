@@ -1,32 +1,46 @@
 import decode from 'jwt-decode';
+import {history} from '../helpers/history';
+import {store} from '../store/store';
+import {LOGOUT} from '../store/actionType';
+import {requestWithouthToken} from './request';
 
-export const checkLoginStatus = () => !!localStorage.getItem('token');
+export function checkLoginStatus(){ 
+    return !!localStorage.getItem('token');
+};
 
 export function saveToken(token){
     localStorage.setItem('token', JSON.stringify(token));
-}
+};
 
-export function getToken(){
+export function logout(){
+    localStorage.removeItem('token');
+    store.dispatch({
+        type:LOGOUT
+    });
+    history.push('/login');
+};
+
+export const getToken = ()=> {
     const token = localStorage.getItem('token');
+    
     if(token){
-        const tokenParsed = JSON.parse(token).jwt;
+        const tokenParsed = JSON.parse(token);
         const tokenDecoded = decode(tokenParsed.jwt);
 
-        if((tokenDecoded.exp - new Date().getItem()/1000 )> 60){
-            return  tokenParsed.jwt;
+        if(tokenDecoded.exp - new Date().getTime ()/1000 > 60){
+            return  Promise.resolve(tokenParsed.jwt);
         }
         else{
             const apiHost = process.env.REACT_APP_API_HOST;
-            fetch( `${apiHost}/user/${tokenDecoded.userId/token}`,{
-                method: 'PUT',
-                body:JSON.stringify({ refreshToken: tokenParsed.refreshToken }),
-                headers: { 'Content-Type': 'application/json' }
+            return requestWithouthToken( `${apiHost}/user/${tokenDecoded.userId}/token`,'PUT',{
+                refreshToken: tokenParsed.refreshToken
             })
-            .then(res => res.json())
             .then(token => {
-                localStorage.setItem('token', JSON.stringify(token));
-                return saveToken(token);
+               saveToken(token);
+               return token.jwt;
             })
+            .catch(()=>{ logout() });
         }
     }
+    else { logout() }
 };

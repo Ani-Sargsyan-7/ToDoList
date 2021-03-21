@@ -51,6 +51,7 @@ export default function reducer(state = initState, action) {
           task: action.task,
           loading: false,
       }
+      
       case actionType.ADD_TASK:
         return {
             ...state,
@@ -58,7 +59,6 @@ export default function reducer(state = initState, action) {
             addingTask: true,
             loading: false,
             successMessage: 'Task created successfully!'
-
         }
 
       case actionType.DELETE_TASK:{
@@ -69,7 +69,6 @@ export default function reducer(state = initState, action) {
             loading: false,
             successMessage: 'Task deleted successfully!',
           };
-
         }
         return {
           ...state,
@@ -92,7 +91,7 @@ export default function reducer(state = initState, action) {
           tasks: newTasks,
           deletingTask: true,
           successMessage: 'Tasks deleted successfully!'
-        }
+        };
       }
 
     case actionType.EDIT_TASK: {
@@ -132,27 +131,33 @@ export default function reducer(state = initState, action) {
         editingTask: true,
         successMessage
       };
-
     }
+
     case actionType.SEND_MESSAGE:
       return{
-        loading: false,
-      
+        loading: false,   
       }
+
       case actionType.REGISTER:
         return {
             ...state,
             loading: false,
             successMessage: 'You registered successfully!'
-
         }
+
       case actionType.LOGIN:
         return {
             ...state,
             loading: false,
             isAuth: true
+        }
 
-        };
+      case actionType.LOGOUT:
+        return {
+            ...state,
+            loading: false,
+            isAuth: false
+        }
 
   default:
     return state;

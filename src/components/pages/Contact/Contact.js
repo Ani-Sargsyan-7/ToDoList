@@ -72,24 +72,24 @@ const requiredErrMessage = 'Field is required!';
     //     if(valuesExist && !errorsExist){
 
     //         props.sendMessage()
-    // //             setInputValues({
-    // //                 name:'',
-    // //                 email:'',
-    // //                 message:''
-    // //             });
-    // //     })
-    // //     .catch((error)=>{
-    // //         console.log('catch error', error);
-    // //     });
+    //             setInputValues({
+    //                 name:'',
+    //                 email:'',
+    //                 message:''
+    //             });
+    //     })
+    //     .catch((error)=>{
+    //         console.log('catch error', error);
+    //     });
 
-    // // return;
-    // //     }
-    // //     if(valuesExist && !errorsExist){
-    // //         setErrors({
-    // //             name: requiredErrMessage,
-    // //             email: requiredErrMessage,
-    // //             message: requiredErrMessage
-    // //         });
+    // return;
+    //     }
+    //     if(valuesExist && !errorsExist){
+    //         setErrors({
+    //             name: requiredErrMessage,
+    //             email: requiredErrMessage,
+    //             message: requiredErrMessage
+    //         });
     //    }
     };
 
