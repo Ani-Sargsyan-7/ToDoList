@@ -111,18 +111,13 @@ function Register(props){
 const handleSubmit = ()=>{
     const errorsExist = !Object.values(errors).every(el => el === null);
     const valuesExist = !Object.values(inputValue).every(el => el === '');
-    const requiredMessage = 'Field is required!'
   
     
-    if(!valuesExist || errorsExist){
-        setErrors({
-            email: requiredMessage,
-            password: requiredMessage,
-        });
-        return;
+    if(!valuesExist || !errorsExist){
+        props.register(inputValue);
+       
     }
     
-        props.register(inputValue);
 }
   
     return(

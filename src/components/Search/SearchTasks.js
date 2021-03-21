@@ -122,8 +122,9 @@ function SearchTasks(props){
 
 
     for(let key in dates){
-      if(dates[key]){
-        const date  = dates[key].toLocalDateString();
+      const value = dates[key];
+      if(value){
+        const date  = value.toLocaleDateString();
         params[key] = date;
       }
      

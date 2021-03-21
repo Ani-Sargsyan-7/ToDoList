@@ -54,3 +54,25 @@
 .active{
     color: #4b2228c9;
 }
+
+.btn{
+    height: 30px;
+    padding: 0 ! important;
+    border: none !important;
+    border-radius: 3px;
+    outline: 0 none !important;
+    background:  inherit !important;
+    color: #70323cc9 !important;
+    font: 35px bold serif;
+    margin-top: -3px;
+}
+
+.btn:hover {
+  background:inherit !important;
+  color: #532940 !important;
+}
+
+.btn:active,.btn:hover{
+  box-shadow: none !important;
+  outline:  0 none !important;
+}

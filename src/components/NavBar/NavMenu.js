@@ -3,6 +3,7 @@ import {withRouter} from 'react-router';
 import SearchTasks from '../Search/SearchTasks';
 import {Navbar, Nav, Button} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
+import {logout} from '../../helpers/auth';
 import {connect} from 'react-redux';
 
 import styles from './navbar.module.css'
@@ -12,6 +13,7 @@ import styles from './navbar.module.css'
 
  function NavMenu(props){
     const {isAuth} = props;
+
     
     return(
         <Navbar className = {styles.navbar}>
@@ -50,7 +52,11 @@ import styles from './navbar.module.css'
                 Contact us
                 </NavLink>
                 {isAuth ?
-                <Button variant ='success'>Log out </Button> :
+                <Button 
+                className = {styles.btn}
+                onClick ={logout}
+                >Log out 
+                </Button> :
                 <>
                 <NavLink 
                 activeStyle={{fontWeight: "bold", color: "#4b2228c9"}}
