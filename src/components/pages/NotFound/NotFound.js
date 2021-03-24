@@ -7,7 +7,7 @@ export default function NotFound(){
     return(     
         
         <div className={styles.div}>
-            <p>404 Page not found</p>
+            <p className={styles.notFound}>404 Page not found</p>
         </div>
     );
 };
