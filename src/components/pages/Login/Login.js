@@ -45,32 +45,8 @@ const onChangeInputValue = e =>{
       })
   };
 
-  switch(name){
-      case 'email':
-          const emailValid = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if(!emailValid.test(value)){
-          setErrors({
-              ...errors,
-              email:'Entered invalid email address!'
-          })
-      }break;
-
-      case 'password':
-        const passValid = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; 
-      if(!passValid.test(value) && value){
-          setErrors({
-              ...errors,
-              password: 'Wrong password!'
-          })
-      }break;
-      default:setErrors({
-          ...errors,
-          [name] : null
-      });
-  };
   
 };
-
 
 const handleSubmit = ()=>{
   const errorsExist = !Object.values(errors).every(el => el === null);
@@ -78,11 +54,8 @@ const handleSubmit = ()=>{
   
   if(!valuesExist || !errorsExist){
     props.login(inputValue);
-
-     
-  }
  
-
+  };
 
 };
 

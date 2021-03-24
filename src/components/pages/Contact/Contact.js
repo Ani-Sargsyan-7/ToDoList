@@ -77,12 +77,7 @@ const requiredErrMessage = 'Field is required!';
     //                 email:'',
     //                 message:''
     //             });
-    //     })
-    //     .catch((error)=>{
-    //         console.log('catch error', error);
-    //     });
-
-    // return;
+    //   
     //     }
     //     if(valuesExist && !errorsExist){
     //         setErrors({
@@ -115,9 +110,11 @@ const requiredErrMessage = 'Field is required!';
             name = 'email'
             onChange ={onChangeInputValue}
             />
+            {errors &&
             <Form.Text className="text-danger">
             {errors.email}
             </Form.Text>
+            }
         </Form.Group>
        
         <Form.Group className={styles.inp}>
@@ -129,9 +126,11 @@ const requiredErrMessage = 'Field is required!';
             name = 'name'
             onChange = {onChangeInputValue}
             />
+            {errors &&
             <Form.Text className="text-danger">
             {errors.name}
             </Form.Text>
+            }
         </Form.Group>
        
         <Form.Group className={styles.inp}>
@@ -143,9 +142,11 @@ const requiredErrMessage = 'Field is required!';
             name = 'message'
             onChange = {onChangeInputValue}
             />
+            {errors &&
             <Form.Text className="text-danger">
             {errors.message}
             </Form.Text>
+            }
         </Form.Group>
            
         <Button 
