@@ -1,13 +1,18 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {textTruncate} from '../../helpers/util'
+import {textTruncate} from '../../helpers/util';
 import {
+Container, Row, Col,
 InputGroup,FormControl,
-Button, Dropdown,
+Button, Dropdown, Form,
 DropdownButton, 
 } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import {getTasks} from '../../store/actions'
+import {getTasks} from '../../store/actions';
+import {FaSearch } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+
+
 
 import "react-datepicker/dist/react-datepicker.css";
 import styles from './search.module.css'
@@ -23,7 +28,7 @@ const statusOptions = [
     value:'active'
   },
   {
-    label:'Donee',
+    label:'Done',
     value:'done'
   },
 ];
@@ -151,8 +156,11 @@ function SearchTasks(props){
 };
 
     return(
-      <div  className= {styles.inputGroup}>
-        <InputGroup>
+      <Container fluid>
+      <Row className='justify-content-center'>
+      <Col xs={4} md={6} lg={8} xl={10}>
+        <InputGroup >
+        <Form  className= {styles.form}>
           <FormControl
           className = {styles.searchInput}
           placeholder = "Search Task" 
@@ -160,13 +168,17 @@ function SearchTasks(props){
           onKeyUp={handleKeyDown}
           value = {search}
           />
-          <InputGroup.Append>
+          <InputGroup.Append  className={styles.inputGroup}>
+          <DropdownButton
+          className = {styles.BtnforSearch}
+          title={<FaSearch/>}
+          variant=""
+          >
           <DropdownButton
               className = {styles.dropDownBtn}
               onKeyUp={handleKeyDown}
               size ='sm'
               menuAlign = "right"
-              as = {InputGroup.Append}
               variant=""
               title = "Dates"
               >
@@ -193,8 +205,7 @@ function SearchTasks(props){
           title={status.value ? status.label : "Status"} 
         >
         {statusOptions.map((opt,index) => (
-          <Dropdown.Item
-          
+          <Dropdown.Item      
           key = {index}
           active = {status.value === opt.value}
           onClick = {()=>setStatus(opt)}
@@ -219,6 +230,7 @@ function SearchTasks(props){
           {opt.label}
           </Dropdown.Item>))}
           </DropdownButton> 
+          </DropdownButton>
           <Button  
           className = {styles.btn}
           onClick = {handleSubmit}>
@@ -230,11 +242,17 @@ function SearchTasks(props){
           All 
           </Button>
           </InputGroup.Append>
-        </InputGroup>
-        
-
-    </div>
+          </Form>
+        </InputGroup> 
+        </Col>       
+        </Row>
+    </Container>
   );
+};
+
+
+SearchTasks.propTypes = {
+  getTasks:PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {

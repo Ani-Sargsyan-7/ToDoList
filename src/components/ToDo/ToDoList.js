@@ -3,7 +3,8 @@ import Task from '../Task/Task';
 import NewTask from '../NewTask/NewTask';
 import Confirm from '../Confirm/Confirm';
 import EditTask from '../EditTask/EditTask';
-import {Container, Row, Col, Button,} from 'react-bootstrap';
+import SearchTasks from '../Search/SearchTasks';
+import {Container, Row, Col, Button,ButtonGroup} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {getTasks, removeTask, deleteCheckedTasks } from '../../store/actions'
 
@@ -110,12 +111,12 @@ class ToDoList extends Component{
              return (
                 <Col
                     key={task._id}
-                    xs={9}
-                    sm={8}
-                    md={6}
-                    lg={5}
-                    xl={3}
-                    className='ml-1 mb-4 justify-content-center'
+                    xs={12}
+                    sm={7}
+                    md={4}
+                    lg={3}
+                    xl={2}
+                    className='ml-1 mr-1 mb-4 justify-content-center'
                 >
                     <Task
                     data={task}
@@ -134,9 +135,16 @@ class ToDoList extends Component{
         return(
 
            <>              
-                <Container className = {styles.container}>
-                    <Row className='justify-content-beetwen'>
-                        <Col className = {styles.buttons}> 
+                <Container fluid>
+                <Row className={` mb-4 mt-5 justify-content-center`}>
+                <Row>
+                    <Col xs={4} md={8} lg={12}  className={styles.sarchSection}>
+                        <SearchTasks/>
+                    </Col>
+                </Row>
+                <Row className={` mb-4 mt-5 justify-content-center`}>
+                    <ButtonGroup className={styles.btnGroup}>
+                        <Col xs={3}  className = {styles.buttons}> 
                            <Button 
                            className={`${styles.btn} ${!selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
@@ -146,18 +154,17 @@ class ToDoList extends Component{
                            Add new Task
                            </Button>
                            </Col>
-                           <Col  className = {styles.buttons}>
+                           <Col xs={3}  className = {styles.buttons}>
                            <Button 
                            className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
-                           size="sm"  
                            onClick={this.toggleShowConfirm}
                            disabled={!selectedTasks.size}
                            >
-                           Delete selected
+                           Del.selected
                            </Button>
                            </Col>
 
-                           <Col  className = {styles.buttons}>
+                           <Col xs={3}  className = {styles.buttons}>
                            <Button                           
                            className={`${styles.btn} ${selectedTasks.size !== tasks.length ? styles.btnHover : " "} `}
                            size="sm"  
@@ -168,7 +175,7 @@ class ToDoList extends Component{
                            </Button>
                            </Col>
 
-                           <Col  className = {styles.buttons}>
+                           <Col xs={3}  className = {styles.buttons}>
                            <Button 
                            className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
@@ -178,11 +185,14 @@ class ToDoList extends Component{
                            Unselect  All
                            </Button>
                         </Col> 
+                        </ButtonGroup> 
                     </Row>
-                    <Row className='ml-1 mb-4 mt-5 justify-content-center'>
-                    {tasksList}
-                    </Row>   
-                        <a className = {styles.linkToTop} href= "/#"> To Top </a>           
+                    </Row>  
+                    <Row className={`${styles.cards} justify-content-center`}>
+            
+                        {tasksList}
+            
+                    </Row>     
                 </Container>
                 
                 {showConfirm && 

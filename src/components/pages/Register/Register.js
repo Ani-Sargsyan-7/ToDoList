@@ -10,6 +10,7 @@ import styles from './register.module.css';
 
 function Register(props){
 
+    const required = 'Field is required!';
     const [inputValue, setInputValue] = useState(
 
         {
@@ -42,7 +43,7 @@ function Register(props){
         if(!value.trim()){
             setErrors({
                 ...errors,
-                [name]: 'Field is required!'
+                [name]: required
             });
         } else{
             setErrors({
@@ -53,6 +54,7 @@ function Register(props){
         const  nameValid = /^[a-zA-Z]$/;
         
         switch(name){
+            
             case 'name':
             if(!nameValid.test(value) & value){
                 setErrors({
@@ -112,13 +114,21 @@ const handleSubmit = ()=>{
     const errorsExist = !Object.values(errors).every(el => el === null);
     const valuesExist = !Object.values(inputValue).every(el => el === '');
   
-    
+    console.log(valuesExist && !errorsExist)
     if(!valuesExist || !errorsExist){
         props.register(inputValue);
        
-    }
+    }     
+      setErrors({
+            name:required,
+            surname:required,
+            email:required,
+            password:required,
+            confirmPassword: required
+        });
+
     
-}
+};
   
     return(
         <Container>

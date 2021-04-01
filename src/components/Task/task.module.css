@@ -31,24 +31,25 @@
 }
 
 .btn{
-    margin-right: 5px;
     border:none !important;
     outline: 0 none !important;
     background-color:#764258 !important;
 }
+
 .btnColorHover:hover{
     background-color: #af6b7ad0 !important;
 }
+
 .btn:focus, .btn:active {
     box-shadow: none !important;
     outline:  0  !important;
   }
 
 .card{
-    height: 100%;
-    background-attachment: fixed;
+    width: 200px;
+    height:auto;
     padding: 0 !important;
-    background-color: rgba(255, 255, 255, 0.144)!important;
+    background-color: rgba(255, 255, 255, 0)!important;
     color: rgba(61, 36, 36);
     box-shadow:6px 4px 4px 3px rgba(98, 69, 72, 0.479);
     transition: transform .2s linear;
@@ -69,4 +70,49 @@
     
 }
 
+@media  screen and (max-width: 462px) {
+
+    .text{
+        height: 34px;
+        font: 11px serif;
+    }
+    .title{
+        font-size: 16px !important;
+        height:  36px;
+        font-weight: normal;
+    }
+    .card{
+        margin-left:50px;
+    }
+  }
+@media screen and (min-width: 462px) and (max-width: 600px){
+    .text{
+        height: 36px;
+        font: 12px serif;
+    }
+    .title{
+        font-size: 17px !important;
+        height: 38px;
+        font-weight: normal;
+    }
+    .card{
+        margin-left:30px;
+    }
+  }
+  
+  @media  screen and (min-width: 600px) and (max-width: 769px){
+    .text{
+        height: 38px;
+        font: 13px serif;
+    }
+    .title{
+        font-size: 18px !important;
+        font-weight:normal;
+        height:  39px;
+    }
+    .card{
+        margin-left:30px;
+    }
+  }
+  
 

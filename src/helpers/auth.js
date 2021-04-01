@@ -17,7 +17,7 @@ export function logout(){
     store.dispatch({
         type:LOGOUT
     });
-    history.push('/login');
+    history.push('/about');
 };
 
 export const getToken = ()=> {

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import {Card, Button,Form } from 'react-bootstrap';
+import {Container,Row,Col, Card, Button,Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt, faCheckDouble, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import {formatDate} from '../../helpers/util';
@@ -25,7 +25,10 @@ class Task extends PureComponent {
         const task = this.props.data;
         const {disabled, onDelete,index, selected,onEdit, editTask } = this.props;
         
-        return(           
+        return(    
+            <Container>  
+            <Row className='justify-content-center'>  
+            <Col xs={12}>
             <Card className={`${styles.card} ${selected ? styles.selected : ""}`}>               
             <Card.Header className = {styles.header}>
                 <Form.Check
@@ -98,7 +101,9 @@ class Task extends PureComponent {
             }
             </Card.Body>
         </Card>
-        
+        </Col> 
+        </Row> 
+        </Container> 
         );
     };
     

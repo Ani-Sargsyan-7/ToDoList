@@ -7,6 +7,7 @@ import Register from './components/pages/Register/Register';
 import NotFound from './components/pages/NotFound/NotFound';
 import SingleTask from './components/pages/SingleTask/SingleTask';
 import NavMenu from './components/NavBar/NavMenu';
+import Footer from './components/Footer/Footer';
 import AuthRoute from './components/AuthRoute/AuthRoute';
 import {
   Route,
@@ -103,6 +104,7 @@ function App({loading,successMessage, errorMessage}){
           />
           <Redirect to='/not-found'/>
         </Switch>
+        <Footer/>
       </Router>
       <ToastContainer />
       {loading && <Spinner />}

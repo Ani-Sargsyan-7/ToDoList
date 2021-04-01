@@ -1,20 +1,17 @@
   
 *{
-    margin: 0;
-    padding: 0;
     list-style: none;
     outline: none;
     user-select: none;
+    padding: 0;
+    margin: 0;
 }
+
 
 h1{
     font-size: 60px !important;
     color: #b36c79c9 ;
     text-shadow: -5px -5px 2px  #44253546;
-}
-
-.buttons{
-    margin:180px 0 60px 80px;
 }
 
 .btn {
@@ -23,8 +20,19 @@ h1{
     outline: 0 none !important;
     background: #7E3D4A !important;
     color: #E2C9C3 !important;
-    font: 1em  bolder sans-serif;
+    font: 14px  bolder sans-serif;
     box-shadow: 4px 3px 4px 0 rgba(68, 54, 55, 0.657);
+}
+.btnGroup{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btnDisabled {
+    background: #af6b7a7a !important;
+    color: #88466a !important;
 }
 
 .btnHover:hover {
@@ -35,32 +43,52 @@ h1{
 .btn:focus, .btn:active {
     box-shadow: none !important;
     outline:  0  !important;
-  }
+}
 
-
-.linkToTop{
-    color: #965f6b;
-    position: fixed;
-    z-index: 1000;
-    top: 90%;
-    left:86%;
-    font: 30px serif;
-    font-style: italic;
-    font-weight: 700;
-    text-shadow: 
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #fff,
-    0 0 40px rgb(62, 161, 161),
-    0 0 80px rgb(33, 114, 114),
-    0 0 90px rgb(41, 107, 107),
-    0 0 100px rgba(0, 255, 255, 0.555),
-    0 0 150px #0ff;
+@media  screen and (min-width: 400px) and (max-width: 600px) {
+    h1{
+        font-size: 40px !important;
+    }
     
-   
-}
-
-.linkToTop:hover{
-    text-decoration: none;
-    color: rgba(68, 54, 55, 0.657)
-}
+    .btn {
+        width: 110px;
+        font: 10px  bolder sans-serif;
+        box-shadow: 3px 3px 3px 0 rgba(68, 54, 55, 0.657);
+    }
+  }
+  
+  @media  screen and (min-width: 600px) and (max-width: 767px){
+    h1{
+        font-size: 50px !important;
+    }
+    
+    .btn {
+        width: 110px;
+        font: 12px  bolder sans-serif;
+        box-shadow: 3px 3px 3px 0 rgba(68, 54, 55, 0.657);
+    }
+  }
+  
+  @media  screen and (min-width: 768px) and (max-width: 991px){
+    h1{
+        font-size: 55px !important;
+    }
+    
+    .btn {
+        width: 120px;
+        font: 14px  bolder sans-serif;
+        box-shadow: 3px 3px 3px 0 rgba(68, 54, 55, 0.657);
+    }
+  } 
+  
+  @media  screen and (min-width: 992px) and (max-width: 1200px) {
+    h1{
+        font-size: 58px !important;
+    }
+    
+    .btn {
+        width: 120px;
+        font: 14px  bolder sans-serif;
+        box-shadow: 3px 3px 3px 0 rgba(68, 54, 55, 0.657);
+    }
+  } 
