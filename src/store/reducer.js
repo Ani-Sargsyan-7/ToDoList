@@ -5,13 +5,15 @@ import {checkLoginStatus} from '../helpers/auth';
 const initState = {
   tasks: [],
   task: null,
+  user:null,
   deletingTask: false,
   addingTask: false,
   editingTask: false,
   loading: false,
   successMessage: null,
   errorMessage: null,
-  isAuth: checkLoginStatus()
+  isAuth: checkLoginStatus(),
+  successSend: false
 };
 
 
@@ -29,6 +31,8 @@ export default function reducer(state = initState, action) {
           deletingTask: false,
           addingTask: false,
           editingTask: false,
+          successSend: false
+
       }
 
     case actionType.ERROR:
@@ -135,7 +139,10 @@ export default function reducer(state = initState, action) {
 
     case actionType.SEND_MESSAGE:
       return{
-        loading: false,   
+        ...state,
+        successSend:true,
+        loading: false, 
+        successMessage: 'You send massage successfully!'  
       }
 
       case actionType.REGISTER:
@@ -157,6 +164,13 @@ export default function reducer(state = initState, action) {
             ...state,
             loading: false,
             isAuth: false
+        }
+      case actionType.GET_USER_INFO:
+        return {
+            ...state,
+            loading:false,
+            user:`${action.user.name} ${action.user.surname}`,
+            isAuth: true,
         }
 
   default:

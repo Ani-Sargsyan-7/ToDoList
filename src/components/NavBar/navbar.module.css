@@ -1,16 +1,29 @@
 .navbar{
     background-attachment: fixed;
-    background-color :#f3eded;
-    margin-bottom: 0px;
-    height: 70px;
+    background-size: cover;
+    background-color: #fffbfe;
+    background-image: linear-gradient(to bottom right, #f8f2f278, #e3d1f1e1, #aec5c398, #7c415378);
+    height: 50px;
     width: 100%;
     position: fixed !important;
     z-index: 100;
-    border-bottom:1px solid  #70323c21;
+    border-bottom: 1px solid #44253546;   
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row; 
+    align-items:center;
+}
+
+.nav{
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
 }
 
 .logo{
-    font: 40px  bolder !important;
+    font: 40px  bolder;
     color: #70323cc9 !important;
     text-shadow: -4px -4px 2px  #44253546;
     margin-right: 30px !important;
@@ -22,7 +35,6 @@
     font-size: 20px;
     text-decoration: none !important;
     color: #70323cc9 !important;
-    text-shadow: -2 -2px 2px  #44253546;
     margin-right: 20px;
     transition: transform .2s linear;
     position: relative;
@@ -57,22 +69,152 @@
 
 .btn{
     height: 30px;
+    width: 60px;
     padding: 0 ! important;
-    border: none !important;
-    border-radius: 3px;
+    border: 1px solid !important;
+    border-radius: 50%;
     outline: 0 none !important;
     background:  inherit !important;
     color: #70323cc9 !important;
-    font: 20px bold serif;
-    margin-top: -3px;
+    font: 16px bold serif;
+    margin-top: -6px;
+    margin-left: 10px;
 }
 
 .btn:hover {
   background:inherit !important;
-  color: #532940 !important;
+  color: #c54d61c9 !important;
 }
 
 .btn:active,.btn:hover{
   box-shadow: none !important;
   outline:  0 none !important;
 }
+.userName{
+    font-size: 20px;
+    text-decoration: none !important;
+    color: #70323cc9 !important;
+}
+
+@media only screen and (max-width: 462px) {
+    .logo {
+        font-size: 16px;
+        margin-right: 10px !important;
+        margin-left: 10px;
+    }
+    .menu{
+        font-size: 10px;
+        margin-right: 10px;  
+    }
+    .userName{
+        font-size: 8px;
+    }
+    .flex{
+        margin-left: -140px;
+    }
+    .btn{
+        height: 20px;
+        width: 30px;
+        font-size: 8px;
+        margin-left: 8px;
+    }
+  }
+@media only screen and (min-width: 462px) and (max-width: 600px){
+    .logo {
+        font-size: 18px;
+        margin-right: 14px !important;
+        margin-left: 14px;
+    }
+    .menu{
+        font-size: 12px;
+        margin-right: 12px;  
+    }
+   
+    .userName{
+        font-size: 10px;
+    }
+    .flex{
+        margin-left: -160px;
+    }
+    .btn{
+        height: 20px;
+        width: 40px;
+        font-size: 10px;
+        margin-left: 8px;
+    }
+  }
+  
+  @media  screen and (min-width: 600px) and (max-width: 769px){
+    .logo {
+        font-size: 26px;
+        margin-right: 18px !important;
+        margin-left: 16px;
+    }
+    .menu{
+        font-size: 14px;
+        margin-right: 14px;  
+    }
+    .btn{
+        height: 26px;
+        font-size: 14px;
+        margin-top: -6px;
+    }
+    .userName{
+        font-size: 16px;
+    }
+    .flex{
+        margin-left: -100px;
+    }
+  }
+  
+  @media  screen and (min-width: 768px) and (max-width: 993px){
+    .logo {
+        font-size: 30px;
+        margin-right: 20px !important;
+        margin-left: 28px;
+    }
+    .menu{
+        font-size: 16px;
+        margin-right: 14px;  
+    }
+    .btn{
+        height: 30px;
+        font-size: 16px;
+        margin-top: -6px;
+    }
+    .nav{
+        display: flex;
+        flex-direction:space-around ;
+    }
+    .userName{
+        font-size: 18px;
+    }
+    .flex{
+        margin-left: -50px;
+    }
+  } 
+  
+  @media  screen and (min-width: 992px) and (max-width: 1200px) {
+    .logo {
+        font-size: 38px;
+        margin-right: 28px !important;
+        margin-left: 36px;
+    }
+    .menu{
+        font-size: 18px;
+        margin-right: 18px;  
+    }
+    .btn{
+        height: 30px;
+        font: 18px bold serif;
+        margin-top: -6px;
+    }
+    .flex{
+        margin-left: -50px;
+    }
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up)
+  @media only screen and (min-width: 1200px) {
+    .navbar {background: pink;}
+  } */

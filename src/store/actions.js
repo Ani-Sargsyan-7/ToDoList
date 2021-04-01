@@ -18,7 +18,7 @@ export function getTasks(params = {}) {
                 if(!tasks)  return;
                 dispatch({
                     type: actionType.GET_TASKS,
-                    tasks: tasks
+                    tasks
                 });
             })
             .catch((err) => {
@@ -154,24 +154,27 @@ export function editTask(data, from,) {
     }
 };
 
-// export function sendMessage(inputValues){
-//     return (dispatch) => {
+export function sendMessage(inputValues){
+    return (dispatch) => {
+        dispatch({
+            type: actionType.PENDING
+        });
 
-//         requestWithouthToken(`${apiHost}/form`, 'POST', inputValues)
-//             .then(() => {
-//                 dispatch({
-//                     type: actionType.SEND_MESSAGE,
+        requestWithouthToken(`${apiHost}/form`, 'POST', inputValues)
+            .then(() => {
+                dispatch({
+                    type: actionType.SEND_MESSAGE,
                     
-//                 });
-//             })
-//             .catch((err) => {
-//                 dispatch({
-//                     type: actionType.ERROR,
-//                     error: err.message
-//                 });
-//             });
-//     }
-// };
+                });
+            })
+            .catch((err) => {
+                dispatch({
+                    type: actionType.ERROR,
+                    error: err.message
+                });
+            });
+    }
+};
 
 export function register(data) {
     return (dispatch) => {
@@ -196,10 +199,6 @@ export function register(data) {
 };
 export function login(data) {
     return (dispatch) => {
-        dispatch({
-            type: actionType.PENDING
-        });
-
         requestWithouthToken(`${apiHost}/user/sign-in`, 'POST', data)
             .then((res) => {
                 saveToken(res);
@@ -208,6 +207,30 @@ export function login(data) {
                     type: actionType.LOGIN,
                 });
                 history.push('/');
+            })
+            .catch((err) => {
+                dispatch({
+                    type: actionType.ERROR,
+                    error: err.message
+                });
+            });
+    }
+};
+
+export function getUserInfo() {
+    return (dispatch) => {
+        
+        dispatch({
+            type: actionType.PENDING
+        });
+
+        request(`${apiHost}/user`)
+            .then((user) => {
+                if(!user)  return;
+                dispatch({
+                    type: actionType.GET_USER_INFO,
+                    user,
+                });
             })
             .catch((err) => {
                 dispatch({

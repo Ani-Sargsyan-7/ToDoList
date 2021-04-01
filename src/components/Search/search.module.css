@@ -1,30 +1,61 @@
-  .inputGroup{
-      margin-right: 40px;
-  }
-.dropDownBtn{
-    padding: 0;
-    border: 1px solid #af6b7a7a !important;
-    border-radius: 3px;
+  .form{
+    margin: 20px 0 40px 140px;
     outline: 0 none !important;
-    background:  #a97d8977 !important;
+    height: 38px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed !important;
+    z-index: 1000;
+    background-size: cover;
+    background-attachment: fixed;
+    background: #FAF5FC;
+
+  }
+  
+  .inputGroup{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    }
+
+.dropDownBtn{
+    width:100%;
+    border: 1px solid #af6b7a7a !important;
+    outline: 0 none !important;
+    background:  #cc859877 !important;
     color: #ffffffbb !important;
 }
-
 
 .dropDownBtn:hover {
     background:#dda1ae7a !important;
     color: #88466a !important;
-}
-
-.dropDownBtn:active, .dropDownBtn:hover{
     box-shadow: none !important;
     outline:  none !important;
-  }
+}
 
-  .btn{
-    padding: 5px 8px;
+.dropDownBtn:active{
+    box-shadow: none !important;
+    outline:  none !important;
+}
+
+.BtnforSearch{
     border: 1px solid #af6b7a7a !important;
-    border-radius: 3px;
+    outline: 0 none !important;
+    background:#9c6f7b77 !important;
+    color: #ffffffbb !important;
+}
+
+.BtnforSearch:hover{
+  background:#dda1ae7a !important;
+  color: #88466a !important;
+  box-shadow: none !important;
+  outline:  none !important;
+}
+
+.btn{
+    padding: 6px 16px;
+    border: 1px solid #af6b7a7a !important;
     outline: 0 none !important;
     background:  #a97d8977 !important;
     color: #ffffffbb !important;
@@ -41,9 +72,6 @@
 }
 
 .datepicker{
-    display: flex;
-    align-items:center ;
-    border: 1px solid rgba(61, 36, 36, 0.192) ;
     width: 120px;
     color: #8f5a77;
     user-select: none;
@@ -60,13 +88,65 @@
 
   .textDropdown{
       width: 160px;
-
-
   }
 
   .searchInput{
-    border: 1px solid #c0909bed !important;
+    left: 20px;
+    width: 300px;
+    border: 1px solid #c2b2b5ed !important;
     outline: none !important;
     background-color: inherit !important;
     text-overflow: ellipsis;
   }
+
+  
+  @media  screen and (max-width: 462px) {
+    .inputGroup{
+      width: 50%;
+      }
+      .searchInput{
+        left: 0px;
+        width: 200px;
+      }
+    
+  
+  }
+@media screen and (min-width: 462px) and (max-width: 600px){
+  .inputGroup{
+    width: 60%;
+    }
+    .searchInput{
+      left: 0px;
+      width: 220px;
+    }
+  }
+  
+  @media  screen and (min-width: 600px) and (max-width: 769px){
+    .inputGroup{
+      width: 70%;
+      }
+      .searchInput{
+        left: 0px;
+        width: 240px;
+      }
+  }
+  
+  @media  screen and (min-width: 768px) and (max-width: 993px){
+    .inputGroup{
+      width: 80%;
+      }
+      .searchInput{
+        left: 0px;
+        width: 260px;
+      }
+  } 
+  
+  @media  screen and (min-width: 992px) and (max-width: 1200px) {
+    .inputGroup{
+      width: 90%;
+      }
+      .searchInput{
+        left: 10px;
+        width: 280px;
+      }
+  } 

@@ -1,5 +1,21 @@
 .about{
     position:absolute;
-    top: 40%;
+    top: 30%;
     left: 30%;
+}
+
+.about>h2,.about>h3{
+    font-size: 30px !important;
+    color: #b36c79c9 ;
+}
+
+.link{
+    text-decoration: none !important;
+    font-size: 26px;
+    font-family: serif;
+    color: #aa7792;
+}
+
+.link:hover{
+    color:#ec214dd0;
 }

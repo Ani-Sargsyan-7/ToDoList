@@ -1,16 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Form, Button, Col, Container, Row} from 'react-bootstrap';
-// import {sendMessage} from '../../../store/actions';
+import {sendMessage} from '../../../store/actions';
 import {connect} from 'react-redux'
 
 import styles from './contact.module.css';
 
 
-
-const requiredErrMessage = 'Field is required!';
-
  function Contact(props){
-    
+    const requiredErrMessage = 'Field is required!';
+
     const [inputValues, setInputValues] = useState({
         name:'',
         email:'',
@@ -22,70 +20,86 @@ const requiredErrMessage = 'Field is required!';
         email: null,
         message: null
     });
+
+    const {successSend}= props;
+
+    useEffect(()=>{
+        if(successSend){
+            setInputValues({
+                name: '',
+                email: '',
+                message: ''
+            });
+        }
+    }, [successSend]);
     
     function onChangeInputValue(e){
         const  {name, value} = e.target;
-
-        if(!value){
-            setErrors({
-                ...errors,
-                [name]: requiredErrMessage
-            });
-          };
-
-          if(name === 'name' && value){
-              
-            if (!/^[a-zA-Z]+[a-zA-Z]+$/){
-                setErrors({
-                    ...errors,
-                    name : 'Enter a valid name'
-                });
-                
-              };
-        };
-          if(name === 'email' && value){
-            const emailReg = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-            if(!emailReg.test(value)){
-              setErrors({
-                  ...errors,
-                  email: 'Invalid email'
-              }); 
-            };
-        }
-        else {
-            setErrors({
-                ...errors,
-                [name]: null
-            }); 
-          }; 
 
         setInputValues({
             ...inputValues,
             [name]: value
         });
+
+        if(!value.trim()){
+            setErrors({
+                ...errors,
+                [name]: requiredErrMessage
+            });
+
+        } else{
+            setErrors({
+                ...errors,
+                [name] : null
+            })
+        };
+        
+        const  nameValid = /^[a-zA-Z]+[a-zA-Z]$/;
+        
+        switch(name){
+            
+            case 'name':
+            if(!nameValid.test(value) & value){
+                setErrors({
+                    ...errors,
+                    name:'Entered invalid Name!'
+                })
+            }
+            break;
+
+            case 'email':
+                const emailValid = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(!emailValid.test(value) && value.trim()){
+                setErrors({
+                    ...errors,
+                    email:'Entered invalid email address!'
+                })
+            }
+            break;
+            default:setErrors({
+                ...errors,
+                [name] : null
+            })
+        }
+
     };
 
     function handleSubmit(){
-        // const errorsExist = !Object.values(errors).every(el => el === null);
-        // const valuesExist = !Object.values(inputValues).some(el => el === '');
+        const errorsExist = !Object.values(errors).every(el => el === null);
+        const valuesExist = !Object.values(inputValues).some(el => el === '');
 
-    //     if(valuesExist && !errorsExist){
+        if(valuesExist && !errorsExist){
 
-    //         props.sendMessage()
-    //             setInputValues({
-    //                 name:'',
-    //                 email:'',
-    //                 message:''
-    //             });
-    //   
-    //     }
-    //     if(valuesExist && !errorsExist){
-    //         setErrors({
-    //             name: requiredErrMessage,
-    //             email: requiredErrMessage,
-    //             message: requiredErrMessage
-    //         });
-    //    }
+            props.sendMessage(inputValues);
+      
+        }else if(!valuesExist && !errorsExist){
+            setErrors({
+                name: requiredErrMessage,
+                email: requiredErrMessage,
+                message: requiredErrMessage
+            });
+       }
+    
     };
 
 
@@ -163,8 +177,14 @@ const requiredErrMessage = 'Field is required!';
     );
 };
 
-const mapDispatchToProps = {
-    // sendMessage,
+const mapStateToProps =(state)=> {
+   return { 
+       successSend:state.successSend
+    }
 }
 
-export default connect(null, mapDispatchToProps)(Contact);
+const mapDispatchToProps = {
+     sendMessage,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);
