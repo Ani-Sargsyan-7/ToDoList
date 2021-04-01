@@ -111,10 +111,10 @@ class ToDoList extends Component{
              return (
                 <Col
                     key={task._id}
-                    xs={8}
+                    xs={12}
                     sm={7}
-                    md={6}
-                    lg={4}
+                    md={4}
+                    lg={3}
                     xl={2}
                     className='ml-1 mr-1 mb-4 justify-content-center'
                 >
@@ -135,16 +135,16 @@ class ToDoList extends Component{
         return(
 
            <>              
-                <Container fluid >
-                <Row className={`${styles.container} mb-4 mt-5 justify-content-center`}>
+                <Container fluid>
+                <Row className={` mb-4 mt-5 justify-content-center`}>
                 <Row>
-                    <Col xs={6} md={8} lg={12}  className={styles.sarchSection}>
+                    <Col xs={4} md={8} lg={12}  className={styles.sarchSection}>
                         <SearchTasks/>
                     </Col>
                 </Row>
-                <Row>
-                    <ButtonGroup className={`${styles.btnGroup} justify-content-center`}>
-                        <Col xs={3} md={4} lg={6} className = {styles.buttons}> 
+                <Row className={` mb-4 mt-5 justify-content-center`}>
+                    <ButtonGroup className={styles.btnGroup}>
+                        <Col xs={3}  className = {styles.buttons}> 
                            <Button 
                            className={`${styles.btn} ${!selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
@@ -154,18 +154,17 @@ class ToDoList extends Component{
                            Add new Task
                            </Button>
                            </Col>
-                           <Col xs={3} md={4} lg={6} className = {styles.buttons}>
+                           <Col xs={3}  className = {styles.buttons}>
                            <Button 
                            className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
-                           size="sm"  
                            onClick={this.toggleShowConfirm}
                            disabled={!selectedTasks.size}
                            >
-                           Delete selected
+                           Del.selected
                            </Button>
                            </Col>
 
-                           <Col xs={3} md={4} lg={6} className = {styles.buttons}>
+                           <Col xs={3}  className = {styles.buttons}>
                            <Button                           
                            className={`${styles.btn} ${selectedTasks.size !== tasks.length ? styles.btnHover : " "} `}
                            size="sm"  
@@ -176,7 +175,7 @@ class ToDoList extends Component{
                            </Button>
                            </Col>
 
-                           <Col xs={3} md={4} lg={6} className = {styles.buttons}>
+                           <Col xs={3}  className = {styles.buttons}>
                            <Button 
                            className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  

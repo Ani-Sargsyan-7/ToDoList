@@ -4,11 +4,11 @@
     background-color: #b496b3;
     background-image: linear-gradient(to bottom left, #968d8dca, #d3becefd, #bdd8d698, #7c415378);
     border-top: 1px solid #44253546;
-    height: 50px;
+    height: 60px;
     width: 100%;
     position: fixed !important;
     z-index: 100;  
-    display: inline-flex;
+    display: flex;
     justify-content: start;
     align-items: center;
     flex-direction: row; 
@@ -38,7 +38,6 @@
     font-size: 20px;
     margin-right: 20px;
     color: #70323cef;
-    transition: transform 0.5s ease;
 }
 
 .socialSites > a:hover{
@@ -73,9 +72,21 @@
         margin-left: 60px;
     }    
     .text>p{
-        font-size: 14px;
+        font-size: 12px;
         margin-top: 6px;
         margin-right: 6px;
+    }
+    .arrow{
+        font-size: 8px;
+        margin-left: 8px;
+    }
+    .socialSites >a{
+        font-size: 12px;
+        margin-right: 10px;
+    }
+    .linkToTop{
+        font-size: 16px;
+        margin-left: 100px;
     }
     
   }
@@ -84,11 +95,22 @@
         margin-left: 70px;
     }
     .text>p{
-        font-size: 16px;
+        font-size: 14px;
         margin-top: 8px;
         margin-right: 8px;
     }
-    
+    .arrow{
+        font-size: 8px;
+        margin-left: 8px;
+    }
+    .socialSites >a{
+        font-size: 14px;
+        margin-right: 12px;
+    }
+    .linkToTop{
+        font-size: 18px;
+        margin-left: 200px;
+    }
   }
   
   @media  screen and (min-width: 600px) and (max-width: 769px){
@@ -96,11 +118,22 @@
         margin-left: 80px;
     }
     .text>p{
-        font-size: 15px;
+        font-size: 16px;
         margin-top: 7px;
         margin-right: 7px;
     }
-    
+    .arrow{
+        font-size: 10px;
+        margin-left: 8px;
+    }
+    .socialSites >a{
+        font-size: 16px;
+        margin-right: 14px;
+    }
+    .linkToTop{
+        font-size: 18px;
+        margin-left: 200px;
+    }
   }
   
   @media  screen and (min-width: 768px) and (max-width: 993px){
@@ -112,12 +145,26 @@
         margin-top: 8px;
         margin-right: 8px;
     }
-    
+    .arrow{
+        font-size: 12px;
+        margin-left: 8px;
+    }
+    .socialSites >a{
+        font-size: 18px;
+        margin-right: 14px;
+    }
+    .linkToTop{
+        font-size: 20px;
+        margin-left: 500px;
+    }
   } 
   
   @media  screen and (min-width: 992px) and (max-width: 1200px) {
     .text{
         margin-left: 96px;
     }
-    
+    .linkToTop{
+        font-size: 24px;
+        margin-left: 600px;
+    }
   } 

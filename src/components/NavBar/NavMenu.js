@@ -10,10 +10,13 @@ import styles from './navbar.module.css'
 
 
  function NavMenu(props){
-       
+    const {user,getUserInfo}=props;
+
     useEffect(()=>{
-        props.getUserInfo(props.user);
-    },[]);
+
+    return getUserInfo(user)
+      
+    },[user, getUserInfo]);
     
     const {isAuth} = props;
     return(

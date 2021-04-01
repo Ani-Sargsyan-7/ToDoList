@@ -20,14 +20,14 @@ h1{
     outline: 0 none !important;
     background: #7E3D4A !important;
     color: #E2C9C3 !important;
-    font: 1em  bolder sans-serif;
+    font: 14px  bolder sans-serif;
     box-shadow: 4px 3px 4px 0 rgba(68, 54, 55, 0.657);
 }
 .btnGroup{
     margin-top: 80px;
     display: flex;
     flex-direction: row;
-   
+    justify-content: center;
 }
 
 .btnDisabled {
@@ -75,7 +75,7 @@ h1{
     }
     
     .btn {
-        width: 110px;
+        width: 120px;
         font: 14px  bolder sans-serif;
         box-shadow: 3px 3px 3px 0 rgba(68, 54, 55, 0.657);
     }
@@ -87,8 +87,8 @@ h1{
     }
     
     .btn {
-        width: 110px;
-        font: 16px  bolder sans-serif;
+        width: 120px;
+        font: 14px  bolder sans-serif;
         box-shadow: 3px 3px 3px 0 rgba(68, 54, 55, 0.657);
     }
   } 

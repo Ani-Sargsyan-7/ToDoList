@@ -110,7 +110,7 @@
         font-size: 8px;
     }
     .flex{
-        margin-left: -140px;
+        margin-left: -120px;
     }
     .btn{
         height: 20px;
@@ -214,7 +214,4 @@
     }
   } 
   
-  /* Extra large devices (large laptops and desktops, 1200px and up)
-  @media only screen and (min-width: 1200px) {
-    .navbar {background: pink;}
-  } */
+ 

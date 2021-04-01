@@ -26,7 +26,7 @@ class Task extends PureComponent {
         const {disabled, onDelete,index, selected,onEdit, editTask } = this.props;
         
         return(    
-            <Container fluid>  
+            <Container>  
             <Row className='justify-content-center'>  
             <Col xs={12}>
             <Card className={`${styles.card} ${selected ? styles.selected : ""}`}>               

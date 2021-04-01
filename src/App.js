@@ -104,7 +104,7 @@ function App({loading,successMessage, errorMessage}){
           />
           <Redirect to='/not-found'/>
         </Switch>
-        <Footer></Footer>
+        <Footer/>
       </Router>
       <ToastContainer />
       {loading && <Spinner />}

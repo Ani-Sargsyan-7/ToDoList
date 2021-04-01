@@ -10,6 +10,8 @@ DropdownButton,
 import DatePicker from 'react-datepicker';
 import {getTasks} from '../../store/actions';
 import {FaSearch } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -246,6 +248,11 @@ function SearchTasks(props){
         </Row>
     </Container>
   );
+};
+
+
+SearchTasks.propTypes = {
+  getTasks:PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {

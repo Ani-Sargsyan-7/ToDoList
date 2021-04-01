@@ -67,3 +67,41 @@
     outline:  0  !important;
     border: 2px solid #7c485493 !important;
   }
+
+  @media  screen and (min-width: 400px) and (max-width: 600px) {
+  
+    .text{
+        font-size: 10px;
+        margin-bottom: 30px;
+    }
+    .label{
+        font: 14px bold;
+    }
+    .btn {
+        width: 100px;
+        height: 36px;
+        margin:18px;
+      
+    }
+  }
+  
+  @media  screen and (min-width: 600px) and (max-width: 767px){
+    .label{
+        font: 16px bold;
+    }
+    .text{
+        font-size: 12px;
+        margin-bottom: 40px;
+    }
+  }
+  
+  @media  screen and (min-width: 768px) and (max-width: 991px){
+    .label{
+        font: 18px bold;
+    }
+    .text{
+        font-size: 10px;
+        margin-bottom: 40px;
+    }
+  } 
+  
