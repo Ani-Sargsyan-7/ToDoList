@@ -72,7 +72,7 @@
     width: 60px;
     padding: 0 ! important;
     border: 1px solid !important;
-    border-radius: 50%;
+    border-radius: 4px;
     outline: 0 none !important;
     background:  inherit !important;
     color: #70323cc9 !important;
@@ -97,6 +97,9 @@
 }
 
 @media only screen and (max-width: 462px) {
+    .navbar{
+        height: 40px;
+    }
     .logo {
         font-size: 16px;
         margin-right: 10px !important;
@@ -107,7 +110,7 @@
         margin-right: 10px;  
     }
     .userName{
-        font-size: 8px;
+        font-size: 10px;
     }
     .flex{
         margin-left: -120px;
@@ -120,6 +123,9 @@
     }
   }
 @media only screen and (min-width: 462px) and (max-width: 600px){
+    .navbar{
+        height: 42px;
+    }
     .logo {
         font-size: 18px;
         margin-right: 14px !important;
@@ -134,7 +140,7 @@
         font-size: 10px;
     }
     .flex{
-        margin-left: -160px;
+        margin-left: -140px;
     }
     .btn{
         height: 20px;
@@ -145,6 +151,9 @@
   }
   
   @media  screen and (min-width: 600px) and (max-width: 769px){
+    .navbar{
+        height: 46px;
+    }
     .logo {
         font-size: 26px;
         margin-right: 18px !important;

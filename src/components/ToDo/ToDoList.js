@@ -138,13 +138,13 @@ class ToDoList extends Component{
                 <Container fluid>
                 <Row className={` mb-4 mt-5 justify-content-center`}>
                 <Row>
-                    <Col xs={4} md={8} lg={12}  className={styles.sarchSection}>
+                    <Col xs={6} md={8} lg={12}  className={styles.sarchSection}>
                         <SearchTasks/>
                     </Col>
                 </Row>
                 <Row className={` mb-4 mt-5 justify-content-center`}>
                     <ButtonGroup className={styles.btnGroup}>
-                        <Col xs={3}  className = {styles.buttons}> 
+                        <Col xs={3} md={4} className = {styles.buttons}> 
                            <Button 
                            className={`${styles.btn} ${!selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  
@@ -154,7 +154,7 @@ class ToDoList extends Component{
                            Add new Task
                            </Button>
                            </Col>
-                           <Col xs={3}  className = {styles.buttons}>
+                           <Col xs={3} md={4} className = {styles.buttons}>
                            <Button 
                            className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            onClick={this.toggleShowConfirm}
@@ -164,7 +164,7 @@ class ToDoList extends Component{
                            </Button>
                            </Col>
 
-                           <Col xs={3}  className = {styles.buttons}>
+                           <Col xs={3} md={4} className = {styles.buttons}>
                            <Button                           
                            className={`${styles.btn} ${selectedTasks.size !== tasks.length ? styles.btnHover : " "} `}
                            size="sm"  
@@ -175,7 +175,7 @@ class ToDoList extends Component{
                            </Button>
                            </Col>
 
-                           <Col xs={3}  className = {styles.buttons}>
+                           <Col xs={3}  md={4} className = {styles.buttons}>
                            <Button 
                            className={`${styles.btn} ${selectedTasks.size ? styles.btnHover : " "} `}
                            size="sm"  

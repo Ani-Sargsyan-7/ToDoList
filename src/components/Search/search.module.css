@@ -1,10 +1,11 @@
   .form{
-    margin: 20px 0 40px 140px;
+    margin: 20px;
+    margin-bottom: 40px;
     outline: 0 none !important;
     height: 38px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content:center;
     position: fixed !important;
     z-index: 1000;
     background-size: cover;
@@ -91,62 +92,54 @@
   }
 
   .searchInput{
-    left: 20px;
     width: 300px;
     border: 1px solid #c2b2b5ed !important;
     outline: none !important;
     background-color: inherit !important;
-    text-overflow: ellipsis;
   }
 
   
   @media  screen and (max-width: 462px) {
-    .inputGroup{
-      width: 50%;
-      }
-      .searchInput{
-        left: 0px;
-        width: 200px;
-      }
-    
-  
-  }
-@media screen and (min-width: 462px) and (max-width: 600px){
-  .inputGroup{
-    width: 60%;
+    .form{
+      margin: 18px;
+      margin-bottom:32px;
+      left: -10px;
     }
     .searchInput{
-      left: 0px;
-      width: 220px;
+      width: 100px;
+    }
+    
+  }
+@media screen and (min-width: 462px) and (max-width: 600px){
+  .form{
+    margin-bottom:36px;
+    left: -20px;
+  }
+    .searchInput{
+      width: 120px;
     }
   }
   
   @media  screen and (min-width: 600px) and (max-width: 769px){
-    .inputGroup{
-      width: 70%;
-      }
+    .form{
+      margin-bottom:36px;
+      margin-left: -20px;
+    }
       .searchInput{
-        left: 0px;
-        width: 240px;
+        width: 160px;
       }
   }
   
   @media  screen and (min-width: 768px) and (max-width: 993px){
-    .inputGroup{
-      width: 80%;
-      }
+
       .searchInput{
-        left: 0px;
-        width: 260px;
+        width: 180px;
       }
   } 
   
   @media  screen and (min-width: 992px) and (max-width: 1200px) {
-    .inputGroup{
-      width: 90%;
-      }
+    
       .searchInput{
-        left: 10px;
         width: 280px;
       }
   } 
