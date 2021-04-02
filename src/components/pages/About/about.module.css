@@ -27,7 +27,8 @@
 @media  screen and (max-width: 462px) {
 
     .about{
-        margin: 100px 20px 0 10px;
+        margin-top: 100px;
+        margin-right: 40px;
      }
     .text{
         font-size: 16px !important;
@@ -36,8 +37,8 @@
         font-size: 14px;
     }
     .img{
-        width: 50px;
-        height: 40px;
+        width: 30px;
+        height: 20px;
     }
     
   }

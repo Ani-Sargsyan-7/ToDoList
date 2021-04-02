@@ -10,6 +10,7 @@
 
 .title{
     margin-top: 100px;
+    font-size: 36px;
     text-align: center;
     color: #70323cc9;
     text-shadow: -3px -3px 2px  #44253546;
@@ -69,10 +70,13 @@
   }
 
   @media  screen and (min-width: 400px) and (max-width: 600px) {
-  
     .text{
-        font-size: 10px;
+        font-size: 8px;
         margin-bottom: 30px;
+    }
+    .title{
+        margin-top: 60px;
+        font-size: 20px;
     }
     .label{
         font: 14px bold;
@@ -93,6 +97,10 @@
         font-size: 12px;
         margin-bottom: 40px;
     }
+    .title{
+        font-size: 22px;
+        margin-top: 70px;
+    }
   }
   
   @media  screen and (min-width: 768px) and (max-width: 991px){
@@ -102,6 +110,10 @@
     .text{
         font-size: 10px;
         margin-bottom: 40px;
+    }
+    .title{
+        font-size: 24px;
+        margin-top: 80px;
     }
   } 
   
