@@ -142,7 +142,7 @@ class ToDoList extends Component{
                         <SearchTasks/>
                     </Col>
                 </Row>
-                <Row className={` mb-4 mt-5 justify-content-center`}>
+                <Row className={` ml-1 mb-4 mt-5 justify-content-center`}>
                     <ButtonGroup className={styles.btnGroup}>
                         <Col xs={3} md={4} className = {styles.buttons}> 
                            <Button 
