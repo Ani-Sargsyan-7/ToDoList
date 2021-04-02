@@ -1,8 +1,8 @@
 .about{
-   margin: 100px 20px 20px 20px;
+   margin: 100px 20px 40px 20px;
 }
 
-.about>h2,.about>h3{
+.text{
     font-size: 30px !important;
     color: #b36c79c9;
 }
@@ -12,7 +12,6 @@
     font-size: 26px;
     font-family: serif;
     color: #aa7792;
-    margin-bottom: 20px;
 }
 
 .link:hover{
@@ -21,50 +20,49 @@
 
 .img{
     margin-top: 20px;
-    width: 600px;
+    width: auto;
     height: 300px;
 }
 
 @media  screen and (max-width: 462px) {
 
     .about{
-        margin-left: -20px;
+        margin: 100px 20px 0 10px;
+     }
+    .text{
+        font-size: 16px !important;
     }
-    .about>h2,.about>h3{
+    .link{
+        font-size: 14px;
+    }
+    .img{
+        width: 50px;
+        height: 40px;
+    }
+    
+  }
+  
+@media screen and (min-width: 462px) and (max-width: 600px){
+    .about{
+        margin: 110px 12px 0 12px;
+     }
+    .text{
         font-size: 18px !important;
     }
     .link{
         font-size: 16px;
-        margin-bottom: 20px;
     }
     .img{
         width: 100px;
-        height: 100px;
-    }
-    
-  }
-@media screen and (min-width: 462px) and (max-width: 600px){
-    .about{
-        margin-left: -40px;
-    }
-    .about>h2,.about>h3{
-        font-size: 20px !important;
-    }
-    .link{
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-    .img{
-        width: 200px;
-        height: 200px;
+        height: 80px;
     }
   }
   
   @media  screen and (min-width: 600px) and (max-width: 769px){
     .about{
-        margin-left: -60px;
-    }
-    .about>h2,.about>h3{
+        margin: 130px 16px 0px 16px;
+     }
+    .text{
         font-size: 22px !important;
     }
     .link{
@@ -72,8 +70,8 @@
         margin-bottom: 24px;
     }
     .img{
-        width: 400px;
-        height: 200px;
+        width: 300px;
+        height: 150px;
     }
   }
   

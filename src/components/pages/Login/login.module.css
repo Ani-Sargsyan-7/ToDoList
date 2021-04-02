@@ -14,7 +14,7 @@
 }
 
 .loginForm{
-    background-image: linear-gradient(to left, #70323c52, #E2C9C3 );;
+    background-image: linear-gradient(to left, #70323c52, #E2C9C3 );
     margin-top: 40px;
     border: 1px solid #70323c78;
     border-radius: 6px;
@@ -81,3 +81,79 @@
 .link:hover{
     color:#ec214dd0;
 }
+
+@media  screen and (max-width: 462px) {
+    .title{
+        margin-top: 80px;
+        font-size: 30px;
+    }
+    .text{
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+    .loginForm{
+        padding: 20px;
+        margin-bottom: 40px;
+    } 
+    .btn {
+        width: 80px;
+        height: 30px;
+        font-size: 12px;
+    } 
+    .btn_link{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    .link{
+        font-style: 14px;
+    }
+}
+
+@media  screen and (min-width: 600px) and (max-width: 767px){
+    .title{
+        margin-top: 90px;
+        font-size: 40px;
+    }
+    .text{
+        font-size: 12px;
+        margin-bottom: 26px;
+    } 
+    .loginForm{
+        padding: 26px;
+        margin-bottom: 50px;
+    } 
+    .btn {
+        width: 90px;
+        height: 32px;
+        font-size: 14px;
+    }   
+    .btn_link{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+    .link{
+        font-style: 16px;
+    }
+  }
+  
+  @media  screen and (min-width: 768px) and (max-width: 991px){
+    .title{
+        margin-top: 100px;
+        font-size: 50px;
+    }
+    .text{
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+    .loginForm{
+        padding: 28px;
+        margin-bottom: 50px;
+    }
+    .btn {
+        width: 100px;
+        height: 34px;
+        font-size: 16px;
+    } 
+  } 

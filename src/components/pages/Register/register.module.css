@@ -81,3 +81,71 @@
 .link:hover{
     color:#ec214dd0;
 }
+
+@media  screen and (max-width: 462px) {
+    .title{
+        margin-top: 60px;  
+        font-size: 30px;     
+    }
+    .registerForm{
+        margin-top: 20px;
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+    .text{
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+    .label{
+        margin-left: 8px;
+        font: 18px bold;
+    }
+    
+.btn {
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+}
+.btn_link{
+    display: flex;
+    flex-direction:column;
+    margin-top: 20px;
+}
+.link{
+    font-size: 14px;
+}
+  
+}
+
+@media  screen and (min-width: 600px) and (max-width: 767px){
+    .title{
+        margin-top: 80px; 
+        font-size: 40px;  
+    }
+    .registerForm{
+        margin-top: 30px;
+        padding: 26px;
+        margin-bottom: 50px;
+    }
+    .btn_link{
+        display: flex;
+        flex-direction:column;
+        margin-top: 20px;
+    }
+    .link{
+        font-size: 16px;
+    }
+  }
+  
+  @media  screen and (min-width: 768px) and (max-width: 991px){
+    .title{
+        margin-top: 100px; 
+        font-style: 50px;       
+    }
+    .registerForm{
+        margin-top: 30px;
+        padding: 26px;
+        margin-bottom: 60px;
+    }
+  } 
+  
