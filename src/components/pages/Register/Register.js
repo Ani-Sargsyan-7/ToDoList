@@ -133,7 +133,7 @@ const handleSubmit = ()=>{
     return(
         <Container>
             <Row xs={8} className='justify-content-center'>
-                <Col xs={6}>
+                <Col xs={8}>
                 <h2 className={styles.title}>
                    Register Now
                 </h2>

@@ -51,17 +51,19 @@ h1{
     }
     
     .btn {
-        width: 100px;
+        width: 90px;
         font: 8px sans-serif;
         margin-right: 10%;
     }
     .btnGroup{
+        margin-left: 20px;
+        margin-right: 20px;
         margin-top: 60px;
         display: flex;
         flex-grow: 2;
     }
     .cards{
-        left:-10%;
+        left:-5%;
     }
   }
   
@@ -71,11 +73,12 @@ h1{
     }
     
     .btn {
-        width: 110px;
-        font: 10px  bolder sans-serif;
+        width: 100px;
+        font: 10px   sans-serif;
         margin-right: 8%;
     }
     .btnGroup{
+        margin-left: 20px;
         margin-top: 66px;
     }
   }
@@ -87,7 +90,7 @@ h1{
     
     .btn {
         width: 120px;
-        font: 14px  bolder sans-serif;
+        font: 14px  sans-serif;
         margin-right: 8%;
     }
   } 
