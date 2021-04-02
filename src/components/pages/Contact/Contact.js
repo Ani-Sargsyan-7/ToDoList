@@ -106,7 +106,7 @@ import styles from './contact.module.css';
     return(
      <Container>
      <Row className='justify-content-center'>
-     <Col xs={6}>
+     <Col xs={8}>
      <h2 className={styles.title}>
      Contact Us
      </h2>
@@ -151,7 +151,7 @@ import styles from './contact.module.css';
             <Form.Label className={styles.label}>Message</Form.Label>
             <Form.Control 
             className={`${styles.input} ${errors.message ? styles.invalid: ''}`}
-            as="textarea" rows={5} 
+            as="textarea" rows={3} 
             value = {inputValues.message}
             name = 'message'
             onChange = {onChangeInputValue}

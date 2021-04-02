@@ -103,7 +103,8 @@
     .form{
       margin: 18px;
       margin-bottom:32px;
-      left: -10px;
+      left: 10%;
+
     }
     .searchInput{
       width: 100px;
@@ -113,7 +114,7 @@
 @media screen and (min-width: 462px) and (max-width: 600px){
   .form{
     margin-bottom:36px;
-    left: -20px;
+    left: 15%;
   }
     .searchInput{
       width: 120px;

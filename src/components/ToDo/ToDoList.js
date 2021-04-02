@@ -151,7 +151,7 @@ class ToDoList extends Component{
                            onClick={this.toggleNewTaskModal}
                            disabled={!!selectedTasks.size}
                            >
-                           Add new Task
+                           Add Task
                            </Button>
                            </Col>
                            <Col xs={3} md={4} className = {styles.buttons}>
@@ -171,7 +171,7 @@ class ToDoList extends Component{
                            onClick={this.selectAllTasks}
                            disabled={selectedTasks.size === tasks.length}
                            >
-                           Select  All
+                           Select All
                            </Button>
                            </Col>
 
@@ -182,7 +182,7 @@ class ToDoList extends Component{
                            onClick={this.unselectAll}
                            disabled={!selectedTasks.size}
                            >
-                           Unselect  All
+                           Unselect All
                            </Button>
                         </Col> 
                         </ButtonGroup> 
