@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router';
-import {FaLinkedinIn, FaFacebookF, FaArrowRight } from 'react-icons/fa';
+import {FaLinkedinIn, FaGithub, FaArrowRight } from 'react-icons/fa';
 
 
 import styles from './footer.module.css'
@@ -19,9 +19,9 @@ import styles from './footer.module.css'
                  <FaLinkedinIn/>
                 </a>
                 <a 
-                href = "https://www.linkedin.com/in/ani-sargsyan-6aba40201" 
+                href = "https://github.com/Ani-Sargsyan-7/ToDoList" 
                 target='_blanck'> 
-                <FaFacebookF/>
+                <FaGithub/>
                 </a>
             </div>
             <div>

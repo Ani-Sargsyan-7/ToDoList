@@ -31,6 +31,9 @@ function Register(props){
             confirmPassword: null
         }
     );
+
+    const errorsExist = !Object.values(errors).every(el => el === null);
+    const valuesExist = !Object.values(inputValue).every(el => el === '');
     
     const onChangeInputValue = e =>{
         const {name, value} = e.target;
@@ -104,36 +107,25 @@ function Register(props){
 
             default:setErrors({
                 ...errors,
-                [name] : null
+                [name] : required
             })
         }
         
     };
 
 const handleSubmit = ()=>{
-    const errorsExist = !Object.values(errors).every(el => el === null);
-    const valuesExist = !Object.values(inputValue).every(el => el === '');
-  
-    console.log(valuesExist && !errorsExist)
-    if(!valuesExist || !errorsExist){
+     
+    if(valuesExist && !errorsExist){
         props.register(inputValue);
-       
-    }     
-      setErrors({
-            name:required,
-            surname:required,
-            email:required,
-            password:required,
-            confirmPassword: required
-        });
-
+    }
     
+     return    
 };
   
     return(
         <Container>
             <Row xs={8} className='justify-content-center'>
-                <Col xs={6}>
+                <Col xs={8}>
                 <h2 className={styles.title}>
                    Register Now
                 </h2>

@@ -73,7 +73,7 @@
 
 .link{
     text-decoration: none !important;
-    font-style: 20px;
+    font-size: 20px;
     font-family: serif;
     color: #412735;
 }
@@ -98,7 +98,7 @@
     }
     .label{
         margin-left: 8px;
-        font: 14px bold;
+        font: 10px serif;
     }
     
 .btn {
@@ -133,7 +133,7 @@
         margin-top: 20px;
     }
     .link{
-        font-size: 14px;
+        font-size: 12px;
     }
   }
   
