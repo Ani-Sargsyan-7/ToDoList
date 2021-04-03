@@ -44,6 +44,9 @@ h1{
     box-shadow: none !important;
     outline:  0  !important;
 }
+.cards{
+    margin-bottom: 80px;
+}
 
 @media  screen and (min-width: 400px) and (max-width: 600px) {
     h1{
@@ -51,7 +54,7 @@ h1{
     }
     
     .btn {
-        width: 90px;
+        width: 80px;
         font: 8px sans-serif;
         margin-right: 10%;
     }

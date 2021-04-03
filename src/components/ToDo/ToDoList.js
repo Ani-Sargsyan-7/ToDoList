@@ -98,7 +98,6 @@ class ToDoList extends Component{
     };
 
     handleEdit = (editTask)=>{
-
         this.setState({editTask});
     };
 

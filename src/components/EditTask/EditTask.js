@@ -24,11 +24,9 @@ class EditTask extends Component{
     this.titleRef= createRef();
   };
 
-
   componentDidMount(){
     this.titleRef.current.focus();
   };
-
 
   handleChange = (event) => {
         const {name, value} = event.target;
@@ -51,7 +49,7 @@ class EditTask extends Component{
         if (!title) {
             return;
         };
-
+        
          const editedTask = {
           _id: this.state._id,
           title,
@@ -60,10 +58,11 @@ class EditTask extends Component{
         };
         this.props.editTask(editedTask,  this.props.from);
        
-        if(this.props.from){
-
-        this.props.onClose();
-       };
+        if(this.props.from && this.props.openEditModal){
+          this.props.onClose() 
+        }
+                                 
+       return
     };
 
     handleChangeDate=(value)=>{
@@ -141,8 +140,12 @@ EditTask.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
+const mapStateToProps=(state)=>{
+ return {editingOneTask:state.editingOneTask}
+}
+
 const mapDispatchToProps = {
   editTask
 };
 
-export default connect(null, mapDispatchToProps)(EditTask);
+export default connect(mapStateToProps, mapDispatchToProps)(EditTask);

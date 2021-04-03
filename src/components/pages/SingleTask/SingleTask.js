@@ -24,7 +24,7 @@ import styles from './singltask.module.css';
     };
 
     componentDidUpdate(prevProps){
-        if (!prevProps.editingTask && this.props.editingTask){
+        if (!prevProps.editingOneTask && this.props.editingOneTask){
             this.setState({
                 openEditModal : false
             });
@@ -140,7 +140,7 @@ import styles from './singltask.module.css';
 const mapStateToProps = (state) => {
     return {
         task:state.task,
-        
+        editingOneTask:state.editingOneTask
     };
 };
 

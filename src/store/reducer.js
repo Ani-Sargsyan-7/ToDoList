@@ -9,6 +9,7 @@ const initState = {
   deletingTask: false,
   addingTask: false,
   editingTask: false,
+  editingOneTask: false,
   loading: false,
   successMessage: null,
   errorMessage: null,
@@ -31,6 +32,7 @@ export default function reducer(state = initState, action) {
           deletingTask: false,
           addingTask: false,
           editingTask: false,
+          editingOneTask: false,
           successSend: false
 
       }
@@ -106,7 +108,7 @@ export default function reducer(state = initState, action) {
         return {
           ...state,
           task: action.editedTask,
-          editingTask: true,
+          editingOneTask: true,
           loading: false,
           successMessage:action.status ? 
           ((action.status === 'done') ? 'The Task Completed!' : ' The Task is Active Now!'): 
