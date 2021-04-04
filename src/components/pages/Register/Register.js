@@ -17,7 +17,7 @@ function Register(props){
             name:'',
             surname:'',
             email:'',
-            password1:'',
+            password:'',
             confirmPassword:'',
         }
     );
@@ -32,8 +32,7 @@ function Register(props){
         }
     );
 
-    const errorsExist = !Object.values(errors).every(el => el === null);
-    const valuesExist = !Object.values(inputValue).every(el => el === '');
+    
     
     const onChangeInputValue = e =>{
         const {name, value} = e.target;
@@ -87,8 +86,9 @@ function Register(props){
             break;
 
             case 'password':
-              const passValid = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; 
-            if(!passValid.test(value) && value){
+            
+            const passValid = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; 
+            if(!passValid.test(value) && value.trim()){
                 setErrors({
                     ...errors,
                     password: 'Password needs to 8 characters or more and at least one numeric!'
@@ -97,7 +97,7 @@ function Register(props){
             break;
 
             case 'confirmPassword':
-            if(value !== inputValue.password && value){
+            if(value !== inputValue.password && value.trim()){
                 setErrors({
                     ...errors,
                     confirmPassword: "Passwords do not match!"
@@ -107,20 +107,30 @@ function Register(props){
 
             default:setErrors({
                 ...errors,
-                [name] : required
             })
         }
-        
     };
 
-const handleSubmit = ()=>{
-     
-    if(valuesExist && !errorsExist){
-        props.register(inputValue);
+    const handleSubmit = ()=>{
+        const errorsExist = !Object.values(errors).every(el => el === null);
+        const valuesExist = !Object.values(inputValue).some(el => el === '');
+        
+        if(valuesExist && !errorsExist){
+            props.register(inputValue);
+           
+        }if(!valuesExist){
+            setErrors({
+                ...errors,
+                name: required,
+                surname: required,
+                email: required,
+                password: required,
+                confirmPassword: required,
+            });
+        return
     }
-    
-     return    
-};
+}
+      
   
     return(
         <Container>
@@ -250,4 +260,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect( null, mapDispatchToProps)(Register);
