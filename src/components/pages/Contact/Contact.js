@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Form, Button, Col, Container, Row} from 'react-bootstrap';
+import {Form, Button, Col, Container, Row,Modal} from 'react-bootstrap';
 import {sendMessage} from '../../../store/actions';
 import {connect} from 'react-redux'
 
@@ -8,6 +8,11 @@ import styles from './contact.module.css';
 
  function Contact(props){
     const requiredErrMessage = 'Field is required!';
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const [inputValues, setInputValues] = useState({
         name:'',
@@ -94,12 +99,37 @@ import styles from './contact.module.css';
             props.sendMessage(inputValues);
       
         }
+        if(!valuesExist && !errorsExist){
+            handleShow();
+            return
+           
+        }
             return
     
     };
 
 
     return(
+        <>       
+        <Row>
+        <Col xs={4}>
+          <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Body className={styles.modalText}>
+            Please fill all the fields!
+            </Modal.Body>
+            <Modal.Footer>
+              <Button className={styles.modalBtn} onClick={handleClose}>
+               Ok
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </Col>
+        </Row>
      <Container>
      <Row className='justify-content-center'>
      <Col xs={8}>
@@ -170,6 +200,7 @@ import styles from './contact.module.css';
    </Col>
    </Row>
 </Container>
+</>
     );
 };
 

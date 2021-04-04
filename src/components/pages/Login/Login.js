@@ -50,9 +50,9 @@ const onChangeInputValue = e =>{
 
 const handleSubmit = ()=>{
   const errorsExist = !Object.values(errors).every(el => el === null);
-  const valuesExist = !Object.values(inputValue).every(el => el === '');
+  const valuesExist = !Object.values(inputValue).some(el => el === '');
   
-  if(!valuesExist || !errorsExist){
+  if(valuesExist && !errorsExist){
     props.login(inputValue);
  
   };

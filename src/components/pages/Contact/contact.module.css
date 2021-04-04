@@ -22,6 +22,31 @@
     color: #be3653fa;
     margin-bottom: 40px;
 }
+.modalText{
+    text-align: center;
+    font-size: 25px;
+    color: #be3653fa;
+    margin-bottom: 40px;
+}
+.modalBtn {
+    width: 60px;
+    height: 36px;
+    border:none !important;
+    outline: 0 none !important;
+    background:  #70323cea  !important;
+    color: #E2C9C3 !important;
+    box-shadow: 4px 3px 3px 0 rgba(98, 69, 72, 0.623);
+}
+
+.btn:hover,.modalBtn:hover {
+    background:#af6b7ad0 !important;
+    color: #412735 !important;
+}
+
+.btn:focus, .btn:active, .modalBtn:hover, .modalBtn:active {
+    box-shadow: none !important;
+    outline:  0  !important;
+  }
 
 .label{
     color: #2e1a1dc9;
