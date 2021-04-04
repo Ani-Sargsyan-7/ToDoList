@@ -33,6 +33,7 @@ import styles from './contact.module.css';
         }
     }, [successSend]);
     
+    
     function onChangeInputValue(e){
         const  {name, value} = e.target;
 
@@ -177,11 +178,11 @@ import styles from './contact.module.css';
     );
 };
 
-const mapStateToProps =(state)=> {
-   return { 
-       successSend:state.successSend
-    }
-}
+
+const mapStateToProps=(state)=>{
+    return {successSend:state.successSend}
+   }
+
 
 const mapDispatchToProps = {
      sendMessage,

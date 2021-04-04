@@ -33,7 +33,8 @@ export default function reducer(state = initState, action) {
           addingTask: false,
           editingTask: false,
           editingOneTask: false,
-          successSend: false
+          successSend: false,
+          sendmessage:false
 
       }
 
