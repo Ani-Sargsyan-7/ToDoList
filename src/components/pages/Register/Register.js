@@ -110,25 +110,17 @@ function Register(props){
             })
         }
     };
-
+    const errorsExist = !Object.values(errors).every(el => el === null);
+    const valuesExist = !Object.values(inputValue).some(el => el === '');
+    
     const handleSubmit = ()=>{
-        const errorsExist = !Object.values(errors).every(el => el === null);
-        const valuesExist = !Object.values(inputValue).some(el => el === '');
-        
+       
         if(valuesExist && !errorsExist){
             props.register(inputValue);
            
-        }if(!valuesExist){
-            setErrors({
-                ...errors,
-                name: required,
-                surname: required,
-                email: required,
-                password: required,
-                confirmPassword: required,
-            });
-        return
-    }
+        }
+        return;
+    
 }
       
   
