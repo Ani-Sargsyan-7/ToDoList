@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Container, Row, Col, Form, Button} from 'react-bootstrap';
+import {Container, Row, Col, Form, Button, Modal} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {register} from '../../../store/actions';
 import {connect} from 'react-redux';
@@ -9,6 +9,10 @@ import styles from './register.module.css';
 
 
 function Register(props){
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const required = 'Field is required!';
     const [inputValue, setInputValue] = useState(
@@ -119,12 +123,37 @@ function Register(props){
             props.register(inputValue);
            
         }
-        return;
-    
+        if(!valuesExist && !errorsExist){
+            handleShow();
+            return
+           
+        }
+   
 }
       
   
     return(
+            <>
+            
+            <Row>
+            <Col xs={4}>
+              <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+              >
+                <Modal.Body className={styles.modalText}>
+                Please fill all the fields!
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button className={styles.modalBtn} onClick={handleClose}>
+                   Ok
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </Col>
+            </Row>
         <Container>
             <Row xs={8} className='justify-content-center'>
                 <Col xs={8}>
@@ -244,6 +273,7 @@ function Register(props){
                 </Col>           
             </Row>       
         </Container>
+        </>
     );
 };
 
