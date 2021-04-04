@@ -93,9 +93,8 @@ import styles from './contact.module.css';
 
             props.sendMessage(inputValues);
       
-        }else if(!valuesExist && !errorsExist){
+        }
             return
-       }
     
     };
 

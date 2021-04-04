@@ -31,6 +31,7 @@
 }
 
 .btn{
+    margin-right: 3px;
     border:none !important;
     outline: 0 none !important;
     background-color:#764258 !important;
