@@ -94,11 +94,7 @@ import styles from './contact.module.css';
             props.sendMessage(inputValues);
       
         }else if(!valuesExist && !errorsExist){
-            setErrors({
-                name: requiredErrMessage,
-                email: requiredErrMessage,
-                message: requiredErrMessage
-            });
+            return
        }
     
     };
